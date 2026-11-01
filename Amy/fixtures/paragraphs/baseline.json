@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "summary": {
+    "cases": 2,
+    "blocked_cases": 2,
+    "passed_cases": 0,
+    "seconds": 0.1
+  },
+  "results": [
+    {
+      "id": "wiki-burbank-california",
+      "category": "wikipedia",
+      "source": "wikipedia:Burbank, California",
+      "facts": [],
+      "skipped": [],
+      "probes": [],
+      "blocked": "Conversation.digest is not implemented",
+      "passed": false
+    },
+    {
+      "id": "wiki-dayton-ohio",
+      "category": "wikipedia",
+      "source": "wikipedia:Dayton, Ohio",
+      "facts": [],
+      "skipped": [],
+      "probes": [],
+      "blocked": "Conversation.digest is not implemented",
+      "passed": false
+    }
+  ]
+}

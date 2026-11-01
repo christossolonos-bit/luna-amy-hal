@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HalMini Dashboard</title>
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --surface-1: #fcfcfb; --surface-2: #f3f2ee;
+  --text-primary: #0b0b0b; --text-secondary: #52514e; --muted: #898781;
+  --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,0.10);
+  --series-1: #2a78d6; --series-2: #eb6834; --series-3: #1baf7a;
+  --seq: #2a78d6; --seq-soft: #cde2fb; --div-pos: #2a78d6; --div-neg: #e34948; --div-mid: #f0efec;
+  --good: #0ca30c; --warning: #fab219; --serious: #ec835a; --critical: #d03b3b;
+  --accent-ink: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface-1: #1a1a19; --surface-2: #232322;
+    --text-primary: #f0efec; --text-secondary: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+    --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70;
+    --seq: #3987e5; --seq-soft: #184f95; --div-pos: #3987e5; --div-neg: #e66767; --div-mid: #383835;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface-1: #1a1a19; --surface-2: #232322;
+  --text-primary: #f0efec; --text-secondary: #c3c2b7; --muted: #898781;
+  --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+  --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70;
+  --seq: #3987e5; --seq-soft: #184f95; --div-pos: #3987e5; --div-neg: #e66767; --div-mid: #383835;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--page); color: var(--text-primary); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+header { position: sticky; top: 0; z-index: 5; background: var(--page); border-bottom: 1px solid var(--border); }
+.bar { max-width: 1280px; margin: 0 auto; padding: 12px 16px 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+.bar h1 { font-size: 18px; margin: 0; font-weight: 650; }
+.pill { display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px; border-radius: 999px; background: var(--surface-2); color: var(--text-secondary); font-size: 12px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.spacer { flex: 1; }
+.muted { color: var(--muted); }
+.small { font-size: 12px; }
+nav { max-width: 1280px; margin: 0 auto; padding: 0 16px; display: flex; gap: 4px; overflow-x: auto; }
+nav a { padding: 10px 12px; color: var(--text-secondary); text-decoration: none; border-bottom: 2px solid transparent; white-space: nowrap; }
+nav a.on { color: var(--text-primary); border-bottom-color: var(--series-1); font-weight: 600; }
+main { max-width: 1280px; margin: 0 auto; padding: 16px; }
+section { display: none; } section.on { display: block; }
+.grid { display: grid; gap: 16px; grid-template-columns: repeat(12, 1fr); }
+.card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 16px; min-width: 0; }
+.card h2 { font-size: 14px; margin: 0 0 4px; font-weight: 650; }
+.card .sub { color: var(--muted); font-size: 12px; margin: 0 0 12px; }
+.c12 { grid-column: span 12; } .c8 { grid-column: span 8; } .c7 { grid-column: span 7; } .c6 { grid-column: span 6; }
+.c5 { grid-column: span 5; } .c4 { grid-column: span 4; }
+@media (max-width: 900px) { .c8, .c7, .c6, .c5, .c4 { grid-column: span 12; } }
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
+.tile { background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; }
+.tile .v { font-size: 26px; font-weight: 650; }
+.tile .k { color: var(--text-secondary); font-size: 12px; }
+.meter { display: grid; grid-template-columns: 96px 1fr 56px; align-items: center; gap: 10px; margin: 8px 0; }
+.meter .lbl { color: var(--text-secondary); font-size: 13px; }
+.meter .val { text-align: right; font-variant-numeric: tabular-nums; font-size: 13px; }
+.track { position: relative; height: 12px; background: var(--surface-2); border-radius: 4px; }
+.fill { position: absolute; top: 0; bottom: 0; border-radius: 4px; }
+.mid { position: absolute; top: -3px; bottom: -3px; width: 1px; background: var(--axis); left: 50%; }
+.chem .track { height: 14px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+th { color: var(--muted); font-weight: 600; font-size: 12px; position: sticky; top: 0; background: var(--surface-1); }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.scroll { max-height: 520px; overflow: auto; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+input[type=search], select { background: var(--surface-2); color: var(--text-primary); border: 1px solid var(--border); border-radius: 8px; padding: 7px 10px; font: inherit; min-width: 0; }
+input[type=search] { flex: 1 1 220px; }
+button { background: var(--surface-2); color: var(--text-primary); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; font: inherit; cursor: pointer; }
+button.primary { background: var(--series-1); color: var(--accent-ink); border-color: transparent; font-weight: 600; }
+button.primary:disabled { opacity: 0.6; cursor: default; }
+input[type=text], input[type=password], input[type=number] { background: var(--surface-2); color: var(--text-primary); border: 1px solid var(--border); border-radius: 8px; padding: 6px 9px; font: inherit; min-width: 0; width: 100%; }
+.settings-table td { padding: 7px 8px; vertical-align: top; }
+.settings-table td:first-child { width: 46%; }
+.settings-table select { width: 100%; }
+.setting-help { color: var(--muted); font-size: 11px; margin-top: 2px; line-height: 1.35; }
+.setting-secret { display: flex; align-items: center; gap: 10px; }
+.setting-secret .tag { flex: 0 0 auto; }
+.setting-secret input[type=checkbox] { width: auto; }
+.settings-actions { position: sticky; bottom: 0; z-index: 2; background: var(--surface-1); border-top: 1px solid var(--border); margin-top: 10px; padding: 10px 0 2px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.settings-actions .status { font-size: 12px; color: var(--muted); }
+.settings-actions .status.ok { color: var(--good); }
+.settings-actions .status.err { color: var(--critical); }
+.tag { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-secondary); white-space: nowrap; }
+.chat { display: flex; flex-direction: column; gap: 6px; }
+.msg { padding: 8px 12px; border-radius: 10px; background: var(--surface-2); max-width: 80%; }
+.msg.engine { align-self: flex-end; background: var(--seq-soft); }
+:root[data-theme="dark"] .msg.engine { color: var(--text-primary); }
+.msg .who { font-size: 12px; color: var(--text-secondary); margin-bottom: 2px; }
+.rule { padding: 10px 0; border-bottom: 1px solid var(--grid); }
+.legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--text-secondary); margin-bottom: 8px; }
+.legend .sw { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 5px; vertical-align: -1px; }
+.legend .ln { width: 14px; height: 2px; display: inline-block; margin-right: 5px; vertical-align: 3px; border-radius: 2px; }
+#graphWrap { position: relative; height: 560px; border-radius: 8px; background: var(--surface-1); overflow: hidden; }
+#graph { width: 100%; height: 100%; display: block; cursor: grab; }
+.tip { position: fixed; pointer-events: none; z-index: 20; background: var(--surface-1); color: var(--text-primary); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; font-size: 12px; max-width: 320px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); display: none; }
+.tip b { font-weight: 650; }
+.side { font-size: 13px; }
+.side li { margin: 4px 0; }
+.empty { color: var(--muted); padding: 24px 0; text-align: center; }
+svg text { fill: var(--muted); font-size: 11px; }
+.hbar { display: grid; grid-template-columns: 110px 1fr 36px; gap: 8px; align-items: center; margin: 5px 0; font-size: 13px; }
+.hbar .t { height: 12px; background: var(--seq); border-radius: 0 4px 4px 0; min-width: 2px; }
+.hbar .l { color: var(--text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+code { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; font-size: 12px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <h1 id="title">HalMini</h1>
+    <span class="pill" id="online"><span class="dot"></span><span>…</span></span>
+    <span class="pill" id="mood">mood …</span>
+    <span class="spacer"></span>
+    <span class="muted small" id="updated"></span>
+    <button id="theme" title="Toggle light/dark">◐</button>
+  </div>
+  <nav id="tabs">
+    <a href="#overview">Overview</a><a href="#knowledge">Knowledge</a><a href="#rules">Rules</a>
+    <a href="#conversation">Conversation</a><a href="#gaps">Gaps &amp; corrections</a><a href="#settings">Settings</a>
+  </nav>
+</header>
+<main>
+  <section id="overview">
+    <div class="tiles" id="tiles"></div>
+    <div class="grid" style="margin-top:16px">
+      <div class="card c5"><h2>State right now</h2><p class="sub">Computed from his chemistry; drifts back to normal over time.</p><div id="meters"></div></div>
+      <div class="card c7"><h2>Chemistry vs baseline</h2><p class="sub">Bars grow right when a chemical is above its baseline, left when below.</p><div id="chems" class="chem"></div></div>
+      <div class="card c6"><h2>Mood over time</h2><p class="sub">Valence, −1 (low) to +1 (great); snapshots about once a minute.</p><div id="valenceChart"></div></div>
+      <div class="card c6"><h2>Energy, curiosity &amp; stress</h2><p class="sub">0 to 1.</p><div class="legend" id="dimsLegend"></div><div id="dimsChart"></div></div>
+      <div class="card c12"><h2>Latest conversation</h2><p class="sub">Most recent messages first.</p><div id="recent" class="chat"></div></div>
+    </div>
+  </section>
+
+  <section id="knowledge">
+    <div class="grid">
+      <div class="card c8">
+        <h2>Knowledge graph</h2>
+        <p class="sub">Drag to move, scroll to zoom, click a node to see its facts. Dashed links are negative ("does not").</p>
+        <div class="legend">
+          <span><span class="sw" style="background:var(--series-1)"></span>named (people, places)</span>
+          <span><span class="sw" style="background:var(--series-2)"></span>things (a red truck)</span>
+          <span><span class="sw" style="background:var(--series-3)"></span>kinds &amp; properties</span>
+          <span><span class="sw" style="background:var(--series-1);outline:2px solid var(--text-primary);outline-offset:1px"></span>himself</span>
+        </div>
+        <div class="controls"><input type="search" id="graphSearch" placeholder="Find a node…"><button id="relayout">Re-layout</button></div>
+        <div id="graphWrap"><canvas id="graph"></canvas></div>
+      </div>
+      <div class="card c4">
+        <h2 id="nodeTitle">Select a node</h2>
+        <p class="sub" id="nodeSub">Its facts appear here.</p>
+        <ul class="side" id="nodeFacts"></ul>
+        <h2 style="margin-top:20px">What he knows, by relation</h2>
+        <p class="sub">Active facts per verb or relation.</p>
+        <div id="kinds"></div>
+      </div>
+      <div class="card c12">
+        <h2>Every fact</h2><p class="sub">Including retracted ones, which stay for the audit trail.</p>
+        <div class="controls">
+          <input type="search" id="factSearch" placeholder="Search facts…">
+          <select id="factStatus"><option value="active">Active</option><option value="retracted">Retracted</option><option value="">All</option></select>
+          <select id="factSpeaker"><option value="">Anyone</option></select>
+        </div>
+        <div class="scroll"><table><thead><tr><th>Fact</th><th>Relation</th><th class="num">Confidence</th><th>From</th><th>When</th><th>Status</th></tr></thead><tbody id="facts"></tbody></table></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rules"><div class="card"><h2>If-then rules</h2><p class="sub">Applied by backward chaining when he answers questions.</p><div id="ruleList"></div></div></section>
+
+  <section id="conversation">
+    <div class="card"><h2>Conversation history</h2><p class="sub">Text and transcribed voice, newest first (last 300 turns).</p>
+      <div class="controls"><input type="search" id="chatSearch" placeholder="Search the conversation…"></div>
+      <div id="chat" class="chat scroll"></div></div>
+  </section>
+
+  <section id="gaps">
+    <div class="grid">
+      <div class="card c7"><h2>Open questions</h2><p class="sub">Things he couldn't understand or answer, and may ask about.</p>
+        <div class="scroll"><table><thead><tr><th>What</th><th>Type</th><th>From</th><th>When</th></tr></thead><tbody id="questions"></tbody></table></div></div>
+      <div class="card c5"><h2>Corrections</h2><p class="sub">Claims he was told to drop, and why.</p>
+        <div class="scroll"><table><thead><tr><th>Retracted</th><th>Why</th><th>When</th></tr></thead><tbody id="corrections"></tbody></table></div></div>
+    </div>
+  </section>
+
+  <section id="settings">
+    <div class="grid">
+      <div class="card c12">
+        <h2>Discord &amp; engine settings</h2>
+        <p class="sub">Edit <code>.env</code> here, then restart the bot to apply. Secret values are never shown.</p>
+        <div id="settingsTables"></div>
+        <div class="settings-actions">
+          <button id="saveSettings" class="primary">Save settings</button>
+          <button id="resetSettings">Reset</button>
+          <span class="status" id="settingsStatus"></span>
+        </div>
+      </div>
+      <div class="card c12"><h2>Chemistry constants</h2><p class="sub">Baselines from human-sim; half-lives stretched for conversation.</p>
+        <table><thead><tr><th>Chemical</th><th class="num">Baseline</th><th class="num">Half-life</th></tr></thead><tbody id="chemConsts"></tbody></table>
+        <h2 style="margin-top:20px">What events release</h2><p class="sub">Change in concentration per event.</p>
+        <table><thead><tr><th>Event</th><th>Effect</th></tr></thead><tbody id="eventConsts"></tbody></table></div>
+    </div>
+  </section>
+</main>
+<div class="tip" id="tip"></div>
+
+<script>
+"use strict";
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+const tip = $("#tip");
+let DATA = null;
+
+// --- theme & tabs -------------------------------------------------------------
+try { const t = localStorage.getItem("halmini-theme"); if (t) document.documentElement.dataset.theme = t; } catch {}
+$("#theme").onclick = () => {
+  const dark = document.documentElement.dataset.theme === "dark" ||
+    (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+  document.documentElement.dataset.theme = dark ? "light" : "dark";
+  try { localStorage.setItem("halmini-theme", document.documentElement.dataset.theme); } catch {}
+  if (DATA) render(DATA, true);
+};
+function showTab() {
+  const id = (location.hash || "#overview").slice(1);
+  document.querySelectorAll("section").forEach((s) => s.classList.toggle("on", s.id === id));
+  document.querySelectorAll("nav a").forEach((a) => a.classList.toggle("on", a.getAttribute("href") === "#" + id));
+  if (id === "knowledge") Graph.resize();
+}
+addEventListener("hashchange", showTab);
+
+// --- helpers ------------------------------------------------------------------
+function ago(iso) {
+  if (!iso) return "";
+  const s = (Date.now() - new Date(iso).getTime()) / 1000;
+  if (s < 60) return "just now";
+  if (s < 3600) return Math.round(s / 60) + "m ago";
+  if (s < 86400) return Math.round(s / 3600) + "h ago";
+  return new Date(iso).toLocaleDateString(undefined, { month: "short", day: "numeric" });
+}
+function showTip(html, x, y) {
+  tip.innerHTML = html; tip.style.display = "block";
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  tip.style.left = Math.min(innerWidth - w - 8, x + 14) + "px";
+  tip.style.top = Math.min(innerHeight - h - 8, y + 14) + "px";
+}
+const hideTip = () => (tip.style.display = "none");
+function statusTag(status) {
+  return status === "active" ? `<span class="tag"><span class="dot" style="background:var(--good)"></span>✓ active</span>`
+    : `<span class="tag"><span class="dot" style="background:var(--critical)"></span>✕ ${esc(status)}</span>`;
+}
+
+// --- overview -----------------------------------------------------------------
+function renderHeader(d) {
+  $("#title").textContent = d.bot.account ? `${d.bot.account.split("#")[0]} · HalMini` : "HalMini";
+  const on = d.bot.online;
+  $("#online").innerHTML = `<span class="dot" style="background:var(${on ? "--good" : "--critical"})"></span>${on ? "● online" : "○ offline"}${d.bot.account ? " as " + esc(d.bot.account) : ""}`;
+  $("#mood").textContent = `mood: ${d.state.mood}`;
+  $("#updated").textContent = "updated " + new Date(d.generated * 1000).toLocaleTimeString();
+}
+function renderTiles(c) {
+  const items = [["facts", "facts learned"], ["rules", "rules"], ["things", "things known"], ["kinds", "kinds & properties"],
+    ["verbs", "verbs learned"], ["people", "people talked to"], ["messages", "messages heard"],
+    ["open_questions", "open questions"], ["corrections", "corrections"]];
+  $("#tiles").innerHTML = items.map(([k, label]) => `<div class="tile"><div class="v">${c[k]}</div><div class="k">${label}</div></div>`).join("");
+}
+function renderMeters(s) {
+  const dims = [["valence", "mood", true], ["energy", "energy"], ["curiosity", "curiosity"], ["sociability", "sociability"],
+    ["stress", "stress"], ["loneliness", "loneliness"]];
+  $("#meters").innerHTML = dims.map(([k, label, diverging]) => {
+    const v = s[k];
+    let fill;
+    if (diverging) {
+      const w = Math.abs(v) * 50, left = v >= 0 ? 50 : 50 - w;
+      fill = `<div class="mid"></div><div class="fill" style="left:${left}%;width:${w}%;background:var(${v >= 0 ? "--div-pos" : "--div-neg"})"></div>`;
+    } else fill = `<div class="fill" style="left:0;width:${v * 100}%;background:var(--seq)"></div>`;
+    const shown = diverging ? (v >= 0 ? "+" : "") + v.toFixed(2) : v.toFixed(2);
+    return `<div class="meter" title="${label}: ${shown}"><span class="lbl">${label}${diverging ? " (" + esc(s.mood) + ")" : ""}</span><div class="track">${fill}</div><span class="val">${shown}</span></div>`;
+  }).join("") + Object.entries(s.emotions || {}).map(([name, value]) => `<div class="meter"><span class="lbl">${esc(name)}</span><div class="track"><div class="fill" style="left:0;width:${value * 100}%;background:var(--seq)"></div></div><span class="val">${value.toFixed(2)}</span></div>`).join("") + `<div class="meter"><span class="lbl">sleep pressure</span><div class="track"><div class="fill" style="left:0;width:${Math.min(1, s.adenosine / 5) * 100}%;background:var(--seq)"></div></div><span class="val">${s.adenosine.toFixed(1)}</span></div>
+  <p class="muted small">Adenosine ${s.adenosine.toFixed(1)} after ${s.hours_awake} h awake · memory is ${s.age_hours} h old</p>`;
+}
+function renderChems(d) {
+  const rows = Object.entries(d.state.chemicals).map(([name, level]) => {
+    const base = d.baselines[name], dev = (level - base) / base;
+    const w = Math.min(1, Math.abs(dev)) * 50, left = dev >= 0 ? 50 : 50 - w;
+    const pct = (dev >= 0 ? "+" : "") + Math.round(dev * 100) + "%";
+    return `<div class="meter" data-tip="<b>${name}</b><br>${level.toFixed(2)} (baseline ${base})<br>${pct} vs baseline · half-life ${d.half_lives_min[name]} min">
+      <span class="lbl">${name}</span><div class="track"><div class="mid"></div><div class="fill" style="left:${left}%;width:${Math.max(w, 0.6)}%;background:var(${dev >= 0 ? "--div-pos" : "--div-neg"})"></div></div><span class="val">${pct}</span></div>`;
+  });
+  $("#chems").innerHTML = rows.join("") + `<p class="muted small">Full bar = ±100% of baseline.</p>`;
+  $("#chems").querySelectorAll("[data-tip]").forEach((el) => {
+    el.onmousemove = (e) => showTip(el.dataset.tip, e.clientX, e.clientY); el.onmouseleave = hideTip;
+  });
+}
+
+// A small SVG line chart with a crosshair tooltip. series: [{key,label,color}]
+function lineChart(el, points, series, yMin, yMax, zeroLine) {
+  if (points.length < 2) { el.innerHTML = `<div class="empty">Not enough history yet. A snapshot is saved about once a minute while he's active.</div>`; return; }
+  const W = Math.max(300, el.clientWidth || 560), H = 200, m = { l: 34, r: 12, t: 8, b: 22 };
+  const t0 = points[0].t, t1 = points[points.length - 1].t;
+  const x = (t) => m.l + ((t - t0) / Math.max(1, t1 - t0)) * (W - m.l - m.r);
+  const y = (v) => m.t + (1 - (v - yMin) / (yMax - yMin)) * (H - m.t - m.b);
+  const ticks = [yMin, (yMin + yMax) / 2, yMax];
+  let svg = `<svg width="100%" viewBox="0 0 ${W} ${H}" role="img" aria-label="${series.map((s) => s.label).join(", ")} over time">`;
+  ticks.forEach((v) => (svg += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(v)}" y2="${y(v)}" stroke="${css(zeroLine && v === 0 ? "--axis" : "--grid")}" stroke-width="1"/><text x="${m.l - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`));
+  const fmt = (t) => new Date(t * 1000).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+  svg += `<text x="${m.l}" y="${H - 6}">${fmt(t0)}</text><text x="${W - m.r}" y="${H - 6}" text-anchor="end">${fmt(t1)}</text>`;
+  series.forEach((s) => {
+    const d = points.map((p, i) => `${i ? "L" : "M"}${x(p.t).toFixed(1)},${y(p[s.key]).toFixed(1)}`).join("");
+    svg += `<path d="${d}" fill="none" stroke="${css(s.color)}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+    const last = points[points.length - 1];
+    if (series.length > 1) svg += `<text x="${x(last.t) - 4}" y="${y(last[s.key]) - 6}" text-anchor="end" style="fill:${css("--text-secondary")}">${s.label}</text>`;
+  });
+  svg += `<line class="xh" y1="${m.t}" y2="${H - m.b}" stroke="${css("--axis")}" stroke-width="1" visibility="hidden"/>`;
+  series.forEach((s, i) => (svg += `<circle class="xd${i}" r="4" fill="${css(s.color)}" stroke="${css("--surface-1")}" stroke-width="2" visibility="hidden"/>`));
+  svg += `<rect x="${m.l}" y="0" width="${W - m.l - m.r}" height="${H}" fill="transparent"/></svg>`;
+  el.innerHTML = svg;
+  const root = el.querySelector("svg");
+  root.onmousemove = (e) => {
+    const r = root.getBoundingClientRect(), px = ((e.clientX - r.left) / r.width) * W;
+    let best = points[0];
+    for (const p of points) if (Math.abs(x(p.t) - px) < Math.abs(x(best.t) - px)) best = p;
+    root.querySelector(".xh").setAttribute("x1", x(best.t)); root.querySelector(".xh").setAttribute("x2", x(best.t));
+    root.querySelector(".xh").setAttribute("visibility", "visible");
+    series.forEach((s, i) => { const c = root.querySelector(".xd" + i); c.setAttribute("cx", x(best.t)); c.setAttribute("cy", y(best[s.key])); c.setAttribute("visibility", "visible"); });
+    showTip(`<b>${new Date(best.t * 1000).toLocaleString()}</b><br>` + series.map((s) => `<span class="legend"><span class="ln" style="background:${css(s.color)}"></span>${s.label}: ${best[s.key].toFixed(2)}</span>`).join("<br>"), e.clientX, e.clientY);
+  };
+  root.onmouseleave = () => { hideTip(); root.querySelectorAll("[visibility]").forEach((n) => n.setAttribute("visibility", "hidden")); };
+}
+function renderCharts(d) {
+  lineChart($("#valenceChart"), d.history, [{ key: "valence", label: "mood", color: "--series-1" }], -1, 1, true);
+  const dims = [{ key: "energy", label: "energy", color: "--series-1" }, { key: "curiosity", label: "curiosity", color: "--series-2" }, { key: "stress", label: "stress", color: "--series-3" }];
+  $("#dimsLegend").innerHTML = dims.map((s) => `<span><span class="ln" style="background:var(${s.color})"></span>${s.label}</span>`).join("");
+  lineChart($("#dimsChart"), d.history, dims, 0, 1, false);
+}
+function bubble(t) {
+  const who = t.role === "engine" ? (DATA.bot.account || "Hal").split("#")[0] : t.speaker;
+  return `<div class="msg ${t.role}"><div class="who">${esc(who)} · ${ago(t.when)}</div>${esc(t.text)}</div>`;
+}
+function renderRecent(d) {
+  $("#recent").innerHTML = d.turns.length ? d.turns.slice(0, 8).map(bubble).join("") : `<div class="empty">No conversation yet.</div>`;
+}
+
+// --- knowledge graph (canvas, force-directed) ----------------------------------
+const Graph = (() => {
+  const canvas = $("#graph"), ctx = canvas.getContext("2d");
+  let nodes = [], edges = [], byId = new Map(), pos = new Map();
+  let view = { x: 0, y: 0, k: 1 }, alpha = 0, hover = null, selected = null, drag = null, pan = null, query = "";
+  const color = (n) => css(n.type === "kind" ? "--series-3" : n.type === "thing" ? "--series-2" : "--series-1");
+  function resize() {
+    const r = canvas.parentElement.getBoundingClientRect(), dpr = devicePixelRatio || 1;
+    canvas.width = r.width * dpr; canvas.height = r.height * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); draw();
+  }
+  function set(graph, force) {
+    const sig = graph.nodes.length + ":" + graph.edges.length;
+    if (!force && sig === set.sig) { draw(); return; }
+    set.sig = sig;
+    nodes = graph.nodes.map((n) => {
+      const p = pos.get(n.id) || { x: (Math.random() - 0.5) * 300, y: (Math.random() - 0.5) * 300, vx: 0, vy: 0 };
+      pos.set(n.id, p); return Object.assign(p, n, { degree: 0 });
+    });
+    byId = new Map(nodes.map((n) => [n.id, n]));
+    edges = graph.edges.filter((e) => byId.has(e.source) && byId.has(e.target)).map((e) => ({ ...e, s: byId.get(e.source), t: byId.get(e.target) }));
+    edges.forEach((e) => { e.s.degree++; e.t.degree++; });
+    alpha = 1; tick();
+  }
+  function tick() {
+    if (alpha < 0.01) { draw(); return; }
+    for (let i = 0; i < nodes.length; i++) {
+      const a = nodes[i];
+      for (let j = i + 1; j < nodes.length; j++) {
+        const b = nodes[j]; let dx = a.x - b.x, dy = a.y - b.y, d2 = dx * dx + dy * dy || 0.01;
+        if (d2 > 90000) continue;
+        const f = (900 / d2) * alpha; dx *= f; dy *= f; a.vx += dx; a.vy += dy; b.vx -= dx; b.vy -= dy;
+      }
+    }
+    for (const e of edges) {
+      const dx = e.t.x - e.s.x, dy = e.t.y - e.s.y, d = Math.sqrt(dx * dx + dy * dy) || 1, f = ((d - 80) / d) * 0.05 * alpha;
+      e.s.vx += dx * f; e.s.vy += dy * f; e.t.vx -= dx * f; e.t.vy -= dy * f;
+    }
+    for (const n of nodes) {
+      if (n === drag) continue;
+      n.vx -= n.x * 0.004 * alpha; n.vy -= n.y * 0.004 * alpha;
+      n.x += (n.vx *= 0.6); n.y += (n.vy *= 0.6);
+    }
+    alpha *= 0.985; draw(); requestAnimationFrame(tick);
+  }
+  const radius = (n) => 5 + Math.min(7, n.degree);
+  const toScreen = (n) => { const r = canvas.getBoundingClientRect(); return [r.width / 2 + (n.x + view.x) * view.k, r.height / 2 + (n.y + view.y) * view.k]; };
+  function draw() {
+    const r = canvas.getBoundingClientRect(); ctx.clearRect(0, 0, r.width, r.height);
+    if (!nodes.length) {
+      ctx.fillStyle = css("--muted"); ctx.font = "13px system-ui"; ctx.textAlign = "center";
+      ctx.fillText("Nothing learned yet. Teach him something and it will show up here.", r.width / 2, r.height / 2); return;
+    }
+    const focus = selected || hover, near = new Set();
+    if (focus) edges.forEach((e) => { if (e.s === focus) near.add(e.t); if (e.t === focus) near.add(e.s); });
+    for (const e of edges) {
+      const [x1, y1] = toScreen(e.s), [x2, y2] = toScreen(e.t), on = focus && (e.s === focus || e.t === focus);
+      ctx.strokeStyle = css(on ? "--text-secondary" : "--axis"); ctx.lineWidth = on ? 1.5 : 1;
+      ctx.setLineDash(e.polarity ? [] : [4, 3]); ctx.globalAlpha = focus && !on ? 0.25 : 1;
+      ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+      if (on) { ctx.fillStyle = css("--text-secondary"); ctx.font = "11px system-ui"; ctx.textAlign = "center"; ctx.fillText((e.polarity ? "" : "not ") + e.label, (x1 + x2) / 2, (y1 + y2) / 2 - 4); }
+    }
+    ctx.setLineDash([]); ctx.globalAlpha = 1;
+    for (const n of nodes) {
+      const [x, y] = toScreen(n), rad = radius(n) * Math.sqrt(view.k);
+      const match = query && n.label.toLowerCase().includes(query);
+      ctx.globalAlpha = focus && n !== focus && !near.has(n) ? 0.3 : 1;
+      ctx.beginPath(); ctx.arc(x, y, rad + 2, 0, Math.PI * 2); ctx.fillStyle = css("--surface-1"); ctx.fill();  // 2px surface ring
+      ctx.beginPath(); ctx.arc(x, y, rad, 0, Math.PI * 2); ctx.fillStyle = color(n); ctx.fill();
+      if (n.type === "self" || match || n === selected) { ctx.lineWidth = 2; ctx.strokeStyle = css("--text-primary"); ctx.stroke(); }
+      if (n.degree >= 2 || n.type === "self" || n === focus || near.has(n) || match || view.k > 1.6) {
+        ctx.fillStyle = css(n === focus ? "--text-primary" : "--text-secondary"); ctx.font = (n === focus ? "600 " : "") + "11px system-ui";
+        ctx.textAlign = "left"; ctx.fillText(n.label + (n.type === "self" ? " (me)" : ""), x + rad + 4, y + 4);
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+  function nodeAt(cx, cy) {
+    let best = null, bd = 14;
+    for (const n of nodes) { const [x, y] = toScreen(n), d = Math.hypot(x - cx, y - cy); if (d < Math.max(bd, radius(n) + 4)) { best = n; bd = d; } }
+    return best;
+  }
+  const local = (e) => { const r = canvas.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+  canvas.onmousedown = (e) => { const [cx, cy] = local(e), n = nodeAt(cx, cy); if (n) drag = n; else pan = { cx, cy, x: view.x, y: view.y }; canvas.style.cursor = "grabbing"; };
+  addEventListener("mouseup", (e) => {
+    if (drag && pan === null) { const [cx, cy] = local(e); if (nodeAt(cx, cy) === drag && !drag.moved) select(drag); drag.moved = false; }
+    drag = null; pan = null; canvas.style.cursor = "grab";
+  });
+  canvas.onmousemove = (e) => {
+    const [cx, cy] = local(e);
+    if (drag) { const r = canvas.getBoundingClientRect(); drag.x = (cx - r.width / 2) / view.k - view.x; drag.y = (cy - r.height / 2) / view.k - view.y; drag.moved = true; alpha = Math.max(alpha, 0.3); tick(); return; }
+    if (pan) { view.x = pan.x + (cx - pan.cx) / view.k; view.y = pan.y + (cy - pan.cy) / view.k; draw(); return; }
+    const n = nodeAt(cx, cy);
+    if (n !== hover) { hover = n; draw(); }
+    if (n) showTip(`<b>${esc(n.label)}</b><br>${n.type === "kind" ? "kind / property" : n.type === "self" ? "himself" : n.type === "thing" ? "thing" : "named"} · ${n.degree} link${n.degree === 1 ? "" : "s"}`, e.clientX, e.clientY); else hideTip();
+  };
+  canvas.onmouseleave = () => { hover = null; hideTip(); draw(); };
+  canvas.onwheel = (e) => { e.preventDefault(); view.k = Math.max(0.3, Math.min(4, view.k * (e.deltaY < 0 ? 1.12 : 0.89))); draw(); };
+  function select(n) {
+    selected = n; draw();
+    const facts = edges.filter((e) => e.s === n || e.t === n).map((e) => e.text).filter(Boolean);
+    $("#nodeTitle").textContent = n.label + (n.type === "self" ? " (me)" : "");
+    $("#nodeSub").textContent = `${facts.length} fact${facts.length === 1 ? "" : "s"}`;
+    $("#nodeFacts").innerHTML = facts.map((f) => `<li>${esc(f)}</li>`).join("");
+  }
+  $("#graphSearch").oninput = (e) => {
+    query = e.target.value.trim().toLowerCase();
+    const hit = query && nodes.find((n) => n.label.toLowerCase().includes(query));
+    if (hit) { view.x = -hit.x; view.y = -hit.y; select(hit); } else draw();
+  };
+  $("#relayout").onclick = () => { pos.clear(); set({ nodes: nodes.map(({ id, label, type }) => ({ id, label, type })), edges: edges.map(({ source, target, label, polarity, text }) => ({ source, target, label, polarity, text })) }, true); };
+  addEventListener("resize", resize);
+  return { set, resize, draw };
+})();
+
+function renderKinds(d) {
+  const max = Math.max(1, ...d.kinds.map((k) => k.count));
+  $("#kinds").innerHTML = d.kinds.length ? d.kinds.slice(0, 14).map((k) =>
+    `<div class="hbar" title="${esc(k.kind)}: ${k.count}"><span class="l">${esc(k.kind)}</span><div><div class="t" style="width:${(k.count / max) * 100}%"></div></div><span class="num">${k.count}</span></div>`).join("")
+    : `<div class="empty">Nothing yet.</div>`;
+}
+function renderFacts() {
+  const d = DATA, q = $("#factSearch").value.toLowerCase(), st = $("#factStatus").value, sp = $("#factSpeaker").value;
+  const speakers = [...new Set(d.facts.map((f) => f.speaker))].sort();
+  const sel = $("#factSpeaker"), cur = sel.value;
+  sel.innerHTML = `<option value="">Anyone</option>` + speakers.map((s) => `<option${s === cur ? " selected" : ""}>${esc(s)}</option>`).join("");
+  const rows = d.facts.filter((f) => (!st || f.status === st) && (!sp || f.speaker === sp) && (!q || f.text.toLowerCase().includes(q) || (f.said || "").toLowerCase().includes(q)));
+  $("#facts").innerHTML = rows.length ? rows.map((f) => `<tr title="${esc(f.said ? "said: " + f.said : "")}"><td>${esc(f.text)}</td><td>${esc(f.kind)}</td><td class="num">${f.confidence.toFixed(2)}</td><td>${esc(f.speaker)}</td><td class="muted">${ago(f.when)}</td><td>${statusTag(f.status)}</td></tr>`).join("")
+    : `<tr><td colspan="6" class="empty">No facts match.</td></tr>`;
+}
+
+// --- other tabs ----------------------------------------------------------------
+function renderRules(d) {
+  $("#ruleList").innerHTML = d.rules.length ? d.rules.map((r) => `<div class="rule">${esc(r.text[0].toUpperCase() + r.text.slice(1))}.<div class="muted small">confidence ${r.confidence.toFixed(2)} · rule #${r.id}</div></div>`).join("")
+    : `<div class="empty">No rules yet. Try: "If someone owns a dog, they are a pet owner."</div>`;
+}
+function renderChat() {
+  const q = $("#chatSearch").value.toLowerCase();
+  const rows = DATA.turns.filter((t) => !q || t.text.toLowerCase().includes(q) || (t.speaker || "").toLowerCase().includes(q));
+  $("#chat").innerHTML = rows.length ? rows.map(bubble).join("") : `<div class="empty">Nothing matches.</div>`;
+}
+function renderGaps(d) {
+  $("#questions").innerHTML = d.questions.length ? d.questions.map((q) => `<tr><td>${esc(q.text)}${q.detail ? `<div class="muted small">${esc(q.detail)}</div>` : ""}</td><td><span class="tag">${q.kind === "didn't understand" ? "? didn't understand" : "… couldn't answer"}</span></td><td>${esc(q.speaker)}</td><td class="muted">${ago(q.when)}</td></tr>`).join("")
+    : `<tr><td colspan="4" class="empty">No open questions.</td></tr>`;
+  $("#corrections").innerHTML = d.corrections.length ? d.corrections.map((c) => `<tr><td>${esc(c.retracted)}</td><td class="muted small">${esc(c.note)}${c.speaker ? " · " + esc(c.speaker) : ""}</td><td class="muted">${ago(c.when)}</td></tr>`).join("")
+    : `<tr><td colspan="3" class="empty">No corrections yet.</td></tr>`;
+}
+const GROUP_ORDER = ["Discord", "Listening", "Speech", "Engine", "Other"];
+let settingsDirty = false;
+let settingsOriginal = new Map();
+let settingsSignature = "";
+
+function settingControl(s) {
+  const attrs = `data-key="${esc(s.key)}" data-kind="${esc(s.kind)}"`;
+  if (s.kind === "secret") {
+    return `<div class="setting-secret"><input type="password" ${attrs} autocomplete="new-password" spellcheck="false" placeholder="${s.is_set ? "set — type to replace" : "not set — type to add"}"><label class="tag"><input type="checkbox" data-clear="${esc(s.key)}"> clear</label></div>`;
+  }
+  if (s.kind === "bool") {
+    return `<select ${attrs}><option value="true"${s.value === "true" ? " selected" : ""}>on</option><option value="false"${s.value !== "true" ? " selected" : ""}>off</option></select>`;
+  }
+  if (s.kind === "select") {
+    return `<select ${attrs}>${s.options.map((o) => `<option value="${esc(o)}"${s.value === o ? " selected" : ""}>${esc(o)}</option>`).join("")}</select>`;
+  }
+  if (s.kind === "int" || s.kind === "float") {
+    return `<input type="number" ${attrs} value="${esc(s.value)}" min="${s.min}" max="${s.max}" step="${s.kind === "int" ? "1" : "any"}">`;
+  }
+  return `<input type="text" ${attrs} value="${esc(s.value)}" spellcheck="false">`;
+}
+
+function setSettingsStatus(text, kind = "") {
+  const el = $("#settingsStatus");
+  el.textContent = text;
+  el.className = "status" + (kind ? " " + kind : "");
+}
+
+function renderSettings(d) {
+  const groups = new Map();
+  d.settings.forEach((s) => {
+    if (!groups.has(s.group)) groups.set(s.group, []);
+    groups.get(s.group).push(s);
+  });
+  const names = [...groups.keys()].sort((a, b) => {
+    const ia = GROUP_ORDER.indexOf(a), ib = GROUP_ORDER.indexOf(b);
+    return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
+  });
+  $("#settingsTables").innerHTML = names.map((g) => `<h2 style="margin-top:14px">${esc(g)}</h2><table class="settings-table"><tbody>${groups.get(g).map((s) =>
+    `<tr><td><code>${esc(s.key)}</code>${s.help ? `<div class="setting-help">${esc(s.help)}</div>` : ""}</td><td>${settingControl(s)}</td></tr>`).join("")}</tbody></table>`).join("")
+    + `<h2 style="margin-top:14px">Names he answers to</h2><p>${d.bot.aliases.map((a) => `<code>${esc(a)}</code>`).join(" ") || "—"}</p>`;
+  $("#chemConsts").innerHTML = Object.entries(d.baselines).map(([n, b]) => `<tr><td>${n}</td><td class="num">${b}</td><td class="num">${d.half_lives_min[n]} min</td></tr>`).join("");
+  $("#eventConsts").innerHTML = Object.entries(d.events).filter(([, fx]) => Object.keys(fx).length).map(([ev, fx]) =>
+    `<tr><td>${ev}</td><td class="small">${Object.entries(fx).map(([c, v]) => `${c} ${v > 0 ? "+" : ""}${v}`).join(", ")}</td></tr>`).join("");
+  settingsOriginal = new Map(d.settings.map((s) => [s.key, s.secret ? "" : s.value]));
+  settingsSignature = JSON.stringify(d.settings);
+  settingsDirty = false;
+  setSettingsStatus("");
+  document.querySelectorAll("#settingsTables [data-clear]").forEach((cb) => {
+    cb.addEventListener("change", () => {
+      const input = cb.closest("td").querySelector("input[data-key]");
+      if (input) { input.disabled = cb.checked; if (cb.checked) input.value = ""; }
+      settingsDirty = true;
+      setSettingsStatus("Unsaved changes.");
+    });
+  });
+}
+
+async function saveSettings() {
+  const values = {}, clear = [];
+  document.querySelectorAll("#settingsTables [data-key]").forEach((el) => {
+    const key = el.dataset.key;
+    if (el.dataset.kind === "secret") {
+      if (el.value.trim()) values[key] = el.value.trim();
+    } else if (el.value !== (settingsOriginal.get(key) ?? "")) {
+      values[key] = el.value;
+    }
+  });
+  document.querySelectorAll("#settingsTables [data-clear]:checked").forEach((cb) => clear.push(cb.dataset.clear));
+  clear.forEach((key) => delete values[key]);
+  if (!Object.keys(values).length && !clear.length) { setSettingsStatus("Nothing changed."); return; }
+  const button = $("#saveSettings");
+  button.disabled = true;
+  setSettingsStatus("Saving…");
+  try {
+    const r = await fetch("/api/settings", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ values, clear }),
+    });
+    const out = await r.json();
+    if (!r.ok || !out.ok) {
+      const msgs = out.errors ? Object.entries(out.errors).map(([k, v]) => `${k}: ${v}`).join("; ") : (out.error || "Save failed");
+      setSettingsStatus(msgs, "err");
+      return;
+    }
+    DATA.settings = out.settings;
+    renderSettings(DATA);
+    setSettingsStatus("Saved. Restart the bot to apply.", "ok");
+  } catch (err) {
+    setSettingsStatus("Couldn't reach the dashboard server.", "err");
+  } finally {
+    button.disabled = false;
+  }
+}
+
+// --- refresh loop ----------------------------------------------------------------
+function render(d, forceGraph) {
+  DATA = d;
+  renderHeader(d); renderTiles(d.counts); renderMeters(d.state); renderChems(d); renderCharts(d); renderRecent(d);
+  Graph.set(d.graph, forceGraph); renderKinds(d); renderFacts(); renderRules(d); renderChat(); renderGaps(d);
+  if (!settingsDirty && JSON.stringify(d.settings) !== settingsSignature) renderSettings(d);
+}
+async function refresh() {
+  try {
+    const r = await fetch("/api/snapshot", { cache: "no-store" });
+    render(await r.json());
+  } catch (err) {
+    $("#updated").textContent = "can't reach the dashboard server";
+  }
+}
+["#factSearch", "#factStatus", "#factSpeaker"].forEach((s) => $(s).addEventListener("input", () => DATA && renderFacts()));
+$("#chatSearch").addEventListener("input", () => DATA && renderChat());
+["input", "change"].forEach((ev) => $("#settingsTables").addEventListener(ev, (e) => {
+  if (!e.target.matches("[data-key]")) return;
+  settingsDirty = true;
+  setSettingsStatus("Unsaved changes.");
+}));
+$("#saveSettings").onclick = saveSettings;
+$("#resetSettings").onclick = () => { if (DATA) renderSettings(DATA); };
+showTab(); refresh(); setInterval(refresh, 5000);
+</script>
+</body>
+</html>

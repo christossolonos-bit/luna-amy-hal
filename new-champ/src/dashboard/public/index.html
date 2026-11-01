@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Companion Dashboard</title>
+<style>
+  :root {
+    --bg: #f6f6f8; --panel: #ffffff; --panel-2: #f0f0f4; --text: #18181b; --muted: #6b6b76;
+    --border: #e3e3e8; --accent: #5865f2; --accent-text: #fff; --good: #1f9d55; --bad: #d33a3a; --warn: #c27c0e;
+    --radius: 12px; --mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111114; --panel: #1a1a1f; --panel-2: #23232a; --text: #ececf1; --muted: #9a9aa6;
+      --border: #2d2d35; --accent: #7983ff; --good: #3ecf7a; --bad: #ff6b6b; --warn: #f0b44c;
+    }
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { display: flex; align-items: center; gap: 12px; padding: 14px 20px; border-bottom: 1px solid var(--border); background: var(--panel); position: sticky; top: 0; z-index: 2; flex-wrap: wrap; }
+  header img { width: 36px; height: 36px; border-radius: 50%; background: var(--panel-2); }
+  header h1 { font-size: 16px; margin: 0; }
+  header .sub { color: var(--muted); font-size: 12px; }
+  nav { display: flex; gap: 4px; margin-left: auto; flex-wrap: wrap; }
+  nav button { background: none; border: 0; color: var(--muted); padding: 7px 12px; border-radius: 8px; cursor: pointer; font: inherit; }
+  nav button:hover { background: var(--panel-2); color: var(--text); }
+  nav button.active { background: var(--accent); color: var(--accent-text); }
+  main { max-width: 1200px; margin: 0 auto; padding: 20px 16px 60px; }
+  section[data-tab] { display: none; }
+  section[data-tab].active { display: block; }
+  .grid { display: grid; gap: 16px; }
+  .cards { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); margin-bottom: 16px; }
+  .two { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .side { grid-template-columns: 260px minmax(0, 1fr); }
+  @media (max-width: 820px) { .two, .side { grid-template-columns: minmax(0, 1fr); } }
+  .panel { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; min-width: 0; }
+  .panel h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 0 0 12px; font-weight: 600; }
+  .stat .label { color: var(--muted); font-size: 12px; }
+  .stat .value { font-size: 22px; font-weight: 600; margin-top: 2px; overflow-wrap: anywhere; }
+  .stat .value.small { font-size: 15px; }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--muted); margin-right: 6px; vertical-align: middle; }
+  .dot.good { background: var(--good); } .dot.bad { background: var(--bad); }
+  .feed { list-style: none; margin: 0; padding: 0; max-height: 560px; overflow-y: auto; }
+  .feed li { padding: 8px 2px; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 58px 1fr; gap: 10px; }
+  .feed li:last-child { border-bottom: 0; }
+  .feed time { color: var(--muted); font: 12px var(--mono); padding-top: 1px; }
+  .feed .who { font-weight: 600; }
+  .feed .tag { font-size: 11px; padding: 1px 6px; border-radius: 6px; background: var(--panel-2); color: var(--muted); margin-left: 6px; }
+  .feed .error { color: var(--bad); }
+  .feed .memory { color: var(--good); }
+  .feed .faint { color: var(--muted); }
+  .feed .body { overflow-wrap: anywhere; white-space: pre-wrap; }
+  button.btn, .btn { background: var(--accent); color: var(--accent-text); border: 0; padding: 8px 14px; border-radius: 8px; cursor: pointer; font: inherit; font-weight: 500; }
+  .btn.ghost { background: var(--panel-2); color: var(--text); }
+  .btn.danger { background: transparent; color: var(--bad); border: 1px solid var(--border); }
+  .btn:disabled { opacity: .5; cursor: default; }
+  input, textarea, select { width: 100%; background: var(--panel-2); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; font: inherit; }
+  textarea { resize: vertical; min-height: 90px; }
+  label { display: block; font-weight: 500; margin-bottom: 4px; }
+  .field { margin-bottom: 14px; }
+  .hint { color: var(--muted); font-size: 12px; margin-top: 3px; }
+  .row { display: flex; gap: 8px; align-items: center; }
+  .row > input { flex: 1; }
+  .check { display: flex; gap: 8px; align-items: center; font-weight: 400; }
+  .check input { width: auto; }
+  .list { list-style: none; margin: 0; padding: 0; }
+  .list li { padding: 9px 10px; border-radius: 8px; cursor: pointer; display: flex; justify-content: space-between; gap: 8px; }
+  .list li:hover { background: var(--panel-2); }
+  .list li.active { background: var(--accent); color: var(--accent-text); }
+  .list li .count { opacity: .7; font-size: 12px; }
+  .mem { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-bottom: 1px solid var(--border); }
+  .mem .text { flex: 1; overflow-wrap: anywhere; }
+  .mem .meta { color: var(--muted); font-size: 12px; }
+  .mem button { background: none; border: 0; color: var(--muted); cursor: pointer; font-size: 16px; }
+  .mem button:hover { color: var(--bad); }
+  .chat { display: flex; flex-direction: column; gap: 10px; max-height: 520px; overflow-y: auto; padding: 4px; }
+  .bubble { max-width: 80%; padding: 9px 13px; border-radius: 14px; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .bubble.user { align-self: flex-end; background: var(--accent); color: var(--accent-text); border-bottom-right-radius: 4px; }
+  .bubble.assistant { align-self: flex-start; background: var(--panel-2); border-bottom-left-radius: 4px; }
+  .bubble .name { font-size: 11px; opacity: .75; display: block; margin-bottom: 2px; }
+  .voice-card { border: 1px solid var(--border); border-radius: 10px; padding: 12px; margin-bottom: 10px; }
+  .voice-card .title { font-weight: 600; }
+  .empty { color: var(--muted); padding: 20px 0; text-align: center; }
+  .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--text); color: var(--bg); padding: 9px 16px; border-radius: 8px; opacity: 0; transition: opacity .2s; pointer-events: none; }
+  .toast.show { opacity: 1; }
+  .power { display: flex; align-items: center; gap: 8px; border: 1px solid var(--border); background: var(--panel-2); color: var(--muted); border-radius: 99px; padding: 4px 12px 4px 4px; cursor: pointer; font: inherit; font-weight: 600; }
+  .power .knob { width: 34px; height: 20px; border-radius: 99px; background: var(--border); position: relative; transition: background .2s; }
+  .power .knob::after { content: ''; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff; transition: transform .2s; }
+  .power.on { color: var(--good); }
+  .power.on .knob { background: var(--good); }
+  .power.on .knob::after { transform: translateX(14px); }
+  .power.busy { opacity: .6; cursor: wait; }
+  .vc { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); }
+  .vc:last-child { border-bottom: 0; }
+  .vc.joined .name { color: var(--good); }
+  .vc .name { font-weight: 600; overflow-wrap: anywhere; }
+  .vc .meta { color: var(--muted); font-size: 12px; overflow-wrap: anywhere; }
+  .vc .check { font-size: 12px; color: var(--muted); grid-column: 1 / -1; }
+  .vc .btn { padding: 5px 12px; font-size: 13px; }
+  .guild-head { font-size: 12px; font-weight: 600; color: var(--muted); margin: 12px 0 2px; text-transform: uppercase; letter-spacing: .04em; }
+  .guild-head:first-child { margin-top: 0; }
+  .pill { font-size: 12px; padding: 2px 8px; border-radius: 99px; background: var(--panel-2); color: var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <img id="avatar" alt="">
+  <div>
+    <h1 id="botName">Companion</h1>
+    <div class="sub"><span class="dot" id="liveDot"></span><span id="liveText">connecting…</span></div>
+  </div>
+  <button class="power" id="power" title="Turn the bot on or off"><span class="knob"></span><span id="powerText">…</span></button>
+  <nav id="tabs">
+    <button data-tab="overview" class="active">Overview</button>
+    <button data-tab="playground">Playground</button>
+    <button data-tab="memory">Memory</button>
+    <button data-tab="conversations">Conversations</button>
+    <button data-tab="settings">Settings</button>
+    <a class="btn" href="/avatar.html" style="text-decoration:none;padding:7px 12px">Avatar ↗</a>
+  </nav>
+</header>
+
+<main>
+  <!-- Overview -->
+  <section data-tab="overview" class="active">
+    <div class="grid cards">
+      <div class="panel stat"><div class="label">Status</div><div class="value small" id="sStatus">—</div></div>
+      <div class="panel stat"><div class="label">Brain (Ollama)</div><div class="value small" id="sModel">—</div></div>
+      <div class="panel stat"><div class="label">Voice (Fish Audio)</div><div class="value small" id="sFish">—</div></div>
+      <div class="panel stat"><div class="label">Web search (Tavily)</div><div class="value small" id="sSearch">—</div></div>
+      <div class="panel stat"><div class="label">Servers</div><div class="value" id="sGuilds">—</div></div>
+      <div class="panel stat"><div class="label">Memories</div><div class="value" id="sMemories">—</div></div>
+      <div class="panel stat"><div class="label">Messages logged</div><div class="value" id="sMessages">—</div></div>
+    </div>
+    <div class="grid two">
+      <div class="panel">
+        <h2>Live activity</h2>
+        <ul class="feed" id="feed"><li class="empty" style="display:block">Waiting for activity…</li></ul>
+      </div>
+      <div>
+        <div class="panel" style="margin-bottom:16px" id="voiceSessionsPanel" hidden>
+          <h2>Talking in</h2>
+          <div id="voiceList"></div>
+        </div>
+        <div class="panel" style="margin-bottom:16px">
+          <h2>Voice channels</h2>
+          <div class="hint" style="margin:-6px 0 8px">Join from here, or tick which channels <code>/join</code> may use in Discord (none ticked = any).</div>
+          <div id="vcList"><div class="empty">Turn the bot on to see voice channels.</div></div>
+        </div>
+        <div class="panel">
+          <h2>Servers</h2>
+          <ul class="list" id="guildList"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Playground -->
+  <section data-tab="playground">
+    <div class="panel">
+      <h2>Talk to your companion</h2>
+      <p class="hint" style="margin-top:-6px">Same brain, persona and memory as Discord. Memories from here are saved under the "Dashboard" user.</p>
+      <div class="chat" id="pgChat"></div>
+      <form id="pgForm" class="row" style="margin-top:12px">
+        <input id="pgInput" placeholder="Say something…" autocomplete="off">
+        <button class="btn" id="pgSend">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Memory -->
+  <section data-tab="memory">
+    <div class="grid side">
+      <div class="panel">
+        <h2>People</h2>
+        <ul class="list" id="memUsers"></ul>
+      </div>
+      <div class="panel">
+        <div class="row" style="justify-content:space-between;margin-bottom:12px">
+          <h2 style="margin:0" id="memTitle">Select someone</h2>
+          <button class="btn danger" id="memForgetAll" hidden>Forget everything</button>
+        </div>
+        <div id="memList"><div class="empty">Pick a person to see what the bot remembers about them.</div></div>
+        <form id="memAdd" class="row" style="margin-top:12px" hidden>
+          <input id="memAddInput" placeholder="Add a memory, e.g. “Sam loves Elden Ring”">
+          <button class="btn">Add</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conversations -->
+  <section data-tab="conversations">
+    <div class="grid side">
+      <div class="panel">
+        <h2>Conversations</h2>
+        <ul class="list" id="convList"></ul>
+      </div>
+      <div class="panel">
+        <div class="row" style="justify-content:space-between;margin-bottom:12px">
+          <h2 style="margin:0" id="convTitle">Select a conversation</h2>
+          <button class="btn danger" id="convClear" hidden>Clear history</button>
+        </div>
+        <div class="chat" id="convMessages"><div class="empty">Pick a conversation on the left.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Settings -->
+  <section data-tab="settings">
+    <form id="settingsForm" class="grid two">
+      <div class="panel">
+        <h2>Personality</h2>
+        <div class="field"><label for="botName_">Name</label><input id="botName_" name="botName"></div>
+        <div class="field">
+          <label for="persona">Persona</label>
+          <textarea id="persona" name="persona" rows="12" placeholder="Who is your companion? How do they talk? What do they care about?"></textarea>
+          <div class="hint">Saved to persona.md. Applies to the next message.</div>
+        </div>
+        <label class="check field"><input type="checkbox" name="personaSelfEdit"> Let people change the persona by asking in conversation</label>
+        <div class="field">
+          <label for="personaEditors">Who can change it (Discord user IDs)</label>
+          <input id="personaEditors" name="personaEditors" placeholder="empty = anyone · comma-separated IDs to restrict">
+          <div class="hint">Right-click a user in Discord → Copy User ID (needs Developer Mode on).</div>
+        </div>
+        <div class="field">
+          <label>Persona history</label>
+          <div id="personaHistory" style="max-height:240px;overflow-y:auto"></div>
+        </div>
+        <h2 style="margin-top:20px">Brain</h2>
+        <div class="field">
+          <label for="ollamaModel">Ollama model</label>
+          <select id="ollamaModel" name="ollamaModel"></select>
+          <div class="hint">Smaller = faster voice replies. Your memory embedder stays on the model set in .env.</div>
+        </div>
+        <label class="check field"><input type="checkbox" name="ollamaThink"> Let the model think before answering (smarter, slower)</label>
+        <div class="field">
+          <label for="historyLimit">Conversation history (messages)</label>
+          <input id="historyLimit" name="historyLimit" type="number" min="1" max="500" step="10">
+          <div class="hint">How many recent messages per channel he sees with each reply. More = better continuity, slightly slower.</div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Text chat</h2>
+        <div class="field">
+          <label>Always-reply channels</label>
+          <div id="channelPicker" style="max-height:180px;overflow-y:auto;border:1px solid var(--border);border-radius:8px;padding:6px 10px"></div>
+          <div class="hint">The bot always answers DMs and @mentions. In these channels it answers every message.</div>
+        </div>
+        <h2 style="margin-top:20px">Voice</h2>
+        <div class="field">
+          <label for="fishVoiceId">Fish Audio voice ID</label>
+          <input id="fishVoiceId" name="fishVoiceId" placeholder="e.g. 802e3bc2b27e49c2995d23ef70e6ac89">
+          <div class="hint">Copy a voice's ID from fish.audio (or your own cloned voice). Empty uses Fish's default.</div>
+        </div>
+        <div class="grid two" style="gap:12px">
+          <div class="field">
+            <label for="fishTtsModel">TTS model</label>
+            <select id="fishTtsModel" name="fishTtsModel">
+              <option>s2.1-pro</option><option>s2.1-pro-free</option><option>s2-pro</option><option>s1</option><option>drama-3</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="fishLanguage">Language</label>
+            <input id="fishLanguage" name="fishLanguage" placeholder="en">
+          </div>
+        </div>
+        <div class="field">
+          <label for="voiceSilenceMs">Pause before replying (ms)</label>
+          <input id="voiceSilenceMs" name="voiceSilenceMs" type="number" min="200" max="5000" step="100">
+          <div class="hint">How long someone must stop talking before the bot treats it as their turn.</div>
+        </div>
+        <div class="field">
+          <label for="voiceWakeWord">Wake word (optional)</label>
+          <input id="voiceWakeWord" name="voiceWakeWord" placeholder="leave empty to reply to everything">
+        </div>
+        <label class="check field"><input type="checkbox" name="voiceBargeIn"> Stop talking when someone interrupts</label>
+        <label class="check field"><input type="checkbox" name="voicePostTranscripts"> Post voice transcripts in the text channel</label>
+      </div>
+      <div style="grid-column:1/-1;display:flex;justify-content:flex-end">
+        <button class="btn" id="saveSettings">Save settings</button>
+      </div>
+    </form>
+  </section>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+const $ = (s, el = document) => el.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+const time = (t) => new Date(t).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+const ago = (t) => {
+  const s = Math.round((Date.now() - t) / 1000);
+  if (s < 60) return 'just now';
+  if (s < 3600) return `${Math.floor(s / 60)}m ago`;
+  if (s < 86400) return `${Math.floor(s / 3600)}h ago`;
+  return new Date(t).toLocaleDateString();
+};
+const dur = (ms) => { const m = Math.floor(ms / 60000); return m < 60 ? `${m}m` : `${Math.floor(m / 60)}h ${m % 60}m`; };
+
+async function api(path, opts = {}) {
+  const res = await fetch(path, {
+    ...opts,
+    headers: opts.body ? { 'Content-Type': 'application/json' } : {},
+    body: opts.body ? JSON.stringify(opts.body) : undefined,
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || res.statusText);
+  return data;
+}
+function toast(msg) {
+  const t = $('#toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(toast.timer); toast.timer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ---- Tabs ----
+const loaders = {};
+function showTab(name) {
+  document.querySelectorAll('#tabs button').forEach((b) => b.classList.toggle('active', b.dataset.tab === name));
+  document.querySelectorAll('section[data-tab]').forEach((s) => s.classList.toggle('active', s.dataset.tab === name));
+  try { localStorage.setItem('tab', name); } catch {}
+  loaders[name]?.();
+}
+$('#tabs').addEventListener('click', (e) => e.target.dataset.tab && showTab(e.target.dataset.tab));
+
+// ---- Overview ----
+async function loadStatus() {
+  try {
+    const s = await api('/api/status');
+    if (s.bot) { $('#botName').textContent = s.bot.tag; $('#avatar').src = s.bot.avatar; }
+    renderPower(s.power);
+    const p = s.power;
+    $('#sStatus').innerHTML = p.status === 'online'
+      ? `<span class="dot good"></span>Online · ${s.ping}ms<div class="hint">for ${dur(Date.now() - p.since)}</div>`
+      : `<span class="dot ${p.status === 'offline' ? 'bad' : ''}"></span>${p.status[0].toUpperCase() + p.status.slice(1)}<div class="hint">${esc(p.error || (p.hasToken ? 'switched off' : 'no DISCORD_TOKEN in .env'))}</div>`;
+    $('#sModel').innerHTML = `${esc(s.model)}<div class="hint">memory: ${esc(s.embedModel)}</div>`;
+    $('#sFish').innerHTML = s.fishReady
+      ? `<span class="dot good"></span>Ready<div class="hint">${s.fishVoiceId ? 'voice ' + esc(s.fishVoiceId.slice(0, 10)) + '…' : 'default voice'} · hears via ${esc(s.stt)}</div>`
+      : `<span class="dot bad"></span>No API key<div class="hint">set FISH_API_KEY in .env</div>`;
+    $('#sSearch').innerHTML = s.searchReady
+      ? `<span class="dot good"></span>On<div class="hint">searches when it needs to</div>`
+      : `<span class="dot bad"></span>Off<div class="hint">set TAVILY_API_KEY in .env</div>`;
+    $('#sGuilds').textContent = s.guilds.length;
+    $('#sMemories').textContent = s.stats.memories;
+    $('#sMessages').textContent = s.stats.messages;
+    $('#guildList').innerHTML = s.guilds.map((g) => `<li><span>${esc(g.name)}</span><span class="count">${g.members} members</span></li>`).join('')
+      || '<li class="empty">Not in any servers yet. Invite the bot first.</li>';
+    $('#voiceSessionsPanel').hidden = !s.voice.length;
+    loadVoiceChannels(p.status === 'online');
+    $('#voiceList').innerHTML = s.voice.length ? s.voice.map((v) => `
+      <div class="voice-card">
+        <div class="row" style="justify-content:space-between">
+          <div><div class="title">🔊 ${esc(v.channel)}</div><div class="hint">${esc(v.guild)} · ${dur(Date.now() - v.startedAt)}${v.speaking ? ' · <b>speaking</b>' : ''}</div></div>
+          <button class="btn danger" data-leave="${v.guildId}">Leave</button>
+        </div>
+        <div class="hint" style="margin:8px 0">With: ${v.members.map(esc).join(', ') || 'nobody'}${v.listeningTo.length ? ' · hearing ' + v.listeningTo.map(esc).join(', ') : ''}</div>
+        <form class="row" data-say="${v.guildId}"><input placeholder="Make the bot say something…"><button class="btn ghost">Say</button></form>
+      </div>`).join('') : '<div class="empty">Not in any voice channel. Use <code>/join</code> in Discord.</div>';
+    setLive(true);
+  } catch {
+    setLive(false);
+  }
+}
+$('#voiceList').addEventListener('click', async (e) => {
+  const id = e.target.dataset.leave; if (!id) return;
+  await api(`/api/voice/${id}/leave`, { method: 'POST' }); toast('Left voice'); loadStatus();
+});
+$('#voiceList').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const input = $('input', e.target); if (!input.value.trim()) return;
+  try { await api(`/api/voice/${e.target.dataset.say}/say`, { method: 'POST', body: { text: input.value } }); input.value = ''; }
+  catch (err) { toast(err.message); }
+});
+function setLive(ok) {
+  $('#liveDot').className = 'dot ' + (ok ? 'good' : 'bad');
+  $('#liveText').textContent = ok ? 'dashboard connected' : 'dashboard disconnected (is start.bat running?)';
+}
+
+// ---- Power ----
+let power = null;
+function renderPower(p) {
+  power = p;
+  const btn = $('#power');
+  const busy = p.status === 'starting' || p.status === 'stopping';
+  btn.className = 'power' + (p.status === 'online' ? ' on' : '') + (busy ? ' busy' : '');
+  $('#powerText').textContent = { online: 'On', offline: 'Off', starting: 'Starting…', stopping: 'Stopping…' }[p.status];
+}
+$('#power').addEventListener('click', async () => {
+  if (!power || power.status === 'starting' || power.status === 'stopping') return;
+  const turnOn = power.status === 'offline';
+  if (!turnOn && !confirm('Turn the bot off? It will leave voice and go offline in Discord. The dashboard keeps running.')) return;
+  renderPower({ ...power, status: turnOn ? 'starting' : 'stopping' });
+  try { await api(`/api/power/${turnOn ? 'on' : 'off'}`, { method: 'POST' }); toast(turnOn ? 'Bot is coming online' : 'Bot turned off'); }
+  catch (err) { toast(err.message); }
+  setTimeout(loadStatus, 1500);
+});
+
+// ---- Voice channel picker ----
+let voiceChannels = [];
+async function loadVoiceChannels(isOnline) {
+  if (!isOnline) { voiceChannels = []; $('#vcList').innerHTML = '<div class="empty">Turn the bot on to see voice channels.</div>'; return; }
+  voiceChannels = await api('/api/voice-channels').catch(() => []);
+  const restricted = voiceChannels.some((c) => !c.allowed);
+  let lastGuild = null;
+  $('#vcList').innerHTML = voiceChannels.map((c) => {
+    const head = c.guildId !== lastGuild ? `<div class="guild-head">${esc(c.guild)}</div>` : '';
+    lastGuild = c.guildId;
+    return `${head}<div class="vc ${c.joined ? 'joined' : ''}">
+      <div><div class="name">🔊 ${esc(c.name)}${c.joined ? ' · connected' : ''}</div>
+        <div class="meta">${c.members.length ? c.members.map(esc).join(', ') : 'empty'}</div></div>
+      ${c.joined ? `<button class="btn danger" data-leave="${c.guildId}">Leave</button>` : `<button class="btn ghost" data-join="${c.id}">Join</button>`}
+      <label class="check"><input type="checkbox" data-allow="${c.id}" ${restricted && c.allowed ? 'checked' : ''}> allowed for /join</label>
+    </div>`;
+  }).join('') || '<div class="empty">No voice channels found.</div>';
+}
+$('#vcList').addEventListener('click', async (e) => {
+  const { join, leave } = e.target.dataset;
+  if (!join && !leave) return;
+  e.target.disabled = true;
+  try {
+    if (join) { e.target.textContent = 'Joining…'; await api('/api/voice/join', { method: 'POST', body: { channelId: join } }); toast('Joined'); }
+    else { await api(`/api/voice/${leave}/leave`, { method: 'POST' }); toast('Left voice'); }
+  } catch (err) { toast(err.message); }
+  loadStatus();
+});
+$('#vcList').addEventListener('change', async (e) => {
+  if (!e.target.dataset.allow) return;
+  const ids = [...document.querySelectorAll('#vcList input[data-allow]:checked')].map((x) => x.dataset.allow);
+  await api('/api/settings', { method: 'PUT', body: { voiceChannelIds: ids } });
+  toast(ids.length ? `/join limited to ${ids.length} channel${ids.length > 1 ? 's' : ''}` : '/join allowed in any channel');
+});
+
+const feed = $('#feed');
+function renderEvent(e) {
+  let html;
+  const where = e.voice ? '<span class="tag">voice</span>' : e.conversation === 'dashboard' ? '<span class="tag">dashboard</span>' : e.conversation ? '<span class="tag">text</span>' : '';
+  switch (e.type) {
+    case 'heard': html = `<span class="who">${esc(e.speaker)}</span>${where}${e.ignored ? '<span class="tag">no wake word</span>' : ''}<div class="body">${esc(e.text)}</div>`; break;
+    case 'replied': html = `<span class="who">🤖 Bot</span>${where}${e.ms ? `<span class="tag">${(e.ms / 1000).toFixed(1)}s</span>` : ''}${e.recalled ? `<span class="tag">${e.recalled} memories used</span>` : ''}<div class="body">${esc(e.text)}</div>`; break;
+    case 'remembered': html = `<span class="memory">🧠 Remembered about ${esc(e.speaker)}:</span><div class="body faint">${e.facts.map(esc).join('\n')}</div>`; break;
+    case 'persona': html = `<span class="memory">🎭 Persona updated${e.name ? ` · now called <b>${esc(e.name)}</b>` : ''}</span><div class="body faint">${esc(e.reason)}</div>`; break;
+    case 'error': html =`<span class="error">⚠ ${esc(e.where)}: ${esc(e.message)}</span>`; break;
+    case 'voice-join': html = `<span class="faint">Joined 🔊 ${esc(e.channel)} in ${esc(e.guild)}</span>`; break;
+    case 'voice-leave': html = `<span class="faint">Left 🔊 ${esc(e.channel)}</span>`; break;
+    case 'search': html = `<span class="who">🔎 Searched</span><span class="tag">${(e.ms / 1000).toFixed(1)}s</span><div class="body">“${esc(e.query)}”</div>${e.results.map((r) => `<div class="faint" style="font-size:12px;overflow-wrap:anywhere">· <a href="${esc(r.url)}" target="_blank" rel="noopener" style="color:inherit">${esc(r.title)}</a></div>`).join('')}`; break;
+    case 'power': html =`<span class="faint">⏻ ${esc(e.message)}</span>`; break;
+    case 'barge-in': html =`<span class="faint">✋ Interrupted, stopped talking</span>`; break;
+    default: html = `<span class="faint">${esc(e.message ?? e.type)}</span>`;
+  }
+  const li = document.createElement('li');
+  li.innerHTML = `<time>${time(e.time)}</time><div>${html}</div>`;
+  const empty = $('.empty', feed); if (empty) empty.remove();
+  const atTop = feed.scrollTop < 40;
+  feed.prepend(li);
+  while (feed.children.length > 300) feed.lastChild.remove();
+  if (atTop) feed.scrollTop = 0;
+}
+function connectFeed() {
+  const src = new EventSource('/api/events');
+  src.onmessage = (m) => {
+    const e = JSON.parse(m.data);
+    renderEvent(e);
+    if (['voice-join', 'voice-leave', 'remembered', 'ready', 'power'].includes(e.type)) loadStatus();
+    if (e.type === 'persona' && $('section[data-tab=settings]').classList.contains('active')) loadSettings();
+  };
+  src.onopen = () => { feed.innerHTML = ''; setLive(true); };
+  src.onerror = () => setLive(false);
+}
+loaders.overview = loadStatus;
+
+// ---- Playground ----
+const pgChat = $('#pgChat');
+function bubble(container, role, text, name) {
+  $('.empty', container)?.remove();
+  const div = document.createElement('div');
+  div.className = 'bubble ' + role;
+  div.innerHTML = (name ? `<span class="name">${esc(name)}</span>` : '') + esc(text);
+  container.append(div);
+  container.scrollTop = container.scrollHeight;
+  return div;
+}
+$('#pgForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const input = $('#pgInput'); const text = input.value.trim(); if (!text) return;
+  input.value = ''; $('#pgSend').disabled = true;
+  bubble(pgChat, 'user', text);
+  const pending = bubble(pgChat, 'assistant', '…');
+  try { pending.textContent = (await api('/api/chat', { method: 'POST', body: { text } })).reply; }
+  catch (err) { pending.textContent = '⚠ ' + err.message; }
+  $('#pgSend').disabled = false; input.focus();
+});
+loaders.playground = async () => {
+  if (pgChat.childElementCount) return;
+  const msgs = await api('/api/conversations/dashboard').catch(() => []);
+  msgs.forEach((m) => bubble(pgChat, m.role, m.content));
+  if (!msgs.length) pgChat.innerHTML = '<div class="empty">Say hi 👋</div>';
+};
+
+// ---- Memory ----
+let memUser = null;
+async function loadMemUsers() {
+  const users = await api('/api/memories/users');
+  $('#memUsers').innerHTML = users.map((u) => `<li data-user="${u.user_id}" data-name="${esc(u.name || u.user_id)}" class="${u.user_id === memUser?.id ? 'active' : ''}"><span>${esc(u.name || u.user_id)}</span><span class="count">${u.count}</span></li>`).join('')
+    || '<li class="empty" style="display:block">No memories yet. Chat with the bot and it\'ll start remembering things.</li>';
+}
+async function loadMemList() {
+  if (!memUser) return;
+  $('#memTitle').textContent = memUser.name;
+  $('#memForgetAll').hidden = false; $('#memAdd').hidden = false;
+  const rows = await api(`/api/memories/${memUser.id}`);
+  $('#memList').innerHTML = rows.map((r) => `<div class="mem"><div class="text">${esc(r.content)}<div class="meta">#${r.id} · ${ago(r.created_at)}</div></div><button title="Forget" data-forget="${r.id}">✕</button></div>`).join('')
+    || '<div class="empty">Nothing remembered.</div>';
+}
+$('#memUsers').addEventListener('click', (e) => {
+  const li = e.target.closest('li[data-user]'); if (!li) return;
+  memUser = { id: li.dataset.user, name: li.dataset.name };
+  document.querySelectorAll('#memUsers li').forEach((x) => x.classList.toggle('active', x === li));
+  loadMemList();
+});
+$('#memList').addEventListener('click', async (e) => {
+  const id = e.target.dataset.forget; if (!id) return;
+  await api(`/api/memories/${memUser.id}/${id}`, { method: 'DELETE' });
+  loadMemList(); loadMemUsers();
+});
+$('#memForgetAll').addEventListener('click', async () => {
+  if (!confirm(`Forget everything about ${memUser.name}? This can't be undone.`)) return;
+  await api(`/api/memories/${memUser.id}`, { method: 'DELETE' });
+  toast('Forgotten'); loadMemList(); loadMemUsers();
+});
+$('#memAdd').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const input = $('#memAddInput'); if (!input.value.trim()) return;
+  try { await api(`/api/memories/${memUser.id}`, { method: 'POST', body: { content: input.value } }); input.value = ''; loadMemList(); loadMemUsers(); }
+  catch (err) { toast(err.message); }
+});
+loaders.memory = () => { loadMemUsers(); loadMemList(); };
+
+// ---- Conversations ----
+let conv = null;
+async function loadConvs() {
+  const list = await api('/api/conversations');
+  $('#convList').innerHTML = list.map((c) => `<li data-conv="${esc(c.conversation)}" data-label="${esc(c.label)}" class="${c.conversation === conv?.id ? 'active' : ''}"><span>${esc(c.label)}</span><span class="count">${c.count}</span></li>`).join('')
+    || '<li class="empty" style="display:block">No conversations yet.</li>';
+}
+async function loadConv() {
+  if (!conv) return;
+  $('#convTitle').textContent = conv.label; $('#convClear').hidden = false;
+  const msgs = await api(`/api/conversations/${encodeURIComponent(conv.id)}`);
+  const box = $('#convMessages'); box.innerHTML = '';
+  msgs.forEach((m) => bubble(box, m.role, m.content, m.role === 'user' ? m.name : null));
+  if (!msgs.length) box.innerHTML = '<div class="empty">Empty.</div>';
+}
+$('#convList').addEventListener('click', (e) => {
+  const li = e.target.closest('li[data-conv]'); if (!li) return;
+  conv = { id: li.dataset.conv, label: li.dataset.label };
+  document.querySelectorAll('#convList li').forEach((x) => x.classList.toggle('active', x === li));
+  loadConv();
+});
+$('#convClear').addEventListener('click', async () => {
+  if (!confirm('Clear this conversation\'s short-term history? Long-term memories are kept.')) return;
+  await api(`/api/conversations/${encodeURIComponent(conv.id)}`, { method: 'DELETE' });
+  toast('Cleared'); loadConvs(); loadConv();
+});
+loaders.conversations = () => { loadConvs(); loadConv(); };
+
+// ---- Settings ----
+const form = $('#settingsForm');
+async function loadSettings() {
+  const [s, models, channels] = await Promise.all([
+    api('/api/settings'), api('/api/models').catch(() => []), api('/api/channels').catch(() => []),
+  ]);
+  const chatModels = models.filter((m) => !m.capabilities.length || m.capabilities.includes('completion'));
+  $('#ollamaModel').innerHTML = chatModels.map((m) => `<option value="${esc(m.name)}">${esc(m.name)} (${(m.size / 1e9).toFixed(1)} GB)</option>`).join('')
+    + (chatModels.some((m) => m.name === s.ollamaModel) ? '' : `<option>${esc(s.ollamaModel)}</option>`);
+  const selected = new Set(s.chatChannelIds);
+  $('#channelPicker').innerHTML = channels.map((c) => `<label class="check"><input type="checkbox" name="chan" value="${c.id}" ${selected.has(c.id) ? 'checked' : ''}> #${esc(c.name)} <span class="pill">${esc(c.guild)}</span></label>`).join('')
+    || '<div class="hint">No text channels found (is the bot in a server?)</div>';
+  form.botName.value = s.botName;
+  form.persona.value = s.persona;
+  form.ollamaModel.value = s.ollamaModel;
+  form.ollamaThink.checked = s.ollamaThink;
+  form.historyLimit.value = s.historyLimit;
+  form.personaSelfEdit.checked = s.personaSelfEdit;
+  form.personaEditors.value = s.personaEditors.join(', ');
+  loadPersonaHistory();
+  form.fishVoiceId.value = s.fishVoiceId;
+  form.fishTtsModel.value = s.fishTtsModel;
+  form.fishLanguage.value = s.fishLanguage;
+  form.voiceSilenceMs.value = s.voiceSilenceMs;
+  form.voiceWakeWord.value = s.voiceWakeWord;
+  form.voiceBargeIn.checked = s.voiceBargeIn;
+  form.voicePostTranscripts.checked = s.voicePostTranscripts;
+}
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  try {
+    await api('/api/settings', { method: 'PUT', body: {
+      botName: form.botName.value, persona: form.persona.value,
+      ollamaModel: form.ollamaModel.value, ollamaThink: form.ollamaThink.checked, historyLimit: Number(form.historyLimit.value),
+      personaSelfEdit: form.personaSelfEdit.checked, personaEditors: form.personaEditors.value,
+      chatChannelIds: [...form.querySelectorAll('input[name=chan]:checked')].map((c) => c.value),
+      fishVoiceId: form.fishVoiceId.value, fishTtsModel: form.fishTtsModel.value, fishLanguage: form.fishLanguage.value,
+      voiceSilenceMs: Number(form.voiceSilenceMs.value), voiceWakeWord: form.voiceWakeWord.value,
+      voiceBargeIn: form.voiceBargeIn.checked, voicePostTranscripts: form.voicePostTranscripts.checked,
+    }});
+    toast('Saved ✓'); loadStatus();
+  } catch (err) { toast(err.message); }
+});
+async function loadPersonaHistory() {
+  const rows = await api('/api/persona/history').catch(() => []);
+  $('#personaHistory').innerHTML = rows.map((v, i) => `
+    <div class="mem">
+      <div class="text"><b>${esc(v.name)}</b> · ${esc(v.reason || 'change')}
+        <div class="meta">${ago(v.created_at)}${i === 0 ? ' · current' : ''}</div>
+        <details><summary class="meta" style="cursor:pointer">show persona</summary><div class="meta" style="white-space:pre-wrap;margin-top:4px">${esc(v.persona)}</div></details>
+      </div>
+      ${i === 0 ? '' : `<button type="button" class="btn ghost" style="font-size:12px;padding:4px 10px" data-restore="${v.id}">Restore</button>`}
+    </div>`).join('') || '<div class="hint">No changes yet.</div>';
+}
+$('#personaHistory').addEventListener('click', async (e) => {
+  const id = e.target.dataset.restore; if (!id) return;
+  await api(`/api/persona/history/${id}/restore`, { method: 'POST' });
+  toast('Persona restored'); loadSettings();
+});
+loaders.settings = loadSettings;
+
+// ---- Boot ----
+connectFeed();
+loadStatus();
+setInterval(loadStatus, 10_000);
+let startTab = 'overview';
+try { startTab = localStorage.getItem('tab') || 'overview'; } catch {}
+showTab(startTab);
+</script>
+</body>
+</html>

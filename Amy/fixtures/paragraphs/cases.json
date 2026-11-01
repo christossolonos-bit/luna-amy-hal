@@ -1,0 +1,1841 @@
+{
+  "schema": 1,
+  "cases": [
+    {
+      "id": "wiki-burbank-california",
+      "category": "wikipedia",
+      "text": "Burbank is a city in the southeastern end of the San Fernando Valley in Los Angeles County, California, United States. Located 7 miles (11 km) northwest of downtown Los Angeles, Burbank had a population of 102,988 as of 2025. The city was named after David Burbank, who established a sheep ranch there in 1867. Burbank consists of two distinct areas: a downtown/foothill section, in the foothills of the Verdugo Mountains, and the flatland section.",
+      "source": "wikipedia:Burbank, California",
+      "probes": [
+        {
+          "question": "Where is Burbank?",
+          "all_of": [
+            "Los Angeles County"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "Who was Burbank named after?",
+          "all_of": [
+            "David Burbank"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Burbank, California",
+        "url": "https://en.wikipedia.org/wiki/Burbank%2C_California",
+        "revision": "1382545190",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:44.875349+00:00"
+      }
+    },
+    {
+      "id": "wiki-dayton-ohio",
+      "category": "wikipedia",
+      "text": "Dayton is a city in Montgomery County, Ohio, United States, and its county seat. It is the \nsixth-most populous city in Ohio, with a population of 137,644 at the time of 2020 United States census. The Dayton metropolitan area has an estimated 822,000 residents and is the state's fourth-largest metropolitan area. Dayton is located within Ohio's Miami Valley region, 40 miles (64 km) north of Cincinnati and 55 miles (89 km) southwest of Columbus, Ohio.",
+      "source": "wikipedia:Dayton, Ohio",
+      "probes": [
+        {
+          "question": "Where is Dayton?",
+          "all_of": [
+            "Ohio"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What county is Dayton in?",
+          "all_of": [
+            "Montgomery"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Dayton, Ohio",
+        "url": "https://en.wikipedia.org/wiki/Dayton%2C_Ohio",
+        "revision": "1381839920",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:44.885239+00:00"
+      }
+    },
+    {
+      "id": "wiki-ohio",
+      "category": "wikipedia",
+      "text": "Ohio is a state in the Midwestern region of the United States. It borders the Canadian province of Ontario to the north, Pennsylvania to the east, West Virginia to the southeast, Kentucky to the southwest, Indiana to the west, and Michigan to the northwest. Ohio is the 34th-largest state by area, at 44,825 sq mi (116,100 km2), and the seventh-most populous state, with a population of nearly 11.9 million. Its capital and most populous city is Columbus, with other major metropolitan cities including Cleveland, Cincinnati, Dayton, Akron, and Toledo.",
+      "source": "wikipedia:Ohio",
+      "probes": [
+        {
+          "question": "What is Ohio?",
+          "all_of": [
+            "state"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What is the capital of Ohio?",
+          "all_of": [
+            "Columbus"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Ohio",
+        "url": "https://en.wikipedia.org/wiki/Ohio",
+        "revision": "1381565471",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:44.858931+00:00"
+      }
+    },
+    {
+      "id": "wiki-alabama",
+      "category": "wikipedia",
+      "text": "Alabama is a state in the Southeastern and Deep Southern regions of the United States. It borders Tennessee to the north, Georgia to the east, Florida and the Gulf of Mexico to the south, and Mississippi to the west. Alabama is the 30th largest by area, and the 24th-most populous of the 50 U.S. states.",
+      "source": "wikipedia:Alabama",
+      "probes": [
+        {
+          "question": "What is Alabama?",
+          "all_of": [
+            "state"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What borders Alabama to the north?",
+          "all_of": [
+            "Tennessee"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Alabama",
+        "url": "https://en.wikipedia.org/wiki/Alabama",
+        "revision": "1382052298",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:44.859309+00:00"
+      }
+    },
+    {
+      "id": "wiki-moon",
+      "category": "wikipedia",
+      "text": "The Moon is the only natural satellite of Earth. It orbits Earth in an elliptical path, at a distance that varies over the year, averaging around 378,000 kilometers (235,000 mi). It completes an orbit in relation to Earth and the Sun (synodically) every 29.5 days. The Moon and Earth are bound by gravitational attraction, which is stronger on the sides facing each other. The resulting tidal forces are the main driver of Earth's tides, and have pulled the Moon to always face Earth with the same near side. This tidal locking effectively synchronizes the Moon's rotation period to its orbital period.",
+      "source": "wikipedia:Moon",
+      "probes": [
+        {
+          "question": "What does the Moon orbit?",
+          "all_of": [
+            "Earth"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What is the Moon?",
+          "all_of": [
+            "satellite"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Moon",
+        "url": "https://en.wikipedia.org/wiki/Moon",
+        "revision": "1382961776",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:44.966617+00:00"
+      }
+    },
+    {
+      "id": "wiki-mars",
+      "category": "wikipedia",
+      "text": "Mars is the fourth planet from the Sun. It is also known as the \"Red Planet\", for its orange-red appearance. Mars is a desert-like rocky planet with a tenuous atmosphere that is primarily carbon dioxide. At the average surface level the atmospheric pressure is a few thousandths of Earth's, atmospheric temperature ranges from −153 to 20 °C, and cosmic radiation is high. Mars retains some water, in the ground as well as thinly in the atmosphere, forming cirrus clouds, fog, frost, larger polar regions of permafrost and ice caps, but no bodies of liquid surface water. Its surface gravity is roughly a third of Earth's or double that of the Moon. Its mean diameter, 6,779 km (4,212 mi), is about half the Earth's, or twice the Moon's, and its surface area is around the size of all the dry land of Earth.",
+      "source": "wikipedia:Mars",
+      "probes": [
+        {
+          "question": "What is Mars?",
+          "all_of": [
+            "planet"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What is Mars also called?",
+          "all_of": [
+            "Red Planet"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Mars",
+        "url": "https://en.wikipedia.org/wiki/Mars",
+        "revision": "1381679380",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:44.945705+00:00"
+      }
+    },
+    {
+      "id": "wiki-jupiter",
+      "category": "wikipedia",
+      "text": "Jupiter is the fifth planet from the Sun, and the largest in the Solar System. It is a gas giant with a mass nearly 2.5 times that of all the other planets in the Solar System combined and slightly less than one-thousandth the mass of the Sun. The diameter of Jupiter is 11 times that of Earth and a tenth that of the Sun. It orbits the Sun at a distance of 5.20 AU (778.5 Gm), with an orbital period of 11.86 years. Jupiter is the third-brightest natural object in the Earth's night sky, after the Moon and Venus, and has been observed since prehistoric times. It was named after Jupiter, the chief deity of ancient Roman religion.",
+      "source": "wikipedia:Jupiter",
+      "probes": [
+        {
+          "question": "What is Jupiter?",
+          "all_of": [
+            "gas giant"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What does Jupiter orbit?",
+          "all_of": [
+            "Sun"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Jupiter",
+        "url": "https://en.wikipedia.org/wiki/Jupiter",
+        "revision": "1380352046",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:44.977656+00:00"
+      }
+    },
+    {
+      "id": "wiki-saturn",
+      "category": "wikipedia",
+      "text": "Saturn is the sixth planet from the Sun, and is the second largest planet in the Solar System, after Jupiter. It is a gas giant, with an average radius of about 9 times that of Earth. It has an eighth of the average density of Earth, but is over 95 times more massive. Even though Saturn is almost as big as Jupiter, it has less than a third of its mass. Saturn orbits the Sun at a distance of 9.59 AU (1,434 million km), with an orbital period of 29.45 years.",
+      "source": "wikipedia:Saturn",
+      "probes": [
+        {
+          "question": "What is Saturn?",
+          "all_of": [
+            "gas giant"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What does Saturn orbit?",
+          "all_of": [
+            "Sun"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Saturn",
+        "url": "https://en.wikipedia.org/wiki/Saturn",
+        "revision": "1382612025",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:44.983632+00:00"
+      }
+    },
+    {
+      "id": "wiki-earth",
+      "category": "wikipedia",
+      "text": "Earth is the third planet from the Sun and the only astronomical object known to harbor life. This is made possible by Earth being an ocean world, the only one in the Solar System sustaining liquid surface water. Almost all of Earth's water is contained in its ocean, which covers 70.8% of Earth's crust. The remaining 29.2% of Earth's crust is dry land, which is predominantly located within Earth's land hemisphere in the form of continental landmasses. Most of Earth's land is at least somewhat humid and covered by vegetation, while large ice sheets at Earth's polar deserts retain more water than Earth's groundwater, lakes, rivers, and atmospheric water combined. Earth's crust consists of slowly moving tectonic plates, which interact to produce mountain ranges, volcanoes, and earthquakes. Earth has a liquid outer core that generates a magnetosphere capable of deflecting most of the destructive solar wind and cosmic radiation.",
+      "source": "wikipedia:Earth",
+      "probes": [
+        {
+          "question": "What is Earth?",
+          "all_of": [
+            "planet"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What covers most of Earth's crust?",
+          "all_of": [
+            "ocean"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Earth",
+        "url": "https://en.wikipedia.org/wiki/Earth",
+        "revision": "1382916556",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.046565+00:00"
+      }
+    },
+    {
+      "id": "wiki-sun",
+      "category": "wikipedia",
+      "text": "The Sun is the star located at the centre of the Solar System. It is a massive sphere of hot plasma, heated to incandescence by nuclear fusion reactions in its core, radiating the energy from its surface mainly as visible light and infrared radiation, with 10% at ultraviolet energies. It is the main source of energy for life on Earth. The Sun has been an object of veneration in many cultures and a central subject of astronomical research since antiquity.",
+      "source": "wikipedia:Sun",
+      "probes": [
+        {
+          "question": "What is the Sun?",
+          "all_of": [
+            "star"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "Where is the Sun?",
+          "all_of": [
+            "Solar System"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Sun",
+        "url": "https://en.wikipedia.org/wiki/Sun",
+        "revision": "1382445123",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.070619+00:00"
+      }
+    },
+    {
+      "id": "wiki-amazon-river",
+      "category": "wikipedia",
+      "text": "The Amazon River in South America is the largest river in the world by discharge volume of water, and the second-longest or longest river system in the world, a title which is disputed with the Nile.",
+      "source": "wikipedia:Amazon River",
+      "probes": [
+        {
+          "question": "Where is the Amazon River?",
+          "all_of": [
+            "South America"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What is the Amazon?",
+          "all_of": [
+            "river"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Amazon River",
+        "url": "https://en.wikipedia.org/wiki/Amazon_River",
+        "revision": "1382171474",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.072096+00:00"
+      }
+    },
+    {
+      "id": "wiki-nile",
+      "category": "wikipedia",
+      "text": "The Nile is a major north-flowing river in northeast Africa which empties into the Mediterranean Sea. At 7,088 kilometers (4,404 mi) long, it is the longest river in the world, although the volume of water it carries is much smaller than other major rivers such as the Amazon or the Congo. The Nile has played a central role in the environmental, economic, and cultural history of Africa for millennia.",
+      "source": "wikipedia:Nile",
+      "probes": [
+        {
+          "question": "Where is the Nile?",
+          "all_of": [
+            "Africa"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "Where does the Nile empty?",
+          "all_of": [
+            "Mediterranean Sea"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Nile",
+        "url": "https://en.wikipedia.org/wiki/Nile",
+        "revision": "1368885921",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.085198+00:00"
+      }
+    },
+    {
+      "id": "wiki-mount-everest",
+      "category": "wikipedia",
+      "text": "Mount Everest is the highest mountain on Earth above sea level. It lies in the Mahalangur Himal sub-range of the Himalayas and marks part of the China–Nepal border at its summit. Its height was most recently measured in 2020 through a joint survey by Nepalese and Chinese authorities as 8,848.86 m.",
+      "source": "wikipedia:Mount Everest",
+      "probes": [
+        {
+          "question": "What is Mount Everest?",
+          "all_of": [
+            "mountain"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "Where is Mount Everest?",
+          "all_of": [
+            "Himalayas"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Mount Everest",
+        "url": "https://en.wikipedia.org/wiki/Mount_Everest",
+        "revision": "1382087134",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.150771+00:00"
+      }
+    },
+    {
+      "id": "wiki-pacific-ocean",
+      "category": "wikipedia",
+      "text": "The Pacific Ocean is the largest and deepest of Earth's five oceanic divisions. It stretches from the Arctic Ocean in the north to the Southern Ocean, or, depending on the definition, to Antarctica in the south, and is bounded by the continents of Asia and Australia in the west and the Americas in the east.",
+      "source": "wikipedia:Pacific Ocean",
+      "probes": [
+        {
+          "question": "What bounds the Pacific Ocean to the west?",
+          "all_of": [
+            "Asia",
+            "Australia"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What bounds the Pacific Ocean to the east?",
+          "all_of": [
+            "Americas"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Pacific Ocean",
+        "url": "https://en.wikipedia.org/wiki/Pacific_Ocean",
+        "revision": "1382893184",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.155420+00:00"
+      }
+    },
+    {
+      "id": "wiki-sahara",
+      "category": "wikipedia",
+      "text": "The Sahara is a desert spanning North Africa. With an area of 9,200,000 square kilometres (3,600,000 sq mi), it is the largest hot desert in the world and the third-largest desert overall, smaller only than the deserts of Antarctica and the northern Arctic.",
+      "source": "wikipedia:Sahara",
+      "probes": [
+        {
+          "question": "What is the Sahara?",
+          "all_of": [
+            "desert"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "Where is the Sahara?",
+          "all_of": [
+            "Africa"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Sahara",
+        "url": "https://en.wikipedia.org/wiki/Sahara",
+        "revision": "1380508422",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.154679+00:00"
+      }
+    },
+    {
+      "id": "wiki-photosynthesis",
+      "category": "wikipedia",
+      "text": "Photosynthesis is a system of biological processes by which photopigment-bearing autotrophic organisms, such as most plants, algae and cyanobacteria, convert light energy—typically from sunlight—into the chemical energy necessary to fuel their metabolism. The term photosynthesis usually refers to oxygenic photosynthesis, a process that releases oxygen as a byproduct of water splitting. Photosynthetic organisms store the converted chemical energy within the bonds of intracellular organic compounds, typically carbohydrates like sugars, starches, phytoglycogen and cellulose. When needing to use this stored energy, an organism's cells then metabolize the organic compounds through cellular respiration. Photosynthesis plays a critical role in producing and maintaining the oxygen content of the Earth's atmosphere, and it supplies most of the biological energy necessary for complex life on Earth.",
+      "source": "wikipedia:Photosynthesis",
+      "probes": [
+        {
+          "question": "What does photosynthesis convert?",
+          "all_of": [
+            "light energy"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What does oxygenic photosynthesis release?",
+          "all_of": [
+            "oxygen"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Photosynthesis",
+        "url": "https://en.wikipedia.org/wiki/Photosynthesis",
+        "revision": "1379238357",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.180923+00:00"
+      }
+    },
+    {
+      "id": "wiki-telescope",
+      "category": "wikipedia",
+      "text": "A telescope is a device used to observe distant objects by their emission, absorption, or reflection of electromagnetic radiation. Originally, it was an optical instrument using lenses, curved mirrors, or a combination of both to observe distant objects – an optical telescope. Nowadays, the word \"telescope\" is defined as a wide range of instruments capable of detecting different regions of the electromagnetic spectrum, and in some cases other types of detectors.",
+      "source": "wikipedia:Telescope",
+      "probes": [
+        {
+          "question": "What is a telescope?",
+          "all_of": [
+            "device"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What is a telescope used to observe?",
+          "all_of": [
+            "distant objects"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Telescope",
+        "url": "https://en.wikipedia.org/wiki/Telescope",
+        "revision": "1370790151",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.258884+00:00"
+      }
+    },
+    {
+      "id": "wiki-bicycle",
+      "category": "wikipedia",
+      "text": "A bicycle, also called a pedal cycle, bike, push-bike or cycle, is a human-powered or motor-assisted, pedal-driven, single-track vehicle, with two wheels attached to a frame, one behind the other. A bicycle rider is called a cyclist or bicyclist.",
+      "source": "wikipedia:Bicycle",
+      "probes": [
+        {
+          "question": "What is a bicycle?",
+          "all_of": [
+            "vehicle"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What is a bicycle rider called?",
+          "all_of": [
+            "cyclist"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Bicycle",
+        "url": "https://en.wikipedia.org/wiki/Bicycle",
+        "revision": "1375091239",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.240670+00:00"
+      }
+    },
+    {
+      "id": "wiki-volcano",
+      "category": "wikipedia",
+      "text": "A volcano is a vent or fissure in the crust of a planetary-mass object that allows hot lava, volcanic ash, and gases to escape from a magma chamber below the surface. On Earth, volcanoes are most often found where tectonic plates are diverging or converging, and because most of Earth's plate boundaries are underwater, most volcanoes are found underwater. For example, a mid-ocean ridge, such as the Mid-Atlantic Ridge, has volcanoes caused by divergent tectonic plates whereas the Pacific Ring of Fire has volcanoes caused by convergent tectonic plates. Volcanoes resulting from divergent tectonic activity are usually nonexplosive whereas those resulting from convergent tectonic activity cause violent eruptions. Volcanoes can also form where there is stretching and thinning of the crust's plates, such as in the East African Rift, the Wells Gray-Clearwater volcanic field, and the Rio Grande rift in North America. Volcanism away from plate boundaries most likely arises from upwelling diapirs from the core–mantle boundary called mantle plumes, 3,000 kilometres (1,900 mi) deep within Earth. This results in hotspot volcanism or intraplate volcanism, in which the plume may cause thinning of the crust and result in a volcanic island chain due to the continuous movement of the tectonic plate, of which the Hawaiian hotspot is an example. Volcanoes are usually not created at transform tectonic boundaries where two tectonic plates slide past one another.",
+      "source": "wikipedia:Volcano",
+      "probes": [
+        {
+          "question": "What escapes from a volcano?",
+          "all_of": [
+            "lava"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "Where are most volcanoes found?",
+          "all_of": [
+            "underwater"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Volcano",
+        "url": "https://en.wikipedia.org/wiki/Volcano",
+        "revision": "1380352685",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.241009+00:00"
+      }
+    },
+    {
+      "id": "wiki-penguin",
+      "category": "wikipedia",
+      "text": "Penguins are a group of flightless semi-aquatic sea birds which live almost exclusively in the Southern Hemisphere. Only one species, the Galapagos penguin, lives at, and slightly north of, the equator. Highly adapted for life in the ocean water, penguins have countershaded dark and white plumage and flippers for swimming. Most penguins feed on krill, fish, squid and other forms of sea life which they catch with their bills and swallow whole while swimming. A penguin has a spiny tongue and powerful jaws to grip slippery prey.",
+      "source": "wikipedia:Penguin",
+      "probes": [
+        {
+          "question": "What are penguins?",
+          "all_of": [
+            "birds"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What do penguins use for swimming?",
+          "all_of": [
+            "flippers"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Penguin",
+        "url": "https://en.wikipedia.org/wiki/Penguin",
+        "revision": "1381034472",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.287298+00:00"
+      }
+    },
+    {
+      "id": "wiki-mercury-planet",
+      "category": "wikipedia",
+      "text": "Mercury is the first planet from the Sun and the smallest in the Solar System. It is a rocky planet with a trace atmosphere and a surface gravity slightly lower than that of Mars. The surface of Mercury is similar to Earth's Moon, being cratered, with an expansive rupes system generated from thrust faults, and bright ray systems, formed by ejecta. Its largest crater, Caloris Planitia, has a diameter of 1,550 km (960 mi), which is about one-third the diameter of the planet. Being the most inferior orbiting planet, it always appears close to the Sun in Earth's sky, as either a \"morning star\" or an \"evening star\". It is the planet with the highest delta-v required for travel from Earth, as well as to and from the other planets in the Solar System.",
+      "source": "wikipedia:Mercury (planet)",
+      "probes": [
+        {
+          "question": "What is Mercury?",
+          "all_of": [
+            "planet"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What is Mercury's largest crater?",
+          "all_of": [
+            "Caloris Planitia"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Mercury (planet)",
+        "url": "https://en.wikipedia.org/wiki/Mercury_(planet)",
+        "revision": "1382969880",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.879029+00:00"
+      }
+    },
+    {
+      "id": "wiki-venus",
+      "category": "wikipedia",
+      "text": "Venus is the second planet from the Sun. Similar in size and mass to Earth, Venus has no liquid water, and its atmosphere is far thicker and denser than that of any other rocky body in the Solar System. The atmosphere is composed mostly of carbon dioxide and has a thick cloud layer of sulfuric acid that spans the whole planet. At the mean surface level, the atmosphere reaches a temperature of 737 K, making it the hottest planet in the solar system and also a pressure 92 times greater than Earth's at sea level, turning the lowest layer of the atmosphere into a supercritical fluid. From Earth, Venus is visible as a star-like point of light, appearing brighter than any other natural point of light in the sky, as either the brightest \"morning star\" or \"evening star\". It was also given the poetic name Ēarendel in Old English, meaning \"ray of light\" along with the two previous epithets.",
+      "source": "wikipedia:Venus",
+      "probes": [
+        {
+          "question": "What is Venus?",
+          "all_of": [
+            "planet"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What is the atmosphere of Venus mostly composed of?",
+          "all_of": [
+            "carbon dioxide"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Venus",
+        "url": "https://en.wikipedia.org/wiki/Venus",
+        "revision": "1381544099",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.335240+00:00"
+      }
+    },
+    {
+      "id": "wiki-neptune",
+      "category": "wikipedia",
+      "text": "Neptune is the eighth and farthest known planet orbiting the Sun. It is the fourth-largest planet in the Solar System by diameter, the third-most-massive planet, and the densest giant planet. It is 17 times the mass of Earth. Compared to Uranus, its neighbouring ice giant, Neptune is slightly smaller, but more massive and dense. Being composed primarily of gases and liquids, it has no well-defined solid surface. Neptune orbits the Sun once every 164.8 years at an orbital distance of 30.1 astronomical units. It is named after the Roman god of the sea and has the astronomical symbol , representing Neptune's trident.",
+      "source": "wikipedia:Neptune",
+      "probes": [
+        {
+          "question": "What does Neptune orbit?",
+          "all_of": [
+            "Sun"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "Who was Neptune named after?",
+          "all_of": [
+            "Roman god"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Neptune",
+        "url": "https://en.wikipedia.org/wiki/Neptune",
+        "revision": "1382349854",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.380318+00:00"
+      }
+    },
+    {
+      "id": "wiki-uranus",
+      "category": "wikipedia",
+      "text": "Uranus is the seventh planet from the Sun. It is a gaseous cyan-coloured ice giant. Most of the planet is made of water, ammonia, and methane in a supercritical phase of matter, which astronomers call \"ice\" or \"volatiles\". The planet's atmosphere has a complex layered cloud structure, and has the lowest minimum temperature of all of the Solar System's planets. It has a marked axial tilt of 82.23°, with a retrograde rotation period of 17 hours and 14 minutes. This means that in an 84-Earth-year orbital period around the Sun, its poles get around 42 years of continuous sunlight, followed by 42 years of continuous darkness.",
+      "source": "wikipedia:Uranus",
+      "probes": [
+        {
+          "question": "What is Uranus?",
+          "all_of": [
+            "ice giant"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What is most of Uranus made of?",
+          "all_of": [
+            "water",
+            "ammonia",
+            "methane"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Uranus",
+        "url": "https://en.wikipedia.org/wiki/Uranus",
+        "revision": "1380352133",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.399760+00:00"
+      }
+    },
+    {
+      "id": "wiki-giraffe",
+      "category": "wikipedia",
+      "text": "Giraffes are large African hoofed mammals. They are the tallest living terrestrial animals and the largest ruminants on Earth. They are classified under the family Giraffidae, along with their closest extant relative, the okapi. Traditionally, giraffes have been thought of as one species, Giraffa camelopardalis, with nine subspecies. Most recently, researchers proposed dividing them into four extant species, with seven subspecies, which can be distinguished morphologically by their fur coat patterns. Six valid extinct species of Giraffa are known from the fossil record.",
+      "source": "wikipedia:Giraffe",
+      "probes": [
+        {
+          "question": "What are giraffes?",
+          "all_of": [
+            "mammals"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What family are giraffes classified under?",
+          "all_of": [
+            "Giraffidae"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Giraffe",
+        "url": "https://en.wikipedia.org/wiki/Giraffe",
+        "revision": "1380081633",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.451303+00:00"
+      }
+    },
+    {
+      "id": "wiki-elephant",
+      "category": "wikipedia",
+      "text": "Elephants are the largest living land animals. Three living species are currently recognised: the African bush elephant, the African forest elephant, and the Asian elephant. They are the only surviving members of the family Elephantidae and the order Proboscidea; extinct relatives include mammoths and mastodons. Distinctive features of elephants include a long proboscis called a trunk, tusks, large ear flaps, pillar-like legs, and tough but sensitive grey skin. The trunk is prehensile, bringing food and water to the mouth and grasping objects. Tusks, which are derived from the incisor teeth, serve both as weapons and as tools for moving objects and digging. The large ear flaps assist in maintaining a constant body temperature as well as in communication. African elephants have larger ears and concave backs, whereas Asian elephants have smaller ears and convex or level backs.",
+      "source": "wikipedia:Elephant",
+      "probes": [
+        {
+          "question": "What are elephants?",
+          "all_of": [
+            "animals"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What is an elephant's long proboscis called?",
+          "all_of": [
+            "trunk"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Elephant",
+        "url": "https://en.wikipedia.org/wiki/Elephant",
+        "revision": "1378665714",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.502746+00:00"
+      }
+    },
+    {
+      "id": "wiki-oak",
+      "category": "wikipedia",
+      "text": "An oak is a hardwood tree or shrub in the genus Quercus of the beech family. They have spirally arranged leaves, often with lobed edges, and a nut called an acorn, borne within a cup. The genus is widely distributed in the Northern Hemisphere, with some 475 species, both deciduous and evergreen. Fossil oaks date back to the Middle Eocene. Molecular phylogeny shows that the genus is divided into Old World and New World clades, but many oak species hybridise freely, making the genus's history difficult to resolve.",
+      "source": "wikipedia:Oak",
+      "probes": [
+        {
+          "question": "What genus is an oak in?",
+          "all_of": [
+            "Quercus"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What is an oak's nut called?",
+          "all_of": [
+            "acorn"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Oak",
+        "url": "https://en.wikipedia.org/wiki/Oak",
+        "revision": "1380748189",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.501183+00:00"
+      }
+    },
+    {
+      "id": "wiki-oxygen",
+      "category": "wikipedia",
+      "text": "Oxygen is a chemical element; it has the symbol O and its atomic number is 8. It is a member of the chalcogen group in the periodic table. It is highly reactive, a nonmetal, and a potent oxidizing agent that readily forms oxides with most elements as well as with other compounds. Oxygen is the most abundant element in Earth's crust, making up almost half of the Earth's crust in the form of various oxides such as water, carbon dioxide, iron oxides, and silicates. It is also the third-most abundant element in the universe after hydrogen and helium.",
+      "source": "wikipedia:Oxygen",
+      "probes": [
+        {
+          "question": "What is oxygen?",
+          "all_of": [
+            "chemical element"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What is the atomic number of oxygen?",
+          "all_of": [
+            "8"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Oxygen",
+        "url": "https://en.wikipedia.org/wiki/Oxygen",
+        "revision": "1382172978",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.583413+00:00"
+      }
+    },
+    {
+      "id": "wiki-water",
+      "category": "wikipedia",
+      "text": "Water is an inorganic compound with the chemical formula H2O. It is a transparent, tasteless, odorless, and nearly colorless chemical substance. It is the main constituent of Earth's streams, lakes, and oceans. Water is also the fluid of all known living organisms, in which it acts as a solvent. Water, being a polar molecule, undergoes strong intermolecular hydrogen bonding which is a large contributor to its physical and chemical properties. It is vital for all known forms of life, despite not providing food energy or being an organic micronutrient. Due to its presence in all organisms, its chemical stability, its worldwide abundance, and its strong polarity relative to its small molecular size, water is often referred to as the \"universal solvent\".",
+      "source": "wikipedia:Water",
+      "probes": [
+        {
+          "question": "What is water?",
+          "all_of": [
+            "compound"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What is the chemical formula of water?",
+          "all_of": [
+            "H2O"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Water",
+        "url": "https://en.wikipedia.org/wiki/Water",
+        "revision": "1382892284",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.616297+00:00"
+      }
+    },
+    {
+      "id": "wiki-carbon-dioxide",
+      "category": "wikipedia",
+      "text": "Carbon dioxide is a chemical compound with the chemical formula CO2. It is made up of molecules that each have one carbon atom covalently double bonded to two oxygen atoms. It is found in a gas state at room temperature and at normally-encountered concentrations it is odorless. As the source of carbon in the carbon cycle, atmospheric CO2 is the primary carbon source for life on Earth. In the air, carbon dioxide is transparent to visible light but absorbs infrared radiation, acting as a greenhouse gas. Carbon dioxide is soluble in water and is found in groundwater, lakes, ice caps, and seawater.",
+      "source": "wikipedia:Carbon dioxide",
+      "probes": [
+        {
+          "question": "What is carbon dioxide?",
+          "all_of": [
+            "compound"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What is the chemical formula of carbon dioxide?",
+          "all_of": [
+            "CO2"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Carbon dioxide",
+        "url": "https://en.wikipedia.org/wiki/Carbon_dioxide",
+        "revision": "1380119955",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.625762+00:00"
+      }
+    },
+    {
+      "id": "wiki-marie-curie",
+      "category": "wikipedia",
+      "text": "Maria Salomea Skłodowska Curie, better known as Marie Curie, was a Polish and naturalised-French physicist and chemist. She shared the 1903 Nobel Prize in Physics with her husband, Pierre Curie, \"for their joint researches on the radioactivity phenomena discovered by Professor Henri Becquerel\". She won the 1911 Nobel Prize in Chemistry \"[for] the discovery of the elements radium and polonium, by the isolation of radium and the study of the nature and compounds of this remarkable element\".",
+      "source": "wikipedia:Marie Curie",
+      "probes": [
+        {
+          "question": "What was Marie Curie?",
+          "all_of": [
+            "physicist"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What elements did Marie Curie discover?",
+          "all_of": [
+            "radium",
+            "polonium"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Marie Curie",
+        "url": "https://en.wikipedia.org/wiki/Marie_Curie",
+        "revision": "1381292352",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.673778+00:00"
+      }
+    },
+    {
+      "id": "wiki-albert-einstein",
+      "category": "wikipedia",
+      "text": "Albert Einstein was a German-born theoretical physicist best known for developing the theory of relativity. Einstein also made important contributions to quantum theory. His mass–energy equivalence formula E = mc2, which arises from special relativity, has been called \"the world's most famous equation\". He received the 1921 Nobel Prize in Physics for \"his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect\".",
+      "source": "wikipedia:Albert Einstein",
+      "probes": [
+        {
+          "question": "What was Albert Einstein?",
+          "all_of": [
+            "physicist"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What theory is Einstein known for developing?",
+          "all_of": [
+            "relativity"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Albert Einstein",
+        "url": "https://en.wikipedia.org/wiki/Albert_Einstein",
+        "revision": "1382733774",
+        "license": "CC BY-SA; Wikipedia contributors",
+        "retrieved_at": "2026-10-31T17:37:45.717236+00:00"
+      }
+    },
+    {
+      "id": "news-01",
+      "category": "news",
+      "text": "Discover the cosmos! Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer.",
+      "source": "news:NASA:apod-2026-october-31-night-on-a-spooky-planet",
+      "probes": [
+        {
+          "question": "Who writes the daily astronomy explanation?",
+          "all_of": [
+            "astronomer"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "APOD: 2026 October 31 – Night on a Spooky Planet",
+        "url": "https://science.nasa.gov/image-article/apod-2026-october-31-night-on-a-spooky-planet/",
+        "published_at": "Sat, 31 Oct 2026 04:05:00 +0000",
+        "feed": "https://www.nasa.gov/news-release/feed/",
+        "license": "NASA source excerpt; individual third-party credits may apply",
+        "retrieved_at": "2026-10-31T17:37:45.978991+00:00"
+      }
+    },
+    {
+      "id": "news-02",
+      "category": "news",
+      "text": "America’s newest aerospace expo and air show – MAX POWER – is fast approaching, and NASA has announced key events beginning Friday, Nov. 6, and running through Sunday, Nov. 8, hosted on and near the agency’s Kennedy Space Center in Florida.",
+      "source": "news:NASA:nasa-releases-max-power-key-events-for-media-participants",
+      "probes": [
+        {
+          "question": "Where is MAX POWER hosted?",
+          "all_of": [
+            "Kennedy Space Center",
+            "Florida"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "NASA Releases MAX POWER Key Events for Media, Participants",
+        "url": "https://www.nasa.gov/news-release/nasa-releases-max-power-key-events-for-media-participants/",
+        "published_at": "Fri, 30 Oct 2026 19:31:02 +0000",
+        "feed": "https://www.nasa.gov/news-release/feed/",
+        "license": "NASA source excerpt; individual third-party credits may apply",
+        "retrieved_at": "2026-10-31T17:37:45.979121+00:00"
+      }
+    },
+    {
+      "id": "news-03",
+      "category": "news",
+      "text": "Intricate structures within the Cat’s Head Nebula are illuminated in this mid-infrared view from NASA’s James Webb Space Telescope released on Oct. 29, 2026. The distinctive “cat’s head” shape of the nebula was likely sculpted over time by the intense ultraviolet radiation and winds from massive stars in the Carina Nebula. As this stellar feedback erodes the surrounding gas and dust, denser material within the feline-shaped pillar resists erosion, at least for now.",
+      "source": "news:NASA:nasas-james-webb-space-telescope-captures-eerie-cats-head",
+      "probes": [
+        {
+          "question": "What telescope captured the Cat's Head Nebula?",
+          "all_of": [
+            "James Webb"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "NASA’s James Webb Space Telescope Captures Eerie Cat’s Head",
+        "url": "https://www.nasa.gov/image-article/nasas-james-webb-space-telescope-captures-eerie-cats-head/",
+        "published_at": "Fri, 30 Oct 2026 15:56:26 +0000",
+        "feed": "https://www.nasa.gov/news-release/feed/",
+        "license": "NASA source excerpt; individual third-party credits may apply",
+        "retrieved_at": "2026-10-31T17:37:45.979169+00:00"
+      }
+    },
+    {
+      "id": "news-04",
+      "category": "news",
+      "text": "“Hubble still has important science ahead of it, and we should be looking at every reasonable opportunity to keep it delivering for as long as possible,” said NASA Administrator Jared Isaacman. “If there are innovative and cost-effective ways to extend the life of an asset already on orbit, we owe it to the American taxpayer and the scientific community to explore them. Extending Hubble’s life would mean more discoveries, more science, and more opportunities to expand our understanding of the universe.”",
+      "source": "news:NASA:nasa-explores-potential-commercial-servicing-for-hubble-telescope",
+      "probes": [
+        {
+          "question": "Who said Hubble still has important science ahead of it?",
+          "all_of": [
+            "Jared Isaacman"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "NASA Explores Potential Commercial Servicing for Hubble Telescope",
+        "url": "https://science.nasa.gov/missions/hubble/nasa-explores-potential-commercial-servicing-for-hubble-telescope/",
+        "published_at": "Fri, 30 Oct 2026 14:51:21 +0000",
+        "feed": "https://www.nasa.gov/news-release/feed/",
+        "license": "NASA source excerpt; individual third-party credits may apply",
+        "retrieved_at": "2026-10-31T17:37:45.979315+00:00"
+      }
+    },
+    {
+      "id": "news-05",
+      "category": "news",
+      "text": "In 1977, NASA launched twin spacecraft Voyager 1 and 2, taking advantage of a once-every-175-year planetary alignment of the four largest planets in our solar system: Jupiter, Saturn, Uranus, and Neptune. Using six gravity assists between them, this Grand Tour gave us up-close views of the gas and ice giants, including several moons. By the 1980s, the two probes went their separate ways at Saturn. As Voyager 2 continued toward Uranus and Neptune, Voyager 1 grabbed one more portrait of the solar system (excluding Mercury and Mars), including a final image of the pale blue dot we call home.",
+      "source": "news:NASA:novembers-night-sky-notes-light-day-away",
+      "probes": [
+        {
+          "question": "When did NASA launch Voyager 1 and 2?",
+          "all_of": [
+            "1977"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "November’s Night Sky Notes: Light-Day Away",
+        "url": "https://science.nasa.gov/solar-system/skywatching/night-sky-network/novembers-night-sky-notes-light-day-away/",
+        "published_at": "Fri, 30 Oct 2026 10:00:00 +0000",
+        "feed": "https://www.nasa.gov/news-release/feed/",
+        "license": "NASA source excerpt; individual third-party credits may apply",
+        "retrieved_at": "2026-10-31T17:37:45.979419+00:00"
+      }
+    },
+    {
+      "id": "news-07",
+      "category": "news",
+      "text": "Shrouded in ice in the lonely Weddell Sea, Vega Island is an eerie sight to behold. On this speck of land east of the Antarctic Peninsula, ice, rock outcrops, and glacial moraines combine to create the appearance of a smirking skull in profile looking toward Devil Island.",
+      "source": "news:NASA:vega-island-frozen-in-fright",
+      "probes": [
+        {
+          "question": "Where is Vega Island?",
+          "all_of": [
+            "Weddell Sea"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Vega Island Frozen in Fright",
+        "url": "https://science.nasa.gov/earth/earth-observatory/vega-island-frozen-in-fright/",
+        "published_at": "Fri, 30 Oct 2026 04:01:00 +0000",
+        "feed": "https://www.nasa.gov/news-release/feed/",
+        "license": "NASA source excerpt; individual third-party credits may apply",
+        "retrieved_at": "2026-10-31T17:37:45.979753+00:00"
+      }
+    },
+    {
+      "id": "news-08",
+      "category": "news",
+      "text": "This global map of Mars shows 13 locations that match the mineralogy and chemistry of Teghaza 001, one of the most ancient Martian meteorites ever found on Earth. While scientists can never know for sure where a Martian meteorite originated, Teghaza 001 includes clues that link it to highlands in the southern hemisphere of the Red Planet.",
+      "source": "news:NASA:map-showing-potential-origins-of-martian-meteorite-teghaza-001",
+      "probes": [
+        {
+          "question": "What meteorite does the map of Mars concern?",
+          "all_of": [
+            "Teghaza 001"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Map Showing Potential Origins of Martian Meteorite Teghaza 001",
+        "url": "https://science.nasa.gov/photojournal/map-showing-potential-origins-of-martian-meteorite-teghaza-001/",
+        "published_at": "Fri, 30 Oct 2026 00:07:39 +0000",
+        "feed": "https://www.nasa.gov/news-release/feed/",
+        "license": "NASA source excerpt; individual third-party credits may apply",
+        "retrieved_at": "2026-10-31T17:37:45.979844+00:00"
+      }
+    },
+    {
+      "id": "news-09",
+      "category": "news",
+      "text": "This slice of Teghaza 001, one of the most ancient Martian meteorites ever found on Earth, was used to determine the age of the rock. Reflected light images like these serve as a scientist’s road map, helping them find minerals of interest to analyze by different instruments.",
+      "source": "news:NASA:slice-of-martian-meteorite-teghaza-001",
+      "probes": [
+        {
+          "question": "What was the slice of Teghaza 001 used to determine?",
+          "all_of": [
+            "age"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Slice of Martian Meteorite Teghaza 001",
+        "url": "https://science.nasa.gov/photojournal/slice-of-martian-meteorite-teghaza-001/",
+        "published_at": "Thu, 29 Oct 2026 23:32:35 +0000",
+        "feed": "https://www.nasa.gov/news-release/feed/",
+        "license": "NASA source excerpt; individual third-party credits may apply",
+        "retrieved_at": "2026-10-31T17:37:45.979934+00:00"
+      }
+    },
+    {
+      "id": "news-10",
+      "category": "news",
+      "text": "Although no ghouls, goblins, or trick-or-treaters come knocking at the International Space Station’s front hatch, crew members aboard the orbiting laboratory still like to get in the Halloween spirit. Whether individually or as an entire crew, they dress up in sometimes spooky, sometimes scary, but always creative costumes, often designed from materials available aboard the space station.",
+      "source": "news:NASA:halloween-aboard-the-international-space-station",
+      "probes": [
+        {
+          "question": "What do crew members aboard the International Space Station dress up in?",
+          "all_of": [
+            "costumes"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "title": "Halloween Aboard the International Space Station",
+        "url": "https://www.nasa.gov/centers-and-facilities/johnson/halloween-aboard-the-international-space-station/",
+        "published_at": "Thu, 29 Oct 2026 21:44:23 +0000",
+        "feed": "https://www.nasa.gov/news-release/feed/",
+        "license": "NASA source excerpt; individual third-party credits may apply",
+        "retrieved_at": "2026-10-31T17:37:45.980021+00:00"
+      }
+    },
+    {
+      "id": "wordnet-dog",
+      "category": "wordnet",
+      "text": "A dog is a member of the genus Canis (probably descended from the common wolf) that has been domesticated by man since prehistoric times; occurs in many breeds.",
+      "source": "wordnet:oewn-02086723-n",
+      "probes": [
+        {
+          "question": "What is a dog?",
+          "all_of": [
+            "Canis"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "sense_id": "oewn-02086723-n",
+        "original_definition": "a member of the genus Canis (probably descended from the common wolf) that has been domesticated by man since prehistoric times; occurs in many breeds",
+        "adaptation": "headword and copula supplied; definition retained verbatim",
+        "url": "https://en-word.net/",
+        "license": "OEWN CC BY 4.0; derived from Princeton WordNet"
+      }
+    },
+    {
+      "id": "wordnet-cat",
+      "category": "wordnet",
+      "text": "A cat is a feline mammal usually having thick soft fur and no ability to roar.",
+      "source": "wordnet:oewn-02124272-n",
+      "probes": [
+        {
+          "question": "What is a cat?",
+          "all_of": [
+            "mammal"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "sense_id": "oewn-02124272-n",
+        "original_definition": "feline mammal usually having thick soft fur and no ability to roar",
+        "adaptation": "headword and copula supplied; definition retained verbatim",
+        "url": "https://en-word.net/",
+        "license": "OEWN CC BY 4.0; derived from Princeton WordNet"
+      }
+    },
+    {
+      "id": "wordnet-bird",
+      "category": "wordnet",
+      "text": "Birds are warm-blooded egg-laying vertebrates characterized by feathers and forelimbs modified as wings.",
+      "source": "wordnet:oewn-01505702-n",
+      "probes": [
+        {
+          "question": "What is a bird?",
+          "all_of": [
+            "feathers"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "sense_id": "oewn-01505702-n",
+        "original_definition": "warm-blooded egg-laying vertebrates characterized by feathers and forelimbs modified as wings",
+        "adaptation": "headword and copula supplied; definition retained verbatim",
+        "url": "https://en-word.net/",
+        "license": "OEWN CC BY 4.0; derived from Princeton WordNet"
+      }
+    },
+    {
+      "id": "wordnet-fish",
+      "category": "wordnet",
+      "text": "A fish is any of various mostly cold-blooded aquatic vertebrates usually having scales and breathing through gills.",
+      "source": "wordnet:oewn-02514684-n",
+      "probes": [
+        {
+          "question": "What is a fish?",
+          "all_of": [
+            "gills"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "sense_id": "oewn-02514684-n",
+        "original_definition": "any of various mostly cold-blooded aquatic vertebrates usually having scales and breathing through gills",
+        "adaptation": "headword and copula supplied; definition retained verbatim",
+        "url": "https://en-word.net/",
+        "license": "OEWN CC BY 4.0; derived from Princeton WordNet"
+      }
+    },
+    {
+      "id": "wordnet-tree",
+      "category": "wordnet",
+      "text": "A tree is a tall perennial woody plant having a main trunk and branches forming a distinct elevated crown; includes both gymnosperms and angiosperms.",
+      "source": "wordnet:oewn-13124818-n",
+      "probes": [
+        {
+          "question": "What is a tree?",
+          "all_of": [
+            "plant"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "sense_id": "oewn-13124818-n",
+        "original_definition": "a tall perennial woody plant having a main trunk and branches forming a distinct elevated crown; includes both gymnosperms and angiosperms",
+        "adaptation": "headword and copula supplied; definition retained verbatim",
+        "url": "https://en-word.net/",
+        "license": "OEWN CC BY 4.0; derived from Princeton WordNet"
+      }
+    },
+    {
+      "id": "wordnet-flower",
+      "category": "wordnet",
+      "text": "A flower is a plant cultivated for its blooms or blossoms.",
+      "source": "wordnet:oewn-11690372-n",
+      "probes": [
+        {
+          "question": "What is a flower?",
+          "all_of": [
+            "plant"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "sense_id": "oewn-11690372-n",
+        "original_definition": "a plant cultivated for its blooms or blossoms",
+        "adaptation": "headword and copula supplied; definition retained verbatim",
+        "url": "https://en-word.net/",
+        "license": "OEWN CC BY 4.0; derived from Princeton WordNet"
+      }
+    },
+    {
+      "id": "wordnet-river",
+      "category": "wordnet",
+      "text": "A river is a large natural stream of water (larger than a creek).",
+      "source": "wordnet:oewn-09434308-n",
+      "probes": [
+        {
+          "question": "What is a river?",
+          "all_of": [
+            "stream"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "sense_id": "oewn-09434308-n",
+        "original_definition": "a large natural stream of water (larger than a creek)",
+        "adaptation": "headword and copula supplied; definition retained verbatim",
+        "url": "https://en-word.net/",
+        "license": "OEWN CC BY 4.0; derived from Princeton WordNet"
+      }
+    },
+    {
+      "id": "wordnet-mountain",
+      "category": "wordnet",
+      "text": "A mountain is a land mass that projects well above its surroundings; higher than a hill.",
+      "source": "wordnet:oewn-09382700-n",
+      "probes": [
+        {
+          "question": "What is a mountain?",
+          "all_of": [
+            "land mass"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "sense_id": "oewn-09382700-n",
+        "original_definition": "a land mass that projects well above its surroundings; higher than a hill",
+        "adaptation": "headword and copula supplied; definition retained verbatim",
+        "url": "https://en-word.net/",
+        "license": "OEWN CC BY 4.0; derived from Princeton WordNet"
+      }
+    },
+    {
+      "id": "wordnet-ocean",
+      "category": "wordnet",
+      "text": "A ocean is a large body of water constituting a principal part of the hydrosphere.",
+      "source": "wordnet:oewn-09399110-n",
+      "probes": [
+        {
+          "question": "What is a ocean?",
+          "all_of": [
+            "water"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "sense_id": "oewn-09399110-n",
+        "original_definition": "a large body of water constituting a principal part of the hydrosphere",
+        "adaptation": "headword and copula supplied; definition retained verbatim",
+        "url": "https://en-word.net/",
+        "license": "OEWN CC BY 4.0; derived from Princeton WordNet"
+      }
+    },
+    {
+      "id": "wordnet-truck",
+      "category": "wordnet",
+      "text": "A truck is an automotive vehicle suitable for hauling.",
+      "source": "wordnet:oewn-04497386-n",
+      "probes": [
+        {
+          "question": "What is a truck?",
+          "all_of": [
+            "vehicle"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "sense_id": "oewn-04497386-n",
+        "original_definition": "an automotive vehicle suitable for hauling",
+        "adaptation": "headword and copula supplied; definition retained verbatim",
+        "url": "https://en-word.net/",
+        "license": "OEWN CC BY 4.0; derived from Princeton WordNet"
+      }
+    },
+    {
+      "id": "wordnet-bicycle",
+      "category": "wordnet",
+      "text": "A bicycle is a wheeled vehicle that has two wheels and is moved by foot pedals.",
+      "source": "wordnet:oewn-02837983-n",
+      "probes": [
+        {
+          "question": "What is a bicycle?",
+          "all_of": [
+            "two wheels"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "sense_id": "oewn-02837983-n",
+        "original_definition": "a wheeled vehicle that has two wheels and is moved by foot pedals",
+        "adaptation": "headword and copula supplied; definition retained verbatim",
+        "url": "https://en-word.net/",
+        "license": "OEWN CC BY 4.0; derived from Princeton WordNet"
+      }
+    },
+    {
+      "id": "wordnet-telescope",
+      "category": "wordnet",
+      "text": "A telescope is a magnifier of images of distant objects.",
+      "source": "wordnet:oewn-04410773-n",
+      "probes": [
+        {
+          "question": "What is a telescope?",
+          "all_of": [
+            "magnifier"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "sense_id": "oewn-04410773-n",
+        "original_definition": "a magnifier of images of distant objects",
+        "adaptation": "headword and copula supplied; definition retained verbatim",
+        "url": "https://en-word.net/",
+        "license": "OEWN CC BY 4.0; derived from Princeton WordNet"
+      }
+    },
+    {
+      "id": "wordnet-microscope",
+      "category": "wordnet",
+      "text": "A microscope is a magnifier of the image of small objects.",
+      "source": "wordnet:oewn-03766206-n",
+      "probes": [
+        {
+          "question": "What is a microscope?",
+          "all_of": [
+            "magnifier"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "sense_id": "oewn-03766206-n",
+        "original_definition": "magnifier of the image of small objects",
+        "adaptation": "headword and copula supplied; definition retained verbatim",
+        "url": "https://en-word.net/",
+        "license": "OEWN CC BY 4.0; derived from Princeton WordNet"
+      }
+    },
+    {
+      "id": "wordnet-planet",
+      "category": "wordnet",
+      "text": "A planet is (astronomy) any of the nine large celestial bodies in the solar system that revolve around the sun and shine by reflected light; Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, and Pluto in order of their proximity to the sun; viewed from the constellation Hercules, all the planets rotate around the sun in a counterclockwise direction.",
+      "source": "wordnet:oewn-09416900-n",
+      "probes": [
+        {
+          "question": "What is a planet?",
+          "all_of": [
+            "celestial bodies"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "sense_id": "oewn-09416900-n",
+        "original_definition": "(astronomy) any of the nine large celestial bodies in the solar system that revolve around the sun and shine by reflected light; Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, and Pluto in order of their proximity to the sun; viewed from the constellation Hercules, all the planets rotate around the sun in a counterclockwise direction",
+        "adaptation": "headword and copula supplied; definition retained verbatim",
+        "url": "https://en-word.net/",
+        "license": "OEWN CC BY 4.0; derived from Princeton WordNet"
+      }
+    },
+    {
+      "id": "wordnet-star",
+      "category": "wordnet",
+      "text": "A star is (astronomy) a celestial body of hot gases that radiates energy derived from thermonuclear reactions in the interior.",
+      "source": "wordnet:oewn-09467004-n",
+      "probes": [
+        {
+          "question": "What is a star?",
+          "all_of": [
+            "celestial body"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "sense_id": "oewn-09467004-n",
+        "original_definition": "(astronomy) a celestial body of hot gases that radiates energy derived from thermonuclear reactions in the interior",
+        "adaptation": "headword and copula supplied; definition retained verbatim",
+        "url": "https://en-word.net/",
+        "license": "OEWN CC BY 4.0; derived from Princeton WordNet"
+      }
+    },
+    {
+      "id": "wordnet-volcano",
+      "category": "wordnet",
+      "text": "A volcano is a fissure in the earth's crust (or in the surface of some other planet) through which molten lava and gases erupt.",
+      "source": "wordnet:oewn-09493680-n",
+      "probes": [
+        {
+          "question": "What is a volcano?",
+          "all_of": [
+            "fissure"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "sense_id": "oewn-09493680-n",
+        "original_definition": "a fissure in the earth's crust (or in the surface of some other planet) through which molten lava and gases erupt",
+        "adaptation": "headword and copula supplied; definition retained verbatim",
+        "url": "https://en-word.net/",
+        "license": "OEWN CC BY 4.0; derived from Princeton WordNet"
+      }
+    },
+    {
+      "id": "wordnet-island",
+      "category": "wordnet",
+      "text": "A island is a land mass (smaller than a continent) that is surrounded by water.",
+      "source": "wordnet:oewn-09339360-n",
+      "probes": [
+        {
+          "question": "What is a island?",
+          "all_of": [
+            "water"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "sense_id": "oewn-09339360-n",
+        "original_definition": "a land mass (smaller than a continent) that is surrounded by water",
+        "adaptation": "headword and copula supplied; definition retained verbatim",
+        "url": "https://en-word.net/",
+        "license": "OEWN CC BY 4.0; derived from Princeton WordNet"
+      }
+    },
+    {
+      "id": "wordnet-library",
+      "category": "wordnet",
+      "text": "A library is a room where books are kept.",
+      "source": "wordnet:oewn-03666235-n",
+      "probes": [
+        {
+          "question": "What is a library?",
+          "all_of": [
+            "books"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "sense_id": "oewn-03666235-n",
+        "original_definition": "a room where books are kept",
+        "adaptation": "headword and copula supplied; definition retained verbatim",
+        "url": "https://en-word.net/",
+        "license": "OEWN CC BY 4.0; derived from Princeton WordNet"
+      }
+    },
+    {
+      "id": "wordnet-hospital",
+      "category": "wordnet",
+      "text": "A hospital is a health facility where patients receive treatment.",
+      "source": "wordnet:oewn-03545775-n",
+      "probes": [
+        {
+          "question": "What is a hospital?",
+          "all_of": [
+            "treatment"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "sense_id": "oewn-03545775-n",
+        "original_definition": "a health facility where patients receive treatment",
+        "adaptation": "headword and copula supplied; definition retained verbatim",
+        "url": "https://en-word.net/",
+        "license": "OEWN CC BY 4.0; derived from Princeton WordNet"
+      }
+    },
+    {
+      "id": "wordnet-school",
+      "category": "wordnet",
+      "text": "A school is an educational institution.",
+      "source": "wordnet:oewn-08293641-n",
+      "probes": [
+        {
+          "question": "What is a school?",
+          "all_of": [
+            "institution"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "sense_id": "oewn-08293641-n",
+        "original_definition": "an educational institution",
+        "adaptation": "headword and copula supplied; definition retained verbatim",
+        "url": "https://en-word.net/",
+        "license": "OEWN CC BY 4.0; derived from Princeton WordNet"
+      }
+    },
+    {
+      "id": "conversation-family",
+      "category": "conversation",
+      "text": "My sister is named Jen, and she lives in Denver. Although she used to work at a school, she now works at a hospital. Her dog is named Milo, and he likes swimming.",
+      "source": "said:Evaluator",
+      "probes": [
+        {
+          "question": "Where does Jen live?",
+          "all_of": [
+            "Denver"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "Where does Jen work now?",
+          "all_of": [
+            "hospital"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What is Jen's dog named?",
+          "all_of": [
+            "Milo"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "origin": "authored fictional evaluation dialogue; not a real user's private conversation",
+        "license": "project-authored fixture"
+      }
+    },
+    {
+      "id": "conversation-truck",
+      "category": "conversation",
+      "text": "Howard, who lives in Columbus, owns a red truck that he drives to work. He works at a bakery, but his brother Sam works at a bank in Dayton.",
+      "source": "said:Evaluator",
+      "probes": [
+        {
+          "question": "What does Howard own?",
+          "all_of": [
+            "truck"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "Where does Sam work?",
+          "all_of": [
+            "bank"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "Where does Howard live?",
+          "all_of": [
+            "Columbus"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "origin": "authored fictional evaluation dialogue; not a real user's private conversation",
+        "license": "project-authored fixture"
+      }
+    },
+    {
+      "id": "conversation-negation",
+      "category": "conversation",
+      "text": "Maria owns a bicycle, but she does not own a car. Luis owns a car and lives in Austin. Maria lives in Boston, where she works at a library.",
+      "source": "said:Evaluator",
+      "probes": [
+        {
+          "question": "Does Maria own a car?",
+          "all_of": [
+            "no"
+          ],
+          "status": "no"
+        },
+        {
+          "question": "What does Maria own?",
+          "all_of": [
+            "bicycle"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "Where does Maria work?",
+          "all_of": [
+            "library"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "origin": "authored fictional evaluation dialogue; not a real user's private conversation",
+        "license": "project-authored fixture"
+      }
+    },
+    {
+      "id": "conversation-cause",
+      "category": "conversation",
+      "text": "Because Owen was hungry, he ate pizza. His friend Grace, who is a nurse, brought him water after she finished work. Grace lives in Seattle.",
+      "source": "said:Evaluator",
+      "probes": [
+        {
+          "question": "What did Owen eat?",
+          "all_of": [
+            "pizza"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What is Grace?",
+          "all_of": [
+            "nurse"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "Where does Grace live?",
+          "all_of": [
+            "Seattle"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "origin": "authored fictional evaluation dialogue; not a real user's private conversation",
+        "license": "project-authored fixture"
+      }
+    },
+    {
+      "id": "conversation-condition",
+      "category": "conversation",
+      "text": "If someone owns a dog, they are a pet owner. Nina owns a dog named Bella, and she lives in Phoenix. If Nina buys a boat, she will sail to the island.",
+      "source": "said:Evaluator",
+      "probes": [
+        {
+          "question": "Is Nina a pet owner?",
+          "all_of": [
+            "yes"
+          ],
+          "status": "yes"
+        },
+        {
+          "question": "Where does Nina live?",
+          "all_of": [
+            "Phoenix"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "Does Nina own a boat?",
+          "all_of": [],
+          "status": "unknown"
+        }
+      ],
+      "metadata": {
+        "origin": "authored fictional evaluation dialogue; not a real user's private conversation",
+        "license": "project-authored fixture"
+      }
+    },
+    {
+      "id": "conversation-hedging",
+      "category": "conversation",
+      "text": "I think Marcus lives in Portland, but I am not sure. Elena definitely lives in Chicago, where she works at a bakery. Marcus might own a boat, although I have not seen it.",
+      "source": "said:Evaluator",
+      "probes": [
+        {
+          "question": "Where does Elena live?",
+          "all_of": [
+            "Chicago"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "Where does Elena work?",
+          "all_of": [
+            "bakery"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "origin": "authored fictional evaluation dialogue; not a real user's private conversation",
+        "license": "project-authored fixture"
+      }
+    },
+    {
+      "id": "conversation-sequence",
+      "category": "conversation",
+      "text": "After Priya visited the museum, she walked to a cafe. The cafe, which is near the library, serves tea and coffee. Priya bought tea, while her friend Dana bought coffee.",
+      "source": "said:Evaluator",
+      "probes": [
+        {
+          "question": "What did Priya buy?",
+          "all_of": [
+            "tea"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What did Dana buy?",
+          "all_of": [
+            "coffee"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What does the cafe serve?",
+          "all_of": [
+            "tea",
+            "coffee"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "origin": "authored fictional evaluation dialogue; not a real user's private conversation",
+        "license": "project-authored fixture"
+      }
+    },
+    {
+      "id": "conversation-self",
+      "category": "conversation",
+      "text": "You are named Adam, and I created you to learn about people. Although you can remember what I tell you, you do not have a body. I live in Ohio and I like music.",
+      "source": "said:Evaluator",
+      "probes": [
+        {
+          "question": "What is your name?",
+          "all_of": [
+            "Adam"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "Where do I live?",
+          "all_of": [
+            "Ohio"
+          ],
+          "status": "answer"
+        },
+        {
+          "question": "What do I like?",
+          "all_of": [
+            "music"
+          ],
+          "status": "answer"
+        }
+      ],
+      "metadata": {
+        "origin": "authored fictional evaluation dialogue; not a real user's private conversation",
+        "license": "project-authored fixture"
+      }
+    }
+  ]
+}

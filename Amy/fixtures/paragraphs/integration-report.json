@@ -1,0 +1,2839 @@
+{
+  "schema": 1,
+  "summary": {
+    "cases": 69,
+    "probes": 116,
+    "passed_probes": 22,
+    "stored_facts": 89,
+    "skipped_clauses": 250,
+    "passed_cases": 9,
+    "seconds": 32.488
+  },
+  "results": [
+    {
+      "id": "wiki-burbank-california",
+      "category": "wikipedia",
+      "source": "wikipedia:Burbank, California",
+      "facts": [
+        2,
+        5
+      ],
+      "skipped": [
+        [
+          "Burbank is a city in the southeastern end of the San Fernando Valley in Los Angeles County, California, United States.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "Burbank had a population of 102,988 as of 2025.",
+          "couldn't parse: '102' needs a noun after it."
+        ],
+        [
+          "Burbank is near downtown Los Angeles.",
+          "couldn't parse: I got lost at 'Los'."
+        ],
+        [
+          "Burbank consists of two distinct areas: a downtown/foothill section, in the foothills of the Verdugo Mountains, and the flatland section.",
+          "couldn't parse: I got lost at 'a'."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "Where is Burbank?",
+          "reply": "Burbank is United States horticulturist who developed many new varieties of fruits and vegetables and flowers (1849-1926).",
+          "issues": [
+            "not-an-answer",
+            "missing:Los Angeles County"
+          ],
+          "passed": false
+        },
+        {
+          "question": "Who was Burbank named after?",
+          "reply": "I think you're asking me something about burbank and named, but I couldn't work out exactly what. Could you ask it another way?",
+          "issues": [
+            "missing:David Burbank"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-dayton-ohio",
+      "category": "wikipedia",
+      "source": "wikipedia:Dayton, Ohio",
+      "facts": [
+        1
+      ],
+      "skipped": [
+        [
+          "Dayton is a city in Montgomery County, Ohio, United States, and its county seat.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "Dayton, Ohio is the sixth-most populous city in Ohio, with a population of 137,644 at the time of 2020 United States census.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "The Dayton metropolitan area has an estimated 822,000 residents and is the state's fourth-largest metropolitan area.",
+          "couldn't parse: I got lost at 'has'."
+        ],
+        [
+          "Dayton is located within Ohio's Miami Valley region, 40 miles north of Cincinnati and 55 miles southwest of Columbus.",
+          "couldn't parse: I got lost at 'Ohio's'."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "Where is Dayton?",
+          "reply": "Dayton is a city in southwest Ohio; manufacturing center.",
+          "issues": [
+            "not-an-answer"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What county is Dayton in?",
+          "reply": "I think you're asking me something about county and dayton, but I couldn't work out exactly what. Could you ask it another way?",
+          "issues": [
+            "missing:Montgomery"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-ohio",
+      "category": "wikipedia",
+      "source": "wikipedia:Ohio",
+      "facts": [],
+      "skipped": [
+        [
+          "Ohio is a state in the Midwestern region of the United States.",
+          "couldn't parse: I got lost at 'region'."
+        ],
+        [
+          "Ohio borders the Canadian province of Ontario to the north, Pennsylvania to the east, West Virginia to the southeast, Kentucky to the southwest, Indiana to the west, and Michigan to the northwest.",
+          "couldn't parse: I couldn't find the verb (stopped at 'to')."
+        ],
+        [
+          "Ohio is the 34th-largest state by area, at 44,825 sq mi.",
+          "couldn't parse: I expected a noun phrase at 'at'."
+        ],
+        [
+          "The seventh-most populous state, with a population of nearly 11.9 million.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "Its capital and most populous city is Columbus, with other major metropolitan cities including Cleveland, Cincinnati, Dayton, Akron, and Toledo.",
+          "couldn't parse: I can't learn that two names refer to the same thing yet."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is Ohio?",
+          "reply": "Let me connect what I know about Ohio. The word ohio here refers to a midwestern state in north central United States in the Great Lakes region, with capital Columbus. In that sense, an ohio is a type of American state. Following those category links also places this meaning of ohio under territorial division. An ohio has parts like Akron, Athens, Cleveland, Cincinnati, and Columbus.\n\nThat's the usual meaning of 'ohio'. It has 1 other, such as a river that is formed in western Pennsylvania and flows westward to become a tributary of the Mississippi River; say which one, or describe it, if you meant something else.",
+          "issues": [
+            "no-digested-facts"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What is the capital of Ohio?",
+          "reply": "Here's how the information fits together. The word ohio here refers to a midwestern state in north central United States in the Great Lakes region, with capital Columbus. In that sense, an ohio is a type of American state. Following those category links also places this meaning of ohio under territorial division. An ohio has parts like Akron, Athens, Cleveland, Cincinnati, and Columbus.",
+          "issues": [
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-alabama",
+      "category": "wikipedia",
+      "source": "wikipedia:Alabama",
+      "facts": [
+        3,
+        5
+      ],
+      "skipped": [
+        [
+          "Alabama is a state in the Southeastern.",
+          "'southeastern' read as a thing"
+        ],
+        [
+          "Alabama borders Tennessee to the north, Georgia to the east, Florida and the Gulf of Mexico to the south, and Mississippi to the west.",
+          "couldn't parse: I couldn't find the verb (stopped at 'to')."
+        ],
+        [
+          "The 24th-most populous of the 50 U.S. states.",
+          "couldn't parse: I couldn't find the verb (stopped at 'of')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is Alabama?",
+          "reply": "Here's what I know about Alabama: Alabama is a 30 th largest.",
+          "issues": [
+            "missing:state"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What borders Alabama to the north?",
+          "reply": "What I do know is that Alabama is a 30 th largest. The rest I didn't get.",
+          "issues": [
+            "missing:Tennessee"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-moon",
+      "category": "wikipedia",
+      "source": "wikipedia:Moon",
+      "facts": [
+        3,
+        8
+      ],
+      "skipped": [
+        [
+          "Moon orbits Earth in an elliptical path, at a distance that varies over the year, averaging around 378,000 kilometers.",
+          "couldn't parse: I expected a noun phrase at 'at'."
+        ],
+        [
+          "Moon completes an orbit in relation to Earth and the Sun every 29.5 days.",
+          "couldn't parse: I couldn't find the verb (stopped at 'every')."
+        ],
+        [
+          "The Moon and Earth are bound by gravitational attraction, which is stronger on the sides facing each other.",
+          "couldn't parse: I expected a noun phrase at 'which'."
+        ],
+        [
+          "Have pulled the Moon to always face Earth with the same near side.",
+          "couldn't parse: I got lost at 'face'."
+        ],
+        [
+          "Moon tidal locking effectively synchronizes the Moon's rotation period to its orbital period.",
+          "couldn't parse: I got lost at 'the'."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What does the Moon orbit?",
+          "reply": "I don't know what the moon orbits.",
+          "issues": [
+            "not-an-answer",
+            "missing:Earth"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What is the Moon?",
+          "reply": "Here's how the information fits together. The word moon here refers to any object resembling a moon.\n\nThat's the usual meaning of 'moon'. It has 5 others, such as the period between successive new moons (29.531 days); say which one, or describe it, if you meant something else.",
+          "issues": [
+            "missing:satellite"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-mars",
+      "category": "wikipedia",
+      "source": "wikipedia:Mars",
+      "facts": [
+        2,
+        4
+      ],
+      "skipped": [
+        [
+          "Mars is also known as the \"Red Planet\", for its orange-red appearance.",
+          "couldn't parse: I got lost at 'the'."
+        ],
+        [
+          "Mars is a desert-like rocky planet with a tenuous atmosphere that is primarily carbon dioxide.",
+          "'primarily' isn't a describing word"
+        ],
+        [
+          "At the average surface level the atmospheric pressure is a few thousandths of Earth's, atmospheric temperature ranges from −153 to 20 °C.",
+          "couldn't parse: I couldn't find the verb (stopped at 'the')."
+        ],
+        [
+          "Cosmic radiation is high.",
+          "couldn't parse: I got lost at 'is'."
+        ],
+        [
+          "Mars retains some water, in the ground as well as thinly in the atmosphere, forming cirrus clouds, fog, frost, larger polar regions of permafrost.",
+          "couldn't parse: I expected a noun phrase at 'in'."
+        ],
+        [
+          "Ice caps.",
+          "a fragment, not a fact"
+        ],
+        [
+          "No bodies of liquid surface water.",
+          "'no' isn't something a fact can be about"
+        ],
+        [
+          "Its surface gravity is roughly a third of Earth's or double that of the Moon.",
+          "couldn't parse: I got lost at 'a'."
+        ],
+        [
+          "Its mean diameter, 6,779 km, is about half the Earth's, or twice the Moon's.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "Its surface area is around the size of all the dry land of Earth.",
+          "couldn't parse: 'all' needs a noun after it."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is Mars?",
+          "reply": "Here's what I know about Mars: Mars is a fourth planet. Mars is a desert-like rocky planet.",
+          "issues": [],
+          "passed": true
+        },
+        {
+          "question": "What is Mars also called?",
+          "reply": "I just told you: Here's what I know about Mars: Mars is a fourth planet. Mars is a desert-like rocky planet.",
+          "issues": [
+            "missing:Red Planet"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-jupiter",
+      "category": "wikipedia",
+      "source": "wikipedia:Jupiter",
+      "facts": [],
+      "skipped": [
+        [
+          "Jupiter is the fifth planet from the Sun, and the largest in the Solar System.",
+          "couldn't parse: I couldn't find the verb (stopped at 'in')."
+        ],
+        [
+          "Jupiter is a gas giant with a mass nearly 2.5 times that of all the other planets in the Solar System combined.",
+          "couldn't parse: I got lost at '2'."
+        ],
+        [
+          "Slightly less than one-thousandth the mass of the Sun.",
+          "'Slightly' reads as a word, not a name"
+        ],
+        [
+          "The diameter of Jupiter is 11 times that of Earth and a tenth that of the Sun.",
+          "couldn't parse: I couldn't find the verb (stopped at 'of')."
+        ],
+        [
+          "Jupiter orbits the Sun at a distance of 5.20 AU, with an orbital period of 11.86 years.",
+          "couldn't parse: I got lost at 'AU'."
+        ],
+        [
+          "Jupiter is the third-brightest natural object in the Earth's night sky.",
+          "couldn't parse: I got lost at 'night'."
+        ],
+        [
+          "The Moon and Venus, and has been observed since prehistoric times.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "Jupiter was named after Jupiter, the chief deity of ancient Roman religion.",
+          "couldn't parse: I couldn't find the verb (stopped at 'of')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is Jupiter?",
+          "reply": "Let me connect what I know about Jupiter. The word jupiter here refers to the largest planet and the 5th from the sun; has many satellites and is one of the brightest objects in the night sky. In that sense, a jupiter is a type of gas giant. Following those category links also places this meaning of jupiter under heavenly body.\n\nThat's the usual meaning of 'jupiter'. It has 1 other, such as (Roman mythology) supreme god of Romans; counterpart of Greek Zeus; say which one, or describe it, if you meant something else.",
+          "issues": [
+            "no-digested-facts"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What does Jupiter orbit?",
+          "reply": "Here's how the information fits together. The word jupiter here refers to the largest planet and the 5th from the sun; has many satellites and is one of the brightest objects in the night sky. In that sense, a jupiter is a type of gas giant. Following those category links also places this meaning of jupiter under heavenly body.",
+          "issues": [
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-saturn",
+      "category": "wikipedia",
+      "source": "wikipedia:Saturn",
+      "facts": [
+        4,
+        8
+      ],
+      "skipped": [
+        [
+          "Saturn is the sixth planet from the Sun, and is the second largest planet in the Solar System, after Jupiter.",
+          "couldn't parse: I expected a noun phrase at 'after'."
+        ],
+        [
+          "Saturn is a gas giant, with an average radius of about 9 times that of Earth.",
+          "couldn't parse: I expected a noun phrase at 'with'."
+        ],
+        [
+          "Saturn has an eighth of the average density of Earth, but is over 95 times more massive.",
+          "'massive' read as a thing"
+        ],
+        [
+          "Saturn is almost as big as Jupiter.",
+          "couldn't parse: I got lost at 'Jupiter'."
+        ],
+        [
+          "Saturn orbits the Sun at a distance of 9.59 AU, with an orbital period of 29.45 years.",
+          "couldn't parse: I got lost at 'AU'."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is Saturn?",
+          "reply": "Here's what I know about Saturn: Saturn owns an eighth of an average density of Earth. Saturn owns a third to a than of a mass.",
+          "issues": [
+            "missing:gas giant"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What does Saturn orbit?",
+          "reply": "I don't know what Saturn orbits.",
+          "issues": [
+            "not-an-answer",
+            "missing:Sun"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-earth",
+      "category": "wikipedia",
+      "source": "wikipedia:Earth",
+      "facts": [
+        2,
+        6
+      ],
+      "skipped": [
+        [
+          "Earth is made possible by Earth being an ocean world, the only one in the Solar System sustaining liquid surface water.",
+          "couldn't parse: I got lost at 'being'."
+        ],
+        [
+          "Almost all of Earth's water is contained in its ocean, which covers 70.8% of Earth's crust.",
+          "couldn't parse: I couldn't find the verb (stopped at 'all')."
+        ],
+        [
+          "The remaining 29.2% of Earth's crust is dry land, which is predominantly located within Earth's land hemisphere in the form of continental landmasses.",
+          "couldn't parse: I couldn't find the verb (stopped at 'of')."
+        ],
+        [
+          "Most of Earth's land is at least somewhat humid.",
+          "couldn't parse: I couldn't find the verb (stopped at 'of')."
+        ],
+        [
+          "Covered by vegetation, while large ice sheets at Earth's polar deserts retain more water than Earth's groundwater, lakes, rivers.",
+          "couldn't parse: I couldn't find the verb (stopped at 'by')."
+        ],
+        [
+          "Atmospheric water combined.",
+          "a word read as a thing that isn't one"
+        ],
+        [
+          "Earth's crust consists of slowly moving tectonic plates, which interact to produce mountain ranges, volcanoes, and earthquakes.",
+          "couldn't parse: I couldn't find the verb (stopped at 'of')."
+        ],
+        [
+          "Earth has a liquid outer core that generates a magnetosphere capable of deflecting most of the destructive solar wind and cosmic radiation.",
+          "couldn't parse: I expected a verb."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is Earth?",
+          "reply": "Here's what I know about Earth: Earth is a third planet.",
+          "issues": [],
+          "passed": true
+        },
+        {
+          "question": "What covers most of Earth's crust?",
+          "reply": "A cover is a covering that serves to conceal or shelter something.",
+          "issues": [
+            "missing:ocean"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-sun",
+      "category": "wikipedia",
+      "source": "wikipedia:Sun",
+      "facts": [
+        2
+      ],
+      "skipped": [
+        [
+          "The Sun is the star located at the centre of the Solar System.",
+          "a word read as a thing that isn't one"
+        ],
+        [
+          "Sun is a massive sphere of hot plasma, heated to incandescence by nuclear fusion reactions in its core, radiating the energy from its surface mainly as visible light.",
+          "couldn't parse: I couldn't find the verb (stopped at 'to')."
+        ],
+        [
+          "Infrared radiation, with 10% at ultraviolet energies.",
+          "couldn't parse: I expected a noun phrase at 'with'."
+        ],
+        [
+          "The Sun has been an object of veneration in many cultures and a central subject of astronomical research since antiquity.",
+          "couldn't parse: I can't handle 'has been' yet."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is the Sun?",
+          "reply": "The Sun is the rays of the sun.",
+          "issues": [
+            "not-an-answer",
+            "missing:star"
+          ],
+          "passed": false
+        },
+        {
+          "question": "Where is the Sun?",
+          "reply": "The Sun is the rays of the sun.",
+          "issues": [
+            "not-an-answer",
+            "missing:Solar System"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-amazon-river",
+      "category": "wikipedia",
+      "source": "wikipedia:Amazon River",
+      "facts": [],
+      "skipped": [
+        [
+          "The Amazon River in South America is the largest river in the world by discharge volume of water.",
+          "couldn't parse: I couldn't find the verb (stopped at 'in')."
+        ],
+        [
+          "The second-longest or longest river system in the world, a title which is disputed with the Nile.",
+          "couldn't parse: I couldn't find the verb (stopped at 'in')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "Where is the Amazon River?",
+          "reply": "The Amazon River is a major South American river; arises in the Andes and flows eastward into the South Atlantic; the world's 2nd longest river (4000 miles).",
+          "issues": [
+            "not-an-answer",
+            "missing:South America",
+            "no-digested-facts"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What is the Amazon?",
+          "reply": "Here's how the information fits together. The word amazon here refers to a large strong and aggressive woman. In that sense, an amazon is a type of woman. Following those category links also places this meaning of amazon under person.\n\nThat's the usual meaning of 'amazon'. It has 3 others, such as mainly green tropical American parrots; say which one, or describe it, if you meant something else.",
+          "issues": [
+            "missing:river",
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-nile",
+      "category": "wikipedia",
+      "source": "wikipedia:Nile",
+      "facts": [],
+      "skipped": [
+        [
+          "The Nile is a major north-flowing river in northeast Africa which empties into the Mediterranean Sea.",
+          "couldn't parse: I got lost at 'Africa'."
+        ],
+        [
+          "At 7,088 kilometers long, it is the longest river in the world.",
+          "couldn't parse: I couldn't find the verb (stopped at '7')."
+        ],
+        [
+          "The volume of water it carries is much smaller than other major rivers such as the Amazon or the Congo.",
+          "couldn't parse: I couldn't find the verb (stopped at 'of')."
+        ],
+        [
+          "The Nile has played a central role in the environmental, economic, and cultural history of Africa for millennia.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "Where is the Nile?",
+          "reply": "The Nile is the world's longest river (4150 miles); flows northward through eastern Africa into the Mediterranean; the Nile River valley in Egypt was the site of the world's first great civilization.",
+          "issues": [
+            "not-an-answer",
+            "no-digested-facts"
+          ],
+          "passed": false
+        },
+        {
+          "question": "Where does the Nile empty?",
+          "reply": "I don't know where the nile empties.",
+          "issues": [
+            "not-an-answer",
+            "missing:Mediterranean Sea",
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-mount-everest",
+      "category": "wikipedia",
+      "source": "wikipedia:Mount Everest",
+      "facts": [],
+      "skipped": [
+        [
+          "Mount Everest is the highest mountain on Earth above sea level.",
+          "couldn't parse: I got lost at 'above'."
+        ],
+        [
+          "Mount Everest lies in the Mahalangur Himal sub-range of the Himalayas and marks part of the China–Nepal border at its summit.",
+          "couldn't parse: I got lost at 'sub-range'."
+        ],
+        [
+          "Its height was most recently measured in 2020 through a joint survey by Nepalese.",
+          "couldn't parse: I got lost at 'measured'."
+        ],
+        [
+          "Chinese authorities as 8,848.86 m.",
+          "couldn't parse: I expected a verb."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is Mount Everest?",
+          "reply": "Let me connect what I know about Mount Everest. The word mount everest here refers to a mountain in the central Himalayas on the border of Tibet and Nepal; the highest mountain peak in the world (29,028 feet high). In that sense, a mount everest is a type of mountain peak. Following those category links also places this meaning of mount everest under spot.",
+          "issues": [
+            "no-digested-facts"
+          ],
+          "passed": false
+        },
+        {
+          "question": "Where is Mount Everest?",
+          "reply": "Mount Everest is a mountain in the central Himalayas on the border of Tibet and Nepal; the highest mountain peak in the world (29,028 feet high).",
+          "issues": [
+            "not-an-answer",
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-pacific-ocean",
+      "category": "wikipedia",
+      "source": "wikipedia:Pacific Ocean",
+      "facts": [
+        3
+      ],
+      "skipped": [
+        [
+          "Deepest of Earth's five oceanic divisions.",
+          "couldn't parse: I couldn't find the verb (stopped at 'of')."
+        ],
+        [
+          "Pacific Ocean stretches from the Arctic Ocean in the north to the Southern Ocean, or, depending on the definition, to Antarctica in the south.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "Is bounded by the continents of Asia.",
+          "not a statement"
+        ],
+        [
+          "Australia in the west and the Americas in the east.",
+          "couldn't parse: I couldn't find the verb (stopped at 'in')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What bounds the Pacific Ocean to the west?",
+          "reply": "I think you're asking me something about bounds and pacific, but I couldn't work out exactly what. Could you ask it another way?",
+          "issues": [
+            "missing:Asia",
+            "missing:Australia"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What bounds the Pacific Ocean to the east?",
+          "reply": "I think you're asking me something about bounds and pacific, but I couldn't work out exactly what. Could you ask it another way?",
+          "issues": [
+            "missing:Americas"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-sahara",
+      "category": "wikipedia",
+      "source": "wikipedia:Sahara",
+      "facts": [],
+      "skipped": [
+        [
+          "The Sahara is a desert spanning North Africa.",
+          "couldn't parse: I got lost at 'North'."
+        ],
+        [
+          "With an area of 9,200,000 square kilometres, it is the largest hot desert in the world.",
+          "couldn't parse: I couldn't find the verb (stopped at 'an')."
+        ],
+        [
+          "The third-largest desert overall, smaller only than the deserts of Antarctica and the northern Arctic.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is the Sahara?",
+          "reply": "Let me connect what I know about Sahara. The word sahara here refers to the world's largest desert (3,500,000 square miles) in northern Africa. In that sense, a sahara is a type of desert. Following those category links also places this meaning of sahara under geographic area. A sahara has parts like Libyan Desert.",
+          "issues": [
+            "no-digested-facts"
+          ],
+          "passed": false
+        },
+        {
+          "question": "Where is the Sahara?",
+          "reply": "The Sahara is the world's largest desert (3,500,000 square miles) in northern Africa.",
+          "issues": [
+            "not-an-answer",
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-photosynthesis",
+      "category": "wikipedia",
+      "source": "wikipedia:Photosynthesis",
+      "facts": [],
+      "skipped": [
+        [
+          "Photosynthesis is a system of biological processes by which photopigment-bearing autotrophic organisms, such as most plants, algae and cyanobacteria, convert light energy—typically from sunlight—into the chemical energy necessary to fuel their metabolism.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "The term photosynthesis usually refers to oxygenic photosynthesis, a process that releases oxygen as a byproduct of water splitting.",
+          "couldn't parse: I expected a verb."
+        ],
+        [
+          "Photosynthetic organisms store the converted chemical energy within the bonds of intracellular organic compounds, typically carbohydrates like sugars, starches, phytoglycogen and cellulose.",
+          "couldn't parse: I got lost at 'the'."
+        ],
+        [
+          "Needing to use this stored energy.",
+          "couldn't parse: I couldn't find the verb (stopped at 'to')."
+        ],
+        [
+          "An organism's cells then metabolize the organic compounds through cellular respiration.",
+          "couldn't parse: I couldn't find the verb (stopped at 'then')."
+        ],
+        [
+          "Photosynthesis plays a critical role in producing.",
+          "couldn't parse: I got lost at 'producing'."
+        ],
+        [
+          "Maintaining the oxygen content of the Earth's atmosphere, and it supplies most of the biological energy necessary for complex life on Earth.",
+          "couldn't parse: I couldn't find the verb (stopped at 'the')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What does photosynthesis convert?",
+          "reply": "Let me connect what I know about photosynthesis. The word photosynthesis here refers to synthesis of compounds with the aid of radiant energy (especially in plants). In that sense, a photosynthesis is a type of chemical action. Following those category links also places this meaning of photosynthesis under physical process. A photosynthesis has parts like light reaction.",
+          "issues": [
+            "missing:light energy",
+            "no-digested-facts"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What does oxygenic photosynthesis release?",
+          "reply": "Let me check what you mean. I'm having trouble following that. There's a detail I'm unsure about. What does 'oxygenic' mean? You can tell me something like 'It's a kind of tool.'",
+          "issues": [
+            "not-an-answer",
+            "missing:oxygen",
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-telescope",
+      "category": "wikipedia",
+      "source": "wikipedia:Telescope",
+      "facts": [],
+      "skipped": [
+        [
+          "A telescope is a device used to observe distant objects by their emission, absorption, or reflection of electromagnetic radiation.",
+          "couldn't parse: I got lost at 'used'."
+        ],
+        [
+          "Originally, it was an optical instrument using lenses, curved mirrors, or a combination of both to observe distant objects – an optical telescope.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "Nowadays, the word \"telescope\" is defined as a wide range of instruments capable of detecting different regions of the electromagnetic spectrum.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "In some cases other types of detectors.",
+          "couldn't parse: I couldn't find the verb (stopped at 'some')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is a telescope?",
+          "reply": "Let me connect what I know about telescope. The word telescope here refers to a magnifier of images of distant objects. In that sense, a telescope is a type of magnifier. Following those category links also places this meaning of telescope under instrument. There are different kinds of telescope, like astronomical telescope, collimator, equatorial, solar telescope, and transit instrument. A telescope has parts like aperture, viewfinder, and optical prism.",
+          "issues": [
+            "missing:device",
+            "no-digested-facts"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What is a telescope used to observe?",
+          "reply": "Here's how the information fits together. The word telescope here refers to a magnifier of images of distant objects. In that sense, a telescope is a type of magnifier. Following those category links also places this meaning of telescope under instrument. There are different kinds of telescope, like astronomical telescope, collimator, equatorial, solar telescope, and transit instrument. A telescope has parts like aperture, viewfinder, and optical prism.",
+          "issues": [
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-bicycle",
+      "category": "wikipedia",
+      "source": "wikipedia:Bicycle",
+      "facts": [],
+      "skipped": [
+        [
+          "A bicycle, also called a pedal cycle, bike, push-bike or cycle, is a human-powered or motor-assisted, pedal-driven, single-track vehicle, with two wheels attached to a frame, one behind the other.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "A bicycle rider is called a cyclist or bicyclist.",
+          "couldn't parse: I got lost at 'a'."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is a bicycle?",
+          "reply": "Let me connect what I know about bicycle. The word bicycle here refers to a wheeled vehicle that has two wheels and is moved by foot pedals. In that sense, a bicycle is a type of wheeled vehicle. Following those category links also places this meaning of bicycle under vehicle. There are different kinds of bicycle, like tandem bicycle, off-roader, ordinary bicycle, push-bike, and safety bike. A bicycle has parts like bicycle seat, bicycle wheel, chain, coaster brake, and handlebar.",
+          "issues": [
+            "no-digested-facts"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What is a bicycle rider called?",
+          "reply": "I think you're asking me something about bicycle and rider, but I couldn't work out exactly what. Could you ask it another way?",
+          "issues": [
+            "missing:cyclist",
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-volcano",
+      "category": "wikipedia",
+      "source": "wikipedia:Volcano",
+      "facts": [],
+      "skipped": [
+        [
+          "A volcano is a vent or fissure in the crust of a planetary-mass object that allows hot lava, volcanic ash, and gases to escape from a magma chamber below the surface.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "On Earth, volcanoes are most often found where tectonic plates are diverging or converging, and.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "Most of Earth's plate boundaries are underwater, most volcanoes are found underwater.",
+          "couldn't parse: I couldn't find the verb (stopped at 'of')."
+        ],
+        [
+          "For example, a mid-ocean ridge, such as the Mid-Atlantic Ridge, has volcanoes caused by divergent tectonic plates.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "The Pacific Ring of Fire has volcanoes caused by convergent tectonic plates.",
+          "couldn't parse: I couldn't find the verb (stopped at 'of')."
+        ],
+        [
+          "Volcanoes resulting from divergent tectonic activity are usually nonexplosive.",
+          "couldn't parse: I got lost at 'are'."
+        ],
+        [
+          "Those resulting from convergent tectonic activity cause violent eruptions.",
+          "couldn't parse: I couldn't find the verb (stopped at 'from')."
+        ],
+        [
+          "Volcanoes can also form where there is stretching.",
+          "couldn't parse: I got lost at 'is'."
+        ],
+        [
+          "Thinning of the crust's plates, such as in the East African Rift, the Wells Gray-Clearwater volcanic field, and the Rio Grande rift in North America.",
+          "couldn't parse: I couldn't find the verb (stopped at 'of')."
+        ],
+        [
+          "Volcanism away from plate boundaries most likely arises from upwelling diapirs from the core–mantle boundary called mantle plumes, 3,000 kilometres deep within Earth.",
+          "couldn't parse: I got lost at 'arises'."
+        ],
+        [
+          "Volcano results in hotspot volcanism or intraplate volcanism, in which the plume may cause thinning of the crust.",
+          "couldn't parse: I expected a noun phrase at 'in'."
+        ],
+        [
+          "Result in a volcanic island chain due to the continuous movement of the tectonic plate, of which the Hawaiian hotspot is an example.",
+          "couldn't parse: I couldn't find the verb (stopped at 'in')."
+        ],
+        [
+          "Volcanoes are usually not created at transform tectonic boundaries where two tectonic plates slide past one another.",
+          "couldn't parse: I got lost at 'another'."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What escapes from a volcano?",
+          "reply": "I think you're asking me something about escapes and volcano, but I couldn't work out exactly what. Could you ask it another way?",
+          "issues": [
+            "missing:lava",
+            "no-digested-facts"
+          ],
+          "passed": false
+        },
+        {
+          "question": "Where are most volcanoes found?",
+          "reply": "Sorry. That sentence isn't clear to me yet. I have something to clarify first. What does 'volcanoe' mean? You can tell me something like 'It's a kind of tool.'",
+          "issues": [
+            "not-an-answer",
+            "missing:underwater",
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-penguin",
+      "category": "wikipedia",
+      "source": "wikipedia:Penguin",
+      "facts": [
+        1,
+        4,
+        5,
+        8
+      ],
+      "skipped": [
+        [
+          "Only one species, the Galapagos penguin, lives at, and slightly north of, the equator.",
+          "couldn't parse: I couldn't find the verb (stopped at 'of')."
+        ],
+        [
+          "Highly adapted for life in the ocean water, penguins have countershaded dark.",
+          "'Highly' reads as a word, not a name"
+        ],
+        [
+          "White plumage and flippers for swimming.",
+          "couldn't parse: I couldn't find the verb (stopped at 'for')."
+        ],
+        [
+          "Most penguins feed on krill, fish, squid.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "Other forms of sea life which they catch with their bills and swallow whole while swimming.",
+          "couldn't parse: I couldn't find the verb (stopped at 'while')."
+        ],
+        [
+          "Powerful jaws to grip slippery prey.",
+          "'Powerful' reads as a word, not a name"
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What are penguins?",
+          "reply": "Here's what I know about penguins: A penguin is a group. Penguins own countershaded dark. A penguin owns a spiny tongue.",
+          "issues": [
+            "missing:birds"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What do penguins use for swimming?",
+          "reply": "Here's what I know about a penguin: A penguin is a group. Penguins own countershaded dark. A penguin owns a spiny tongue.",
+          "issues": [
+            "missing:flippers"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-mercury-planet",
+      "category": "wikipedia",
+      "source": "wikipedia:Mercury (planet)",
+      "facts": [],
+      "skipped": [
+        [
+          "Mercury is the first planet from the Sun and the smallest in the Solar System.",
+          "couldn't parse: I couldn't find the verb (stopped at 'in')."
+        ],
+        [
+          "Mercury (planet) is a rocky planet with a trace atmosphere.",
+          "couldn't parse: I got lost at 'is'."
+        ],
+        [
+          "A surface gravity slightly lower than that of Mars.",
+          "couldn't parse: I couldn't find the verb (stopped at 'of')."
+        ],
+        [
+          "The surface of Mercury is similar to Earth's Moon, being cratered, with an expansive rupes system generated from thrust faults.",
+          "couldn't parse: I couldn't find the verb (stopped at 'of')."
+        ],
+        [
+          "Bright ray systems, formed by ejecta.",
+          "couldn't parse: I couldn't find the verb (stopped at 'by')."
+        ],
+        [
+          "Its largest crater, Caloris Planitia, has a diameter of 1,550 km, which is about one-third the diameter of the planet.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "Being the most inferior orbiting planet, it always appears close to the Sun in Earth's sky, as either a \"morning star\" or an \"evening star\".",
+          "couldn't parse: I couldn't find the verb (stopped at 'the')."
+        ],
+        [
+          "Mercury (planet) is the planet with the highest delta-v required for travel from Earth, as well as to.",
+          "couldn't parse: I got lost at 'is'."
+        ],
+        [
+          "From the other planets in the Solar System.",
+          "couldn't parse: I couldn't find the verb (stopped at 'the')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is Mercury?",
+          "reply": "Here's how the information fits together. The word mercury here refers to a heavy silvery toxic univalent and bivalent metallic element; the only metal that is liquid at ordinary temperatures. In that sense, a mercury is a type of metal. Following those category links also places this meaning of mercury under substance.\n\nThat's the usual meaning of 'mercury'. It has 3 others, such as temperature measured by a mercury thermometer; say which one, or describe it, if you meant something else.",
+          "issues": [
+            "missing:planet",
+            "no-digested-facts"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What is Mercury's largest crater?",
+          "reply": "I don't know anything about Mercury's largest crater yet.",
+          "issues": [
+            "not-an-answer",
+            "missing:Caloris Planitia",
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-venus",
+      "category": "wikipedia",
+      "source": "wikipedia:Venus",
+      "facts": [
+        2
+      ],
+      "skipped": [
+        [
+          "Similar in size and mass to Earth, Venus has no liquid water, and its atmosphere is far thicker and denser than that of any other rocky body in the Solar System.",
+          "couldn't parse: I couldn't find the verb (stopped at 'in')."
+        ],
+        [
+          "The atmosphere is composed mostly of carbon dioxide.",
+          "'mostly' isn't a describing word"
+        ],
+        [
+          "Has a thick cloud layer of sulfuric acid that spans the whole planet.",
+          "couldn't parse: I couldn't find the verb (stopped at 'a')."
+        ],
+        [
+          "At the mean surface level, the atmosphere reaches a temperature of 737 K, making it the hottest planet in the solar system and also a pressure 92 times greater than Earth's at sea level, turning the lowest layer of the atmosphere into a supercritical fluid.",
+          "couldn't parse: I couldn't find the verb (stopped at 'the')."
+        ],
+        [
+          "From Earth, Venus is visible as a star-like point of light, appearing brighter than any other natural point of light in the sky, as either the brightest \"morning star\" or \"evening star\".",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "Venus was also given the poetic name Ēarendel in Old English, meaning \"ray of light\" along with the two previous epithets.",
+          "couldn't parse: I got lost at 'the'."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is Venus?",
+          "reply": "Here's what I know about Venus: Venus is a second planet.",
+          "issues": [],
+          "passed": true
+        },
+        {
+          "question": "What is the atmosphere of Venus mostly composed of?",
+          "reply": "What I do know is that Venus is a second planet. The rest I didn't get.",
+          "issues": [
+            "missing:carbon dioxide"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-neptune",
+      "category": "wikipedia",
+      "source": "wikipedia:Neptune",
+      "facts": [
+        1,
+        2,
+        3
+      ],
+      "skipped": [
+        [
+          "Neptune is the eighth and farthest known planet orbiting the Sun.",
+          "'farthest' reads as a word, not a name"
+        ],
+        [
+          "Neptune is the fourth-largest planet in the Solar System by diameter, the third-most-massive planet, and the densest giant planet.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "Neptune is 17 times the mass of Earth.",
+          "couldn't parse: I got lost at 'the'."
+        ],
+        [
+          "Compared to Uranus, its neighbouring ice giant, Neptune is slightly smaller, but more massive and dense.",
+          "couldn't parse: I couldn't find the verb (stopped at 'to')."
+        ],
+        [
+          "Liquids, it has no well-defined solid surface.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "Neptune orbits the Sun once every 164.8 years at an orbital distance of 30.1 astronomical units.",
+          "couldn't parse: I got lost at 'every'."
+        ],
+        [
+          "The Roman god of the sea and has the astronomical symbol , representing Neptune's trident.",
+          "couldn't parse: I couldn't find the verb (stopped at 'Neptune's')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What does Neptune orbit?",
+          "reply": "I don't know what Neptune orbits.",
+          "issues": [
+            "not-an-answer",
+            "missing:Sun"
+          ],
+          "passed": false
+        },
+        {
+          "question": "Who was Neptune named after?",
+          "reply": "I read on Wikipedia that neptune is named.",
+          "issues": [
+            "missing:Roman god"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-uranus",
+      "category": "wikipedia",
+      "source": "wikipedia:Uranus",
+      "facts": [
+        2,
+        4,
+        11
+      ],
+      "skipped": [
+        [
+          "Most of the planet is made of water, ammonia, and methane in a supercritical phase of matter.",
+          "couldn't parse: I couldn't find the verb (stopped at 'of')."
+        ],
+        [
+          "A supercritical phase of matter astronomers call \"ice\" or \"volatiles\".",
+          "couldn't parse: I couldn't find the verb (stopped at 'of')."
+        ],
+        [
+          "Has the lowest minimum temperature of all of the Solar System's planets.",
+          "couldn't parse: I couldn't find the verb (stopped at 'the')."
+        ],
+        [
+          "Uranus has a marked axial tilt of 82.23°, with a retrograde rotation period of 17 hours and 14 minutes.",
+          "couldn't parse: I expected a noun phrase at 'with'."
+        ],
+        [
+          "Uranus means that in an 84-Earth-year orbital period around the Sun, its poles get around 42 years of continuous sunlight, followed by 42 years of continuous darkness.",
+          "couldn't parse: 'that' needs a noun after it."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is Uranus?",
+          "reply": "Here's what I know about Uranus: Uranus is a seventh planet. Uranus is a gaseous cyan-coloured ice giant. Uranus owns an atmosphere.",
+          "issues": [],
+          "passed": true
+        },
+        {
+          "question": "What is most of Uranus made of?",
+          "reply": "I just told you: Here's what I know about Uranus: Uranus is a seventh planet. Uranus is a gaseous cyan-coloured ice giant. Uranus owns an atmosphere.",
+          "issues": [
+            "missing:water",
+            "missing:ammonia",
+            "missing:methane"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-giraffe",
+      "category": "wikipedia",
+      "source": "wikipedia:Giraffe",
+      "facts": [],
+      "skipped": [
+        [
+          "Giraffes are large African hoofed mammals.",
+          "couldn't parse: I got lost at 'African'."
+        ],
+        [
+          "Giraffe are the tallest living terrestrial animals.",
+          "couldn't parse: I got lost at 'living'."
+        ],
+        [
+          "The largest ruminants on Earth.",
+          "couldn't parse: I couldn't find the verb (stopped at 'on')."
+        ],
+        [
+          "Giraffe are classified under the family Giraffidae, along with their closest extant relative, the okapi.",
+          "couldn't parse: I got lost at 'Giraffidae'."
+        ],
+        [
+          "Traditionally, giraffes have been thought of as one species, Giraffa camelopardalis, with nine subspecies.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "Most recently, researchers proposed dividing them into four extant species, with seven subspecies, which can be distinguished morphologically by their fur coat patterns.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "Six valid extinct species of Giraffa are known from the fossil record.",
+          "couldn't parse: I couldn't find the verb (stopped at 'of')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What are giraffes?",
+          "reply": "I don't know anything about giraffes yet.",
+          "issues": [
+            "not-an-answer",
+            "missing:mammals",
+            "no-digested-facts"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What family are giraffes classified under?",
+          "reply": "I think you're asking me something about family and giraffes, but I couldn't work out exactly what. Could you ask it another way?",
+          "issues": [
+            "missing:Giraffidae",
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-elephant",
+      "category": "wikipedia",
+      "source": "wikipedia:Elephant",
+      "facts": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "skipped": [
+        [
+          "Elephants are the largest living land animals.",
+          "couldn't parse: I got lost at 'living'."
+        ],
+        [
+          "Three living species are currently recognised: the African bush elephant, the African forest elephant, and the Asian elephant.",
+          "couldn't parse: I got lost at 'currently'."
+        ],
+        [
+          "Elephant are the only surviving members of the family Elephantidae and the order Proboscidea.",
+          "couldn't parse: I got lost at 'Elephantidae'."
+        ],
+        [
+          "Extinct relatives include mammoths and mastodons.",
+          "'Extinct' reads as a word, not a name"
+        ],
+        [
+          "Extinct relatives include mammoths and mastodons.",
+          "'Extinct' reads as a word, not a name"
+        ],
+        [
+          "Distinctive features of elephants include a long proboscis called a trunk, tusks, large ear flaps, pillar-like legs, and tough but sensitive grey skin.",
+          "couldn't parse: I got lost at 'include'."
+        ],
+        [
+          "Water to the mouth and grasping objects.",
+          "couldn't parse: I couldn't find the verb (stopped at 'to')."
+        ],
+        [
+          "As tools for moving objects and digging.",
+          "couldn't parse: I got lost at 'moving'."
+        ],
+        [
+          "The large ear flaps assist in maintaining a constant body temperature as well as in communication.",
+          "couldn't parse: I couldn't find the verb (stopped at 'in')."
+        ],
+        [
+          "African elephants have larger ears.",
+          "couldn't parse: I got lost at 'have'."
+        ],
+        [
+          "Concave backs.",
+          "a fragment, not a fact"
+        ],
+        [
+          "Asian elephants have smaller ears.",
+          "couldn't parse: I got lost at 'have'."
+        ],
+        [
+          "Convex or level backs.",
+          "'or' isn't a verb"
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What are elephants?",
+          "reply": "I don't know anything about elephants yet.",
+          "issues": [
+            "not-an-answer",
+            "missing:animals"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What is an elephant's long proboscis called?",
+          "reply": "Here's how the information fits together. The word proboscis here refers to the human nose (especially when it is large). In that sense, a proboscis is a type of nose. Following those category links also places this meaning of proboscis under sense organ.\n\nThat's the usual meaning of 'proboscis'. It has 1 other, such as a long flexible snout as of an elephant; say which one, or describe it, if you meant something else.",
+          "issues": [
+            "missing:trunk"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-oak",
+      "category": "wikipedia",
+      "source": "wikipedia:Oak",
+      "facts": [
+        3
+      ],
+      "skipped": [
+        [
+          "An oak is a hardwood tree or shrub in the genus Quercus of the beech family.",
+          "couldn't parse: I got lost at 'Quercus'."
+        ],
+        [
+          "Oak have spirally arranged leaves, often with lobed edges.",
+          "couldn't parse: I got lost at 'leaves'."
+        ],
+        [
+          "A nut called an acorn, borne within a cup.",
+          "couldn't parse: I couldn't find the verb (stopped at 'a')."
+        ],
+        [
+          "The genus is widely distributed in the Northern Hemisphere, with some 475 species, both deciduous and evergreen.",
+          "couldn't parse: I expected a noun phrase at 'with'."
+        ],
+        [
+          "Molecular phylogeny shows that the genus is divided into Old World and New World clades, but many oak species hybridise freely, making the genus's history difficult to resolve.",
+          "couldn't parse: I couldn't find the verb (stopped at 'the')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What genus is an oak in?",
+          "reply": "I think you're asking me something about genus and oak, but I couldn't work out exactly what. Could you ask it another way?",
+          "issues": [
+            "missing:Quercus"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What is an oak's nut called?",
+          "reply": "I didn't catch what that was about. Say it a different way, maybe shorter, and I'll have another go.",
+          "issues": [
+            "missing:acorn"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-oxygen",
+      "category": "wikipedia",
+      "source": "wikipedia:Oxygen",
+      "facts": [
+        2,
+        4,
+        8,
+        9
+      ],
+      "skipped": [
+        [
+          "Oxygen is highly reactive, a nonmetal.",
+          "couldn't parse: I expected a verb."
+        ],
+        [
+          "A potent oxidizing agent that readily forms oxides with most elements as well as with other compounds.",
+          "couldn't parse: I expected a verb."
+        ],
+        [
+          "Oxygen is the most abundant element in Earth's crust, making up almost half of the Earth's crust in the form of various oxides such as water, carbon dioxide, iron oxides, and silicates.",
+          "couldn't parse: I got lost at 'half'."
+        ],
+        [
+          "Oxygen is also the third-most abundant element in the universe after hydrogen and helium.",
+          "couldn't parse: I expected a verb."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is oxygen?",
+          "reply": "Here's what I know about Oxygen: Oxygen is a chemical element. Oxygen is a member. Oxygen owns O to a symbol.",
+          "issues": [],
+          "passed": true
+        },
+        {
+          "question": "What is the atomic number of oxygen?",
+          "reply": "What I do know is that Oxygen is a member, Oxygen owns O to a symbol, and Oxygen is a chemical element. The rest I didn't get.",
+          "issues": [
+            "missing:8"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-water",
+      "category": "wikipedia",
+      "source": "wikipedia:Water",
+      "facts": [],
+      "skipped": [
+        [
+          "Water is an inorganic compound with the chemical formula H2O.",
+          "couldn't parse: I got lost at 'H'."
+        ],
+        [
+          "Water is a transparent, tasteless, odorless.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "Nearly colorless chemical substance.",
+          "'Nearly' reads as a word, not a name"
+        ],
+        [
+          "Water is the main constituent of Earth's streams, lakes, and oceans.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "Water is also the fluid of all known living organisms, in which it acts as a solvent.",
+          "couldn't parse: I got lost at 'living'."
+        ],
+        [
+          "Water, being a polar molecule, undergoes strong intermolecular hydrogen bonding which is a large contributor to its physical.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "Chemical properties.",
+          "a fragment, not a fact"
+        ],
+        [
+          "Water is vital for all known forms of life, despite not providing food energy or being an organic micronutrient.",
+          "couldn't parse: I got lost at 'being'."
+        ],
+        [
+          "Due to its presence in all organisms, its chemical stability, its worldwide abundance.",
+          "couldn't parse: I couldn't find the verb (stopped at 'to')."
+        ],
+        [
+          "Its strong polarity relative to its small molecular size, water is often referred to as the \"universal solvent\".",
+          "couldn't parse: I couldn't find the verb (stopped at 'to')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is water?",
+          "reply": "Here's how the information fits together. The word water here refers to binary compound that occurs at room temperature as a clear colorless odorless tasteless liquid; freezes into ice below 0 degrees centigrade and boils above 100 degrees centigrade; widely used as a solvent. In that sense, a water is a type of binary compound. Following those category links also places this meaning of water under chemical. There are different kinds of water, like tap water, bath water, dishwater, distilled water, and holy water.\n\nThat's the usual meaning of 'water'. It has 5 others, such as the part of the earth's surface covered with water (such as a river or lake or ocean); say which one, or describe it, if you meant something else.",
+          "issues": [
+            "no-digested-facts"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What is the chemical formula of water?",
+          "reply": "I think you're asking me something about chemical and formula, but I couldn't work out exactly what. Could you ask it another way?",
+          "issues": [
+            "missing:H2O",
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-carbon-dioxide",
+      "category": "wikipedia",
+      "source": "wikipedia:Carbon dioxide",
+      "facts": [],
+      "skipped": [
+        [
+          "Carbon dioxide is a chemical compound with the chemical formula CO2.",
+          "couldn't parse: I got lost at 'is'."
+        ],
+        [
+          "Carbon dioxide is made up of molecules that each have one carbon atom covalently double bonded to two oxygen atoms.",
+          "couldn't parse: I got lost at 'is'."
+        ],
+        [
+          "Carbon dioxide is found in a gas state at room temperature.",
+          "couldn't parse: I got lost at 'is'."
+        ],
+        [
+          "At normally-encountered concentrations it is odorless.",
+          "couldn't parse: I got lost at 'is'."
+        ],
+        [
+          "As the source of carbon in the carbon cycle, atmospheric CO2 is the primary carbon source for life on Earth.",
+          "couldn't parse: I couldn't find the verb (stopped at 'the')."
+        ],
+        [
+          "In the air, carbon dioxide is transparent to visible light.",
+          "couldn't parse: I couldn't find the verb (stopped at 'the')."
+        ],
+        [
+          "Absorbs infrared radiation, acting as a greenhouse gas.",
+          "couldn't parse: I couldn't find the verb (stopped at 'a')."
+        ],
+        [
+          "Carbon dioxide is soluble in water.",
+          "couldn't parse: I got lost at 'is'."
+        ],
+        [
+          "Is found in groundwater, lakes, ice caps, and seawater.",
+          "couldn't parse: I got lost at ','."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is carbon dioxide?",
+          "reply": "Let me connect what I know about carbon dioxide. The word carbon dioxide here refers to a heavy odorless colorless gas formed during respiration and by the decomposition of organic substances; absorbed from the air by plants in photosynthesis. In that sense, a carbon dioxide is a type of dioxide. Following those category links also places this meaning of carbon dioxide under chemical compound. There are different kinds of carbon dioxide, like blackdamp.",
+          "issues": [
+            "no-digested-facts"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What is the chemical formula of carbon dioxide?",
+          "reply": "I think you're asking me something about chemical and formula, but I couldn't work out exactly what. Could you ask it another way?",
+          "issues": [
+            "missing:CO2",
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-marie-curie",
+      "category": "wikipedia",
+      "source": "wikipedia:Marie Curie",
+      "facts": [],
+      "skipped": [
+        [
+          "Maria Salomea Skłodowska Curie, better known as Marie Curie, was a Polish and naturalised-French physicist and chemist.",
+          "couldn't parse: I expected a verb."
+        ],
+        [
+          "Marie Curie shared the 1903 Nobel Prize in Physics with her husband, Pierre Curie, \"for their joint researches on the radioactivity phenomena discovered by Professor Henri Becquerel\".",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "Marie Curie won the 1911 Nobel Prize in Chemistry \"[for] the discovery of the elements radium.",
+          "contains code, markup, links or emoji"
+        ],
+        [
+          "Polonium, by the isolation of radium and the study of the nature and compounds of this remarkable element\".",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What was Marie Curie?",
+          "reply": "Marie Curie is French chemist (born in Poland) who won two Nobel prizes; one (with her husband and Henri Becquerel) for research on radioactivity and another for her discovery of radium and polonium (1867-1934).",
+          "issues": [
+            "not-an-answer",
+            "missing:physicist",
+            "no-digested-facts"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What elements did Marie Curie discover?",
+          "reply": "One moment. That sentence isn't clear to me yet. I could use an explanation of one part. The rest I didn't get.",
+          "issues": [
+            "not-an-answer",
+            "missing:radium",
+            "missing:polonium",
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wiki-albert-einstein",
+      "category": "wikipedia",
+      "source": "wikipedia:Albert Einstein",
+      "facts": [
+        1
+      ],
+      "skipped": [
+        [
+          "Albert Einstein was a German-born theoretical physicist best known for developing the theory of relativity.",
+          "couldn't parse: I got lost at 'theoretical'."
+        ],
+        [
+          "His mass–energy equivalence formula E = mc2, which arises from special relativity, has been called \"the world's most famous equation\".",
+          "couldn't parse: I couldn't find the verb (stopped at 'E')."
+        ],
+        [
+          "Albert Einstein received the 1921 Nobel Prize in Physics for \"his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect\".",
+          "couldn't parse: I couldn't find the verb (stopped at 'for')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What was Albert Einstein?",
+          "reply": "Albert Einstein is physicist born in Germany who formulated the special theory of relativity and the general theory of relativity; Einstein also proposed that light consists of discrete quantized bundles of energy (later called photons) (1879-1955).",
+          "issues": [
+            "not-an-answer"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What theory is Einstein known for developing?",
+          "reply": "I read on Wikipedia that einstein made important contributions to a theory.",
+          "issues": [
+            "missing:relativity"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "news-01",
+      "category": "news",
+      "source": "news:NASA:apod-2026-october-31-night-on-a-spooky-planet",
+      "facts": [],
+      "skipped": [
+        [
+          "Discover the cosmos!",
+          "couldn't parse: I couldn't find the verb (stopped at 'the')."
+        ],
+        [
+          "Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer.",
+          "couldn't parse: I couldn't find the verb (stopped at 'a')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "Who writes the daily astronomy explanation?",
+          "reply": "I don't know who writes the daily astronomy explanation.",
+          "issues": [
+            "not-an-answer",
+            "missing:astronomer",
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "news-02",
+      "category": "news",
+      "source": "news:NASA:nasa-releases-max-power-key-events-for-media-participants",
+      "facts": [],
+      "skipped": [
+        [
+          "America’s newest aerospace expo and air show – MAX POWER – is fast approaching, and NASA has announced key events beginning Friday, Nov. 6, and running through Sunday, Nov. 8, hosted on and near the agency’s Kennedy Space Center in Florida.",
+          "couldn't parse: I couldn't find the verb (stopped at 'MAX')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "Where is MAX POWER hosted?",
+          "reply": "I think you're asking me something about max, but I couldn't work out exactly what. Could you ask it another way?",
+          "issues": [
+            "missing:Kennedy Space Center",
+            "missing:Florida",
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "news-03",
+      "category": "news",
+      "source": "news:NASA:nasas-james-webb-space-telescope-captures-eerie-cats-head",
+      "facts": [],
+      "skipped": [
+        [
+          "Intricate structures within the Cat’s Head Nebula are illuminated in this mid-infrared view from NASA’s James Webb Space Telescope released on Oct. 29, 2026.",
+          "couldn't parse: I got lost at 'are'."
+        ],
+        [
+          "The distinctive “cat’s head” shape of the nebula was likely sculpted over time by the intense ultraviolet radiation.",
+          "couldn't parse: I couldn't find the verb (stopped at 'of')."
+        ],
+        [
+          "Winds from massive stars in the Carina Nebula.",
+          "couldn't parse: I couldn't find the verb (stopped at 'from')."
+        ],
+        [
+          "NASA stellar feedback erodes the surrounding gas and dust.",
+          "'erode' read as a thing"
+        ],
+        [
+          "NASA stellar feedback erodes the surrounding gas and dust.",
+          "'erode' read as a thing"
+        ],
+        [
+          "Denser material within the feline-shaped pillar resists erosion, at least for now.",
+          "couldn't parse: I expected a noun phrase at 'at'."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What telescope captured the Cat's Head Nebula?",
+          "reply": "Let me connect what I know about nebula. The word nebula here refers to a medicinal liquid preparation intended for use in an atomizer. In that sense, a nebula is a type of formulation. Following those category links also places this meaning of nebula under chemical.\n\nThat's the usual meaning of 'nebula'. It has 3 others, such as cloudiness of the urine; say which one, or describe it, if you meant something else.",
+          "issues": [
+            "missing:James Webb",
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "news-04",
+      "category": "news",
+      "source": "news:NASA:nasa-explores-potential-commercial-servicing-for-hubble-telescope",
+      "facts": [],
+      "skipped": [
+        [
+          "“Hubble still has important science ahead of it.",
+          "a word read as a thing that isn't one"
+        ],
+        [
+          "We should be looking at every reasonable opportunity to keep it delivering for as long as possible,” said NASA Administrator Jared Isaacman. “If there are innovative.",
+          "couldn't parse: I got lost at 'are'."
+        ],
+        [
+          "Cost-effective ways to extend the life of an asset already on orbit, we owe it to the American taxpayer and the scientific community to explore them.",
+          "couldn't parse: I got lost at 'the'."
+        ],
+        [
+          "Extending Hubble’s life would mean more discoveries, more science.",
+          "couldn't parse: I expected a verb."
+        ],
+        [
+          "More opportunities to expand our understanding of the universe.”.",
+          "couldn't parse: I got lost at 'understanding'."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "Who said Hubble still has important science ahead of it?",
+          "reply": "I think you're asking me something about hubble and science, but I couldn't work out exactly what. Could you ask it another way?",
+          "issues": [
+            "missing:Jared Isaacman",
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "news-05",
+      "category": "news",
+      "source": "news:NASA:novembers-night-sky-notes-light-day-away",
+      "facts": [
+        1,
+        5,
+        6,
+        8
+      ],
+      "skipped": [
+        [
+          "In 1977, NASA launched twin spacecraft Voyager 1 and 2, taking advantage of a once-every-175-year planetary alignment of the four largest planets in our solar system: Jupiter, Saturn, Uranus, and Neptune.",
+          "couldn't parse: I got lost at '1'."
+        ],
+        [
+          "By the 1980s, the two probes went their separate ways at Saturn.",
+          "couldn't parse: I couldn't find the verb (stopped at 'the')."
+        ],
+        [
+          "Voyager 2 continued toward Uranus and Neptune.",
+          "couldn't parse: I couldn't find the verb (stopped at '2')."
+        ],
+        [
+          "Voyager 1 grabbed one more portrait of the solar system, including a final image of the pale blue dot we call home.",
+          "couldn't parse: I couldn't find the verb (stopped at '1')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "When did NASA launch Voyager 1 and 2?",
+          "reply": "I think you're asking me something about nasa and voyager, but I couldn't work out exactly what. Could you ask it another way?",
+          "issues": [
+            "missing:1977"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "news-07",
+      "category": "news",
+      "source": "news:NASA:vega-island-frozen-in-fright",
+      "facts": [],
+      "skipped": [
+        [
+          "Shrouded in ice in the lonely Weddell Sea, Vega Island is an eerie sight to behold.",
+          "couldn't parse: I couldn't find the verb (stopped at 'in')."
+        ],
+        [
+          "On this speck of land east of the Antarctic Peninsula, ice, rock outcrops.",
+          "couldn't parse: I couldn't find the verb (stopped at 'this')."
+        ],
+        [
+          "Glacial moraines combine to create the appearance of a smirking skull in profile looking toward Devil Island.",
+          "couldn't parse: I got lost at 'the'."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "Where is Vega Island?",
+          "reply": "I don't know where Vega Island is. I don't know anyone or anything called Vega Island.",
+          "issues": [
+            "not-an-answer",
+            "missing:Weddell Sea",
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "news-08",
+      "category": "news",
+      "source": "news:NASA:map-showing-potential-origins-of-martian-meteorite-teghaza-001",
+      "facts": [],
+      "skipped": [
+        [
+          "NASA global map of Mars shows 13 locations that match the mineralogy and chemistry of Teghaza 001, one of the most ancient Martian meteorites ever found on Earth.",
+          "couldn't parse: I got lost at 'shows'."
+        ],
+        [
+          "Scientists can never know for sure where a Martian meteorite originated.",
+          "couldn't parse: I got lost at 'a'."
+        ],
+        [
+          "Teghaza 001 includes clues that link it to highlands in the southern hemisphere of the Red Planet.",
+          "couldn't parse: I couldn't find the verb (stopped at '001')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What meteorite does the map of Mars concern?",
+          "reply": "I think you're asking me something about meteorite and map, but I couldn't work out exactly what. Could you ask it another way?",
+          "issues": [
+            "missing:Teghaza 001",
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "news-09",
+      "category": "news",
+      "source": "news:NASA:slice-of-martian-meteorite-teghaza-001",
+      "facts": [],
+      "skipped": [
+        [
+          "NASA slice of Teghaza 001, one of the most ancient Martian meteorites ever found on Earth, was used to determine the age of the rock.",
+          "couldn't parse: I got lost at '001'."
+        ],
+        [
+          "Reflected light images like these serve as a scientist’s road map, helping them find minerals of interest to analyze by different instruments.",
+          "couldn't parse: I got lost at 'a'."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What was the slice of Teghaza 001 used to determine?",
+          "reply": "I'm having trouble following that. I need to understand one piece first. Here's how the information fits together. The word slice here refers to a share of something. In that sense, a slice is a type of share. Following those category links also places this meaning of slice under possession.\n\nThat's the usual meaning of 'slice'. It has 5 others, such as a serving that has been cut from a larger portion; say which one, or describe it, if you meant something else.",
+          "issues": [
+            "not-an-answer",
+            "missing:age",
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "news-10",
+      "category": "news",
+      "source": "news:NASA:halloween-aboard-the-international-space-station",
+      "facts": [],
+      "skipped": [
+        [
+          "No ghouls.",
+          "a fragment, not a fact"
+        ],
+        [
+          "Goblins, or trick-or-treaters come knocking at the International Space Station’s front hatch, crew members aboard the orbiting laboratory still like to get in the Halloween spirit.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "Whether individually or as an entire crew, they dress up in sometimes spooky, sometimes scary.",
+          "couldn't parse: I got lost at 'spooky'."
+        ],
+        [
+          "Always creative costumes, often designed from materials available aboard the space station.",
+          "couldn't parse: I couldn't find the verb (stopped at 'from')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What do crew members aboard the International Space Station dress up in?",
+          "reply": "I don't know what Crew Members Aboard thes dress up in. I don't know anyone or anything called crew members aboard and anyone or anything called International Space Station.",
+          "issues": [
+            "not-an-answer",
+            "missing:costumes",
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wordnet-dog",
+      "category": "wordnet",
+      "source": "wordnet:oewn-02086723-n",
+      "facts": [],
+      "skipped": [
+        [
+          "A dog is a member of the genus Canis that has been domesticated by man since prehistoric times.",
+          "couldn't parse: I got lost at 'Canis'."
+        ],
+        [
+          "Occurs in many breeds.",
+          "couldn't parse: I couldn't find the verb (stopped at 'in')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is a dog?",
+          "reply": "Let me connect what I know about dog. The word dog here refers to a member of the genus Canis (probably descended from the common wolf) that has been domesticated by man since prehistoric times; occurs in many breeds. In that sense, a dog is a type of domestic animal. Following those category links also places this meaning of dog under animal. There are different kinds of dog, like puppy, doggy, cur, lapdog, and toy dog. A dog has parts like flag.\n\nThat's the usual meaning of 'dog'. It has 6 others, such as a dull unattractive unpleasant girl or woman; say which one, or describe it, if you meant something else.",
+          "issues": [
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wordnet-cat",
+      "category": "wordnet",
+      "source": "wordnet:oewn-02124272-n",
+      "facts": [],
+      "skipped": [
+        [
+          "A cat is a feline mammal usually having thick soft fur and no ability to roar.",
+          "couldn't parse: I got lost at 'having'."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is a cat?",
+          "reply": "Let me connect what I know about cat. The word cat here refers to feline mammal usually having thick soft fur and no ability to roar. In that sense, a cat is a type of felid. Following those category links also places this meaning of cat under animal. There are different kinds of cat, like house cat.\n\nThat's the usual meaning of 'cat'. It has 8 others, such as an informal term for a youth or man; say which one, or describe it, if you meant something else.",
+          "issues": [
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wordnet-bird",
+      "category": "wordnet",
+      "source": "wordnet:oewn-01505702-n",
+      "facts": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "skipped": [],
+      "probes": [
+        {
+          "question": "What is a bird?",
+          "reply": "I'm keen to explore how these pieces fit together! The word bird here refers to warm-blooded egg-laying vertebrates characterized by feathers and forelimbs modified as wings. In that sense, a bird is a type of craniate. Following those category links also places this meaning of bird under animal. There are different kinds of bird, like dickybird, cock, hen, nester, and night bird. A bird has parts like neb, furcula, plumage, wing, and pennon.\n\nI read in the dictionary that a bird is characterized. I read in the dictionary that a bird is vertebrates. I read in the dictionary that a bird is egg-laying. I read in the dictionary that a bird is warm-blooded.\n\nThat's the usual meaning of 'bird'. It has 4 others, such as the flesh of a bird or fowl (wild or domestic) used as food; say which one, or describe it, if you meant something else.",
+          "issues": [],
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "wordnet-fish",
+      "category": "wordnet",
+      "source": "wordnet:oewn-02514684-n",
+      "facts": [],
+      "skipped": [
+        [
+          "A fish is any of various mostly cold-blooded aquatic vertebrates usually having scales.",
+          "couldn't parse: 'any' needs a noun after it."
+        ],
+        [
+          "Breathing through gills.",
+          "couldn't parse: I couldn't find the verb (stopped at 'through')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is a fish?",
+          "reply": "Here's how the information fits together. The word fish here refers to any of various mostly cold-blooded aquatic vertebrates usually having scales and breathing through gills. In that sense, a fish is a type of aquatic vertebrate. Following those category links also places this meaning of fish under animal. There are different kinds of fish, like bottom-dweller, bottom lurker, chondrichthian, fingerling, and game fish. A fish has parts like fish scale, roe, milt, lateral line, and fin.\n\nThat's the usual meaning of 'fish'. It has 3 others, such as the flesh of fish used as food; say which one, or describe it, if you meant something else.",
+          "issues": [
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wordnet-tree",
+      "category": "wordnet",
+      "source": "wordnet:oewn-13124818-n",
+      "facts": [
+        4,
+        5,
+        6
+      ],
+      "skipped": [
+        [
+          "A tree is a tall perennial woody plant having a main trunk.",
+          "couldn't parse: I got lost at 'having'."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is a tree?",
+          "reply": "Let me connect what I know about tree. The word tree here refers to a tall perennial woody plant having a main trunk and branches forming a distinct elevated crown; includes both gymnosperms and angiosperms. In that sense, a tree is a type of woody plant. Following those category links also places this meaning of tree under plant. There are different kinds of tree, like yellowwood tree, Oxandra lanceolata, negro pepper, anise tree, and Drimys winteri. A tree has parts like stump, treetop, tree branch, trunk, and burl.\n\nThat's the usual meaning of 'tree'. It has 2 others, such as a figure that branches from a single root; say which one, or describe it, if you meant something else.",
+          "issues": [],
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "wordnet-flower",
+      "category": "wordnet",
+      "source": "wordnet:oewn-11690372-n",
+      "facts": [],
+      "skipped": [
+        [
+          "A flower is a plant cultivated for its blooms or blossoms.",
+          "a word read as a thing that isn't one"
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is a flower?",
+          "reply": "Here's how the information fits together. The word flower here refers to a plant cultivated for its blooms or blossoms. In that sense, a flower is a type of angiosperm. Following those category links also places this meaning of flower under plant. There are different kinds of flower, like bloomer, peony, pilewort, Adonis annua, and anemone.\n\nThat's the usual meaning of 'flower'. It has 2 others, such as reproductive organ of angiosperm plants especially one having showy or colorful parts; say which one, or describe it, if you meant something else.",
+          "issues": [
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wordnet-river",
+      "category": "wordnet",
+      "source": "wordnet:oewn-09434308-n",
+      "facts": [
+        2
+      ],
+      "skipped": [],
+      "probes": [
+        {
+          "question": "What is a river?",
+          "reply": "Let me connect what I know about river. The word river here refers to a large natural stream of water (larger than a creek). In that sense, a river is a type of stream. Following those category links also places this meaning of river under thing. A river has parts like estuary, rapid, and waterfall.\n\nI read in the dictionary that a river is a large natural stream.",
+          "issues": [],
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "wordnet-mountain",
+      "category": "wordnet",
+      "source": "wordnet:oewn-09382700-n",
+      "facts": [],
+      "skipped": [
+        [
+          "A mountain is a land mass that projects well above its surroundings.",
+          "couldn't parse: I got lost at 'that'."
+        ],
+        [
+          "Higher than a hill.",
+          "'Higher' reads as a word, not a name"
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is a mountain?",
+          "reply": "Here's how the information fits together. The word mountain here refers to a land mass that projects well above its surroundings; higher than a hill. In that sense, a mountain is a type of natural elevation. Following those category links also places this meaning of mountain under geological formation. There are different kinds of mountain, like alp, ben, seamount, and volcano. A mountain has parts like mountain peak and versant.\n\nThat's the usual meaning of 'mountain'. It has 1 other, such as (often followed by ‘of’) a large number or amount or extent; say which one, or describe it, if you meant something else.",
+          "issues": [
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wordnet-ocean",
+      "category": "wordnet",
+      "source": "wordnet:oewn-09399110-n",
+      "facts": [],
+      "skipped": [
+        [
+          "A ocean is a large body of water constituting a principal part of the hydrosphere.",
+          "couldn't parse: I got lost at 'a'."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is a ocean?",
+          "reply": "Here's how the information fits together. The word ocean here refers to a large body of water constituting a principal part of the hydrosphere. In that sense, an ocean is a type of body of water. Following those category links also places this meaning of ocean under thing. There are different kinds of ocean, like deep.\n\nThat's the usual meaning of 'ocean'. It has 1 other, such as anything apparently limitless in quantity or volume; say which one, or describe it, if you meant something else.",
+          "issues": [
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wordnet-truck",
+      "category": "wordnet",
+      "source": "wordnet:oewn-04497386-n",
+      "facts": [],
+      "skipped": [
+        [
+          "A truck is an automotive vehicle suitable for hauling.",
+          "a word read as a thing that isn't one"
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is a truck?",
+          "reply": "Let me connect what I know about truck. The word truck here refers to an automotive vehicle suitable for hauling. In that sense, a truck is a type of motor vehicle. Following those category links also places this meaning of truck under vehicle. There are different kinds of truck, like dumper, fire truck, dustcart, camion, and pickup. A truck has parts like bumper, roof, anti-sway bar, and tailgate.\n\nThat's the usual meaning of 'truck'. It has 1 other, such as a handcart that has a frame with two low wheels and a ledge at the bottom and handles at the top; used to move crates or other heavy objects; say which one, or describe it, if you meant something else.",
+          "issues": [
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wordnet-bicycle",
+      "category": "wordnet",
+      "source": "wordnet:oewn-02837983-n",
+      "facts": [],
+      "skipped": [
+        [
+          "A bicycle is a wheeled vehicle that has two wheels.",
+          "couldn't parse: I got lost at 'that'."
+        ],
+        [
+          "Is moved by foot pedals.",
+          "not a statement"
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is a bicycle?",
+          "reply": "Here's how the information fits together. The word bicycle here refers to a wheeled vehicle that has two wheels and is moved by foot pedals. In that sense, a bicycle is a type of wheeled vehicle. Following those category links also places this meaning of bicycle under vehicle. There are different kinds of bicycle, like tandem bicycle, off-roader, ordinary bicycle, push-bike, and safety bike. A bicycle has parts like bicycle seat, bicycle wheel, chain, coaster brake, and handlebar.",
+          "issues": [
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wordnet-telescope",
+      "category": "wordnet",
+      "source": "wordnet:oewn-04410773-n",
+      "facts": [
+        1
+      ],
+      "skipped": [],
+      "probes": [
+        {
+          "question": "What is a telescope?",
+          "reply": "Let me connect what I know about telescope. The word telescope here refers to a magnifier of images of distant objects. In that sense, a telescope is a type of magnifier. Following those category links also places this meaning of telescope under instrument. There are different kinds of telescope, like astronomical telescope, collimator, equatorial, solar telescope, and transit instrument. A telescope has parts like aperture, viewfinder, and optical prism.\n\nI read in the dictionary that a telescope is a magnifier.",
+          "issues": [],
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "wordnet-microscope",
+      "category": "wordnet",
+      "source": "wordnet:oewn-03766206-n",
+      "facts": [
+        1
+      ],
+      "skipped": [],
+      "probes": [
+        {
+          "question": "What is a microscope?",
+          "reply": "Let me connect what I know about microscope. The word microscope here refers to magnifier of the image of small objects. In that sense, a microscope is a type of magnifier. Following those category links also places this meaning of microscope under instrument. There are different kinds of microscope, like angioscope, electron microscope, and light microscope. A microscope has parts like camera lucida.\n\nI read in the dictionary that a microscope is a magnifier.",
+          "issues": [],
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "wordnet-planet",
+      "category": "wordnet",
+      "source": "wordnet:oewn-09416900-n",
+      "facts": [],
+      "skipped": [
+        [
+          "A planet is any of the nine large celestial bodies in the solar system that revolve around the sun.",
+          "couldn't parse: 'any' needs a noun after it."
+        ],
+        [
+          "Shine by reflected light.",
+          "couldn't parse: I couldn't find the verb (stopped at 'by')."
+        ],
+        [
+          "Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, and Pluto in order of their proximity to the sun.",
+          "couldn't parse: I couldn't find the verb (stopped at ',')."
+        ],
+        [
+          "Viewed from the constellation Hercules, all the planets rotate around the sun in a counterclockwise direction.",
+          "couldn't parse: I couldn't find the verb (stopped at 'from')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is a planet?",
+          "reply": "Let me connect what I know about planet. The word planet here refers to (astronomy) any of the nine large celestial bodies in the solar system that revolve around the sun and shine by reflected light; Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, and Pluto in order of their proximity to the sun; viewed from the constellation Hercules, all the planets rotate around the sun in a counterclockwise direction. In that sense, a planet is a type of heavenly body. Following those category links also places this meaning of planet under natural object. There are different kinds of planet, like inferior planet, gas giant, daystar, outer planet, and superior planet. A planet has parts like biosphere.\n\nThat's the usual meaning of 'planet'. It has 2 others, such as a person who follows or serves another; say which one, or describe it, if you meant something else.",
+          "issues": [
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wordnet-star",
+      "category": "wordnet",
+      "source": "wordnet:oewn-09467004-n",
+      "facts": [
+        2
+      ],
+      "skipped": [
+        [
+          "A star is a celestial body of hot gases that radiates energy derived from thermonuclear reactions in the interior.",
+          "a word read as a thing that isn't one"
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is a star?",
+          "reply": "Let me connect what I know about star. The word star here refers to (astronomy) a celestial body of hot gases that radiates energy derived from thermonuclear reactions in the interior. In that sense, a star is a type of heavenly body. Following those category links also places this meaning of star under natural object. There are different kinds of star, like binary, fixed star, giant star, loadstar, and multiple star.\n\nI read in the dictionary that a star is a celestial body.\n\nThat's the usual meaning of 'star'. It has 7 others, such as someone who is dazzlingly skilled in any field; say which one, or describe it, if you meant something else.",
+          "issues": [],
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "wordnet-volcano",
+      "category": "wordnet",
+      "source": "wordnet:oewn-09493680-n",
+      "facts": [
+        1,
+        4
+      ],
+      "skipped": [
+        [
+          "A volcano is a fissure in the earth's crust through which molten lava and gases erupt.",
+          "a word read as a thing that isn't one"
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is a volcano?",
+          "reply": "Here's how the information fits together. The word volcano here refers to a fissure in the earth's crust (or in the surface of some other planet) through which molten lava and gases erupt. In that sense, a volcano is a type of crack. Following those category links also places this meaning of volcano under space.\n\nI read in the dictionary that a volcano is a fissure.\n\nThat's the usual meaning of 'volcano'. It has 1 other, such as a mountain formed by volcanic material; say which one, or describe it, if you meant something else.",
+          "issues": [],
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "wordnet-island",
+      "category": "wordnet",
+      "source": "wordnet:oewn-09339360-n",
+      "facts": [],
+      "skipped": [
+        [
+          "A island is a land mass that is surrounded by water.",
+          "couldn't parse: I got lost at 'that'."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is a island?",
+          "reply": "Here's how the information fits together. The word island here refers to a land mass (smaller than a continent) that is surrounded by water. In that sense, an island is a type of ground. There are different kinds of island, like Caribbean island, Aegean island, barrier island, isle, and South Sea islands.\n\nThat's the usual meaning of 'island'. It has 1 other, such as a zone or area resembling an island; say which one, or describe it, if you meant something else.",
+          "issues": [
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wordnet-library",
+      "category": "wordnet",
+      "source": "wordnet:oewn-03666235-n",
+      "facts": [],
+      "skipped": [
+        [
+          "A library is a room where books are kept.",
+          "couldn't parse: I got lost at 'are'."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is a library?",
+          "reply": "Here's how the information fits together. The word library here refers to a room where books are kept. In that sense, a library is a type of room. Following those category links also places this meaning of library under structure.\n\nThat's the usual meaning of 'library'. It has 4 others, such as a collection of literary documents or records kept for reference or borrowing; say which one, or describe it, if you meant something else.",
+          "issues": [
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wordnet-hospital",
+      "category": "wordnet",
+      "source": "wordnet:oewn-03545775-n",
+      "facts": [],
+      "skipped": [
+        [
+          "A hospital is a health facility where patients receive treatment.",
+          "couldn't parse: I got lost at 'receive'."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is a hospital?",
+          "reply": "Let me connect what I know about hospital. The word hospital here refers to a health facility where patients receive treatment. In that sense, a hospital is a type of health facility. Following those category links also places this meaning of hospital under building. There are different kinds of hospital, like creche, lazaret, maternity hospital, mental home, and military hospital. A hospital has parts like burn center, clinic, hospital room, and hospital ward.\n\nThat's the usual meaning of 'hospital'. It has 1 other, such as a medical institution where sick or injured people are given medical or surgical care; say which one, or describe it, if you meant something else.",
+          "issues": [
+            "no-digested-facts"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "wordnet-school",
+      "category": "wordnet",
+      "source": "wordnet:oewn-08293641-n",
+      "facts": [
+        2
+      ],
+      "skipped": [],
+      "probes": [
+        {
+          "question": "What is a school?",
+          "reply": "Let me connect what I know about school. The word school here refers to an educational institution. In that sense, a school is a type of educational institution. Following those category links also places this meaning of school under organization. There are different kinds of school, like academy, correspondence school, crammer, dancing school, and direct-grant school.\n\nI read in the dictionary that a school is an educational institution.\n\nThat's the usual meaning of 'school'. It has 6 others, such as a building where young people receive education; say which one, or describe it, if you meant something else.",
+          "issues": [],
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "conversation-family",
+      "category": "conversation",
+      "source": "said:Evaluator",
+      "facts": [
+        1,
+        3,
+        4
+      ],
+      "skipped": [
+        [
+          "My sister is named Jen.",
+          "couldn't parse: I got lost at 'Jen'."
+        ],
+        [
+          "Evaluator now works at a hospital.",
+          "couldn't parse: I got lost at 'works'."
+        ],
+        [
+          "Her dog is named Milo.",
+          "couldn't parse: I got lost at 'Milo'."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "Where does Jen live?",
+          "reply": "I don't know where Jen lives. I don't know anyone or anything called Jen.",
+          "issues": [
+            "not-an-answer",
+            "missing:Denver"
+          ],
+          "passed": false
+        },
+        {
+          "question": "Where does Jen work now?",
+          "reply": "I don't know where Jen works. I don't know anyone or anything called Jen.",
+          "issues": [
+            "not-an-answer",
+            "missing:hospital"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What is Jen's dog named?",
+          "reply": "I don't know anything about Jen's dog named yet.",
+          "issues": [
+            "not-an-answer",
+            "missing:Milo"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "conversation-truck",
+      "category": "conversation",
+      "source": "said:Evaluator",
+      "facts": [
+        1,
+        3
+      ],
+      "skipped": [
+        [
+          "Howard owns a red truck that he drives to work.",
+          "couldn't parse: I got lost at 'drives'."
+        ],
+        [
+          "His brother Sam works at a bank in Dayton.",
+          "couldn't parse: I couldn't find the verb (stopped at 'Sam')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What does Howard own?",
+          "reply": "I don't know what Howard owns.",
+          "issues": [
+            "not-an-answer",
+            "missing:truck"
+          ],
+          "passed": false
+        },
+        {
+          "question": "Where does Sam work?",
+          "reply": "I don't know where Sam works. I don't know anyone or anything called Sam.",
+          "issues": [
+            "not-an-answer",
+            "missing:bank"
+          ],
+          "passed": false
+        },
+        {
+          "question": "Where does Howard live?",
+          "reply": "Howard lives in Columbus.",
+          "issues": [],
+          "passed": true
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "conversation-negation",
+      "category": "conversation",
+      "source": "said:Evaluator",
+      "facts": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        9
+      ],
+      "skipped": [],
+      "probes": [
+        {
+          "question": "Does Maria own a car?",
+          "reply": "I don't know whether Maria owns a car. Do you know? If you tell me, I'll remember it.",
+          "issues": [
+            "wrong-status",
+            "missing:no"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What does Maria own?",
+          "reply": "Maria owns a bicycle.",
+          "issues": [],
+          "passed": true
+        },
+        {
+          "question": "Where does Maria work?",
+          "reply": "I don't know where Maria works.",
+          "issues": [
+            "not-an-answer",
+            "missing:library"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "conversation-cause",
+      "category": "conversation",
+      "source": "said:Evaluator",
+      "facts": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "skipped": [
+        [
+          "His friend Grace brought him water.",
+          "couldn't parse: I couldn't find the verb (stopped at 'Grace')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What did Owen eat?",
+          "reply": "I don't know what Owen ate.",
+          "issues": [
+            "not-an-answer",
+            "missing:pizza"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What is Grace?",
+          "reply": "Here's what I know about Grace: Grace is a nurse. Grace lives in Seattle.",
+          "issues": [],
+          "passed": true
+        },
+        {
+          "question": "Where does Grace live?",
+          "reply": "Grace lives in Seattle.",
+          "issues": [],
+          "passed": true
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "conversation-condition",
+      "category": "conversation",
+      "source": "said:Evaluator",
+      "facts": [
+        2,
+        5,
+        6,
+        8,
+        10
+      ],
+      "skipped": [
+        [
+          "Someone owns a dog.",
+          "couldn't store: I can't store a fact about an unspecified 'someone' yet; try a rule like 'If someone ..., they ...'."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "Is Nina a pet owner?",
+          "reply": "I don't know whether Nina is a pet owner. Do you know? If you tell me, I'll remember it.",
+          "issues": [
+            "wrong-status",
+            "missing:yes"
+          ],
+          "passed": false
+        },
+        {
+          "question": "Where does Nina live?",
+          "reply": "I don't know where Nina lives.",
+          "issues": [
+            "not-an-answer",
+            "missing:Phoenix"
+          ],
+          "passed": false
+        },
+        {
+          "question": "Does Nina own a boat?",
+          "reply": "I don't know whether Nina owns a boat. Do you know? If you tell me, I'll remember it.",
+          "issues": [],
+          "passed": true
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "conversation-hedging",
+      "category": "conversation",
+      "source": "said:Evaluator",
+      "facts": [
+        1,
+        2,
+        3,
+        5,
+        7,
+        8
+      ],
+      "skipped": [],
+      "probes": [
+        {
+          "question": "Where does Elena live?",
+          "reply": "Elena lives in Chicago.",
+          "issues": [],
+          "passed": true
+        },
+        {
+          "question": "Where does Elena work?",
+          "reply": "I don't know where Elena works.",
+          "issues": [
+            "not-an-answer",
+            "missing:bakery"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "conversation-sequence",
+      "category": "conversation",
+      "source": "said:Evaluator",
+      "facts": [
+        2,
+        4,
+        5,
+        6,
+        8
+      ],
+      "skipped": [
+        [
+          "Priya bought tea, while her friend Dana bought coffee.",
+          "couldn't parse: I couldn't find the verb (stopped at 'Dana')."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What did Priya buy?",
+          "reply": "I don't know what Priya bought.",
+          "issues": [
+            "not-an-answer",
+            "missing:tea"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What did Dana buy?",
+          "reply": "I don't know what Dana bought. I don't know anyone or anything called Dana.",
+          "issues": [
+            "not-an-answer",
+            "missing:coffee"
+          ],
+          "passed": false
+        },
+        {
+          "question": "What does the cafe serve?",
+          "reply": "There's an interesting connection here! The word cafe here refers to a small restaurant where drinks and snacks are sold. In that sense, a cafe is a type of eatery. Following those category links also places this meaning of cafe under building. There are different kinds of cafe, like caff, cybercafe, espresso shop, estaminet, and pull-in.\n\nWhich part of cafe would you like to explore further?",
+          "issues": [
+            "missing:tea",
+            "missing:coffee"
+          ],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "conversation-self",
+      "category": "conversation",
+      "source": "said:Evaluator",
+      "facts": [
+        1,
+        2
+      ],
+      "skipped": [
+        [
+          "You are named Adam, and I created you to learn about people.",
+          "couldn't parse: I got lost at 'Adam'."
+        ],
+        [
+          "You can remember what I tell you.",
+          "couldn't parse: I got lost at 'tell'."
+        ],
+        [
+          "You do not have a body.",
+          "couldn't parse: I expected a verb there."
+        ]
+      ],
+      "probes": [
+        {
+          "question": "What is your name?",
+          "reply": "I'm Adam.",
+          "issues": [],
+          "passed": true
+        },
+        {
+          "question": "Where do I live?",
+          "reply": "You live in Ohio.",
+          "issues": [],
+          "passed": true
+        },
+        {
+          "question": "What do I like?",
+          "reply": "You like music.",
+          "issues": [],
+          "passed": true
+        }
+      ],
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+# Python side of Discord voice. The Discord connection itself is the Node sidecar (sidecar/).
+# Text-to-speech is Fish Audio's HTTP API (stdlib only, needs FISH_API_KEY).
+numpy>=1.26
+faster-whisper>=1.1
+# optional local TTS (TTS_ENGINE=piper): piper-tts>=1.2

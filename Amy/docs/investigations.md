@@ -1,0 +1,19 @@
+# Persistent investigations and progress narration
+
+Amy can now queue a persistent investigation in the separate thinking worker, compare local dictionary interpretations, retrieve source-linked facts, query established rules, open linked missing-premise investigations, test empirical rule proposals, and preserve a result or a specific evidence gap. Every pass has a stored milestone. Waiting investigations reopen after knowledge changes; a work budget prevents indefinite repetition.
+
+Say `Amy, investigate Is Rex happy?`, `Amy, think about friendship`, or `Amy, show your investigation`. `Can you love?` also opens a self-capability investigation; her current self-model readings are reported directly. Discord text commands include `!investigate <question>`, `!investigations`, and `!thoughts`.
+
+The initial proposal generator handles explicit category-to-property implications. It uses a training entity, checks other known members against existing evidence, rejects contradictions, and labels surviving patterns provisional. It also creates working intersection concepts with explicit membership criteria. Both stay in the separate investigation database; neither is installed as an established fact or inference rule. This is bounded symbolic investigation, not general open-ended reasoning. Unfamiliar criteria and unsupported abstract claims remain unresolved. Research currently uses local memory and WordNet; it does not automatically browse Wikipedia or the internet.
+
+Spoken progress updates come from committed milestones: definitions compared, evidence collected, a missing premise, a supported conclusion, proposals tested, or a final evidence limit. Pending updates coalesce to the latest useful milestone. The default minimum interval is 25 seconds, with an eight-second conversational pause and no update over active bot playback. Updates go to the requesting person's Discord text/voice context. `Pause progress updates` and `Resume progress updates` control narration. `!stop` also clears pending voice progress targets. She does not invent completion percentages or an ETA. A short investigation can finish before an intermediate update is due.
+
+Full details, evidence IDs, proof chains, rule tests, working concepts, and milestone records persist in the separate `.thoughts.db`. An explicit inspection suppresses stale findings until the worker checks changed evidence again. Intermediate narration likewise checks the evidence revision and worker health.
+
+Validation: 54 focused investigation, worker, voice-routing, and greeting checks passed. The broader run had 411 passing and four failures in existing clause-splitting/response-wording checks; those unrelated checks were not altered. Voice transport and TTS were simulated; no live Discord/Fish session was launched. No bot was restarted, and no live .env or fact database was edited. Changes take effect on the next operator-controlled startup.
+
+
+Results delivery correction: terminal narration and explicit results requests now share a substantive findings renderer. Completed, waiting, and work-limited investigations describe the meanings considered, recorded evidence, supported conclusions, tested proposals and the remaining gap. “What did you find out?” and similar follow-ups retrieve the current investigation. Requests prefixed by “I want you to” and self-capability questions phrased “Are you able to” reach the same controller. Multiword dictionary expressions are checked before individual words; old investigations are re-evaluated once after this format change. Long Discord text reports are split across messages without dropping the remainder. No live bot or database was changed to apply this correction.
+
+
+Self-state reporting contains readings and their source only. Legacy saved interpretation strings are not appended to replies. No fixed conclusion about feelings is injected by the state formatter.

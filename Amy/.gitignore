@@ -1,0 +1,9 @@
+data/
+__pycache__/
+.env
+models/
+sidecar/node_modules/
+.pytest_cache/
+*.pyc
+tools/convo_eval/report.json
+tools/convo_eval/run*.txt

@@ -1,0 +1,50 @@
+# secrets
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+**/credentials*.json
+**/*secret*
+**/*api*key*
+
+# Python
+**/__pycache__/
+**/*.py[cod]
+**/.venv/
+**/venv/
+**/.pytest_cache/
+**/*.egg-info/
+
+# Node
+**/node_modules/
+**/.npm/
+**/dist/
+**/.next/
+
+# local data / DBs / logs (keep structure, skip heavy runtime)
+**/*.db
+**/*.db-journal
+**/*.sqlite
+**/*.sqlite3
+**/data/**/*.log
+**/logs/
+**/*.log
+**/turn-log.jsonl
+
+# OS / editor
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+*.swp
+*~
+
+# build / cache
+**/.cache/
+**/tmp/
+**/temp/
+**/.mypy_cache/
+**/.ruff_cache/

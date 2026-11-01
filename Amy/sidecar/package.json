@@ -1,0 +1,18 @@
+{
+  "name": "halmini-discord-sidecar",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Discord gateway + DAVE voice I/O for HalMini. All language and reasoning happen in the Python engine.",
+  "type": "module",
+  "main": "index.js",
+  "engines": { "node": ">=22.12.0" },
+  "scripts": { "start": "node index.js", "check": "node --check index.js && node --check protocol.js", "test": "node --test capture.test.js" },
+  "dependencies": {
+    "@discordjs/voice": "^0.19.0",
+    "@snazzah/davey": "^0.1.6",
+    "discord.js": "^14.21.0",
+    "libsodium-wrappers": "^0.7.15",
+    "opusscript": "^0.0.8",
+    "prism-media": "^1.3.5"
+  }
+}
