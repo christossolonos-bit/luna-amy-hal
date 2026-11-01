@@ -135,7 +135,8 @@ class VoiceSession {
   listen(userId) {
     if (this.listening.has(userId)) return;
     const member = this.guild.members.cache.get(userId);
-    if (member?.user.bot) return;
+    // Hear humans and other bots in the call; never herself (reply-loop).
+    if (userId === this.guild.client.user?.id || member?.user?.id === this.guild.client.user?.id) return;
     this.listening.add(userId);
 
     const stream = this.connection.receiver.subscribe(userId, {
@@ -169,7 +170,12 @@ class VoiceSession {
 
   async handleUtterance(userId, pcm) {
     const member = this.guild.members.cache.get(userId) ?? (await this.guild.members.fetch(userId).catch(() => null));
-    const speaker = { id: userId, name: member?.displayName ?? 'Someone', username: member?.user.username };
+    const baseName = member?.displayName ?? 'Someone';
+    const speaker = {
+      id: userId,
+      name: member?.user?.bot ? `${baseName} (bot)` : baseName,
+      username: member?.user.username,
+    };
 
     const text = await transcribeSpeech(pcm);
     if (!text) return;
