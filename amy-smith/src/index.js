@@ -8,10 +8,15 @@ import { startPressure, setResearcher } from './pressure.js';
 import { research } from './journal.js';
 import { startContinuity } from './continuity.js';
 
-await checkOllama().catch((err) => {
-  console.error(`Ollama check failed: ${err.message}`);
-  process.exit(1);
-});
+// Ollama only required if it's the teacher or embedder; default stack is HalMini + NVIDIA.
+if (config.brain === 'ollama' || config.embedder === 'ollama') {
+  await checkOllama().catch((err) => {
+    console.error(`Ollama check failed: ${err.message}`);
+    process.exit(1);
+  });
+} else {
+  console.log(`[startup] teacher=${config.brain} embedder=${config.embedder} model=${config.nvidia.embedModel}`);
+}
 
 process.on('unhandledRejection', (err) => activity('error', { where: 'unhandled', message: String(err?.message ?? err) }));
 

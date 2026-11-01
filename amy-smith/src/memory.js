@@ -261,7 +261,12 @@ export function summaries(conversation) {
 export async function recall(userId, query) {
   const rows = q.userMemories.all(userId);
   if (!rows.length) return [];
-  const [qv] = await embed([query]);
+  let qv;
+  try {
+    [qv] = await embed([query], { inputType: 'query' });
+  } catch {
+    return []; // embedder down — HalMini still holds facts
+  }
   return rows
     .map((r) => ({ id: r.id, content: r.content, score: cosine(qv, JSON.parse(r.embedding)) }))
     .filter((r) => r.score >= config.memory.minScore)
@@ -272,8 +277,13 @@ export async function recall(userId, query) {
 // Stores facts, skipping any that are near-duplicates of what we already know.
 export async function remember(userId, facts) {
   if (!facts.length) return [];
+  let vectors;
+  try {
+    vectors = await embed(facts, { inputType: 'passage' });
+  } catch {
+    return []; // embedder down; HalMini teach-back still runs
+  }
   const existing = q.userMemories.all(userId).map((r) => JSON.parse(r.embedding));
-  const vectors = await embed(facts);
   const saved = [];
   facts.forEach((fact, i) => {
     const v = vectors[i];
@@ -401,7 +411,7 @@ export function forgetEveryone() {
 }
 
 export async function addMemoryManually(userId, content) {
-  const [v] = await embed([content]);
+  const [v] = await embed([content], { inputType: 'passage' });
   q.addMemory.run(userId, content, JSON.stringify(v), Date.now());
 }
 

@@ -1,6 +1,6 @@
 @echo off
 REM Amy Smith is the main runtime (dashboard + Discord + memory + HalMini).
-REM Persona is Luna. HalMini answers first; OpenRouter/Ollama on miss.
+REM Persona is Luna. HalMini answers first; NVIDIA teacher on miss.
 chcp 65001 >nul
 setlocal
 cd /d "%~dp0"
@@ -11,7 +11,7 @@ echo   HalMini-share
 echo     Main:     amy-smith  ^(dashboard :3000, Discord, memory^)
 echo     Persona:  Luna
 echo     HalMini:  fact brain inside Amy Smith ^(Amy\ + Luna\data^)
-echo     Fallback: OpenRouter / Ollama teacher
+echo     Teacher:  NVIDIA NIM on HalMini miss
 echo.
 
 if not exist "%~dp0amy-smith\start.bat" (

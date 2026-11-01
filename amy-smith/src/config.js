@@ -43,19 +43,22 @@ export const config = {
 
   // Main answerer is always HalMini (see companion.js). This setting is only the *teacher*
   // used when HalMini cannot answer, then the reply is taught back into HalMini.
-  // 'nvidia' (default) | 'ollama' | 'openrouter'. Embeddings stay on Ollama.
+  // 'nvidia' (default) | 'ollama' | 'openrouter'. Embeddings default to NVIDIA too.
   brain: (env.BRAIN || 'nvidia').toLowerCase(),
   // HalMini fact brain — tried first on every normal turn (disable with HALMINI_ENABLED=0).
   halmini: {
     enabled: !/^(0|false|off|no)$/i.test(env.HALMINI_ENABLED || '1'),
   },
-  // NVIDIA NIM (OpenAI-compatible). Default teacher when HalMini misses.
+  // NVIDIA NIM (OpenAI-compatible). Default teacher when HalMini misses + default embeddings.
   nvidia: {
     apiKey: env.NVIDIA_API_KEY,
     baseUrl: (env.NVIDIA_BASE_URL || 'https://integrate.api.nvidia.com/v1').replace(/\/$/, ''),
     model: env.NVIDIA_MODEL || 'nvidia/nemotron-3.5-super-vl-120b-a12b',
     maxTokens: num(env.NVIDIA_MAX_TOKENS, 256),
+    embedModel: env.NVIDIA_EMBED_MODEL || 'nvidia/nemotron-3-embed-1b',
   },
+  // Where semantic memory vectors come from: 'nvidia' (default) or 'ollama'.
+  embedder: (env.EMBEDDER || 'nvidia').toLowerCase(),
   // OpenRouter (https://openrouter.ai/keys). Also powers image generation, whichever brain is on.
   openrouter: {
     apiKey: env.OPENROUTER_API_KEY,

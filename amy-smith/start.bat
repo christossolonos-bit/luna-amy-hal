@@ -14,15 +14,7 @@ if "%DISCORD_TOKEN%"=="" (
   start notepad .env
 )
 
-rem ---- Ollama ----
-curl -s -o nul http://127.0.0.1:11434/api/tags && goto ollamaready
-echo [*] Starting Ollama...
-start "Ollama" /min ollama serve
-:waitollama
-timeout /t 1 /nobreak >nul
-curl -s -o nul http://127.0.0.1:11434/api/tags || goto waitollama
-:ollamaready
-echo [ok] Ollama is running
+rem Ollama is optional. Main brain = HalMini; teacher = NVIDIA. Skip auto-start.
 
 rem ---- Dependencies ----
 if not exist node_modules (

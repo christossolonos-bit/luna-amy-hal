@@ -393,21 +393,52 @@ export async function json(messages) {
   }
 }
 
-export async function embed(texts) {
-  const res = await ollama.embed({ model: config.ollama.embedModel, input: texts, keep_alive: KEEP_ALIVE });
-  return res.embeddings;
+// inputType: 'query' for recall, 'passage' when storing facts (NVIDIA retrieval models).
+export async function embed(texts, { inputType = 'passage' } = {}) {
+  const list = Array.isArray(texts) ? texts : [texts];
+  if (config.embedder === 'ollama') {
+    const res = await ollama.embed({ model: config.ollama.embedModel, input: list, keep_alive: KEEP_ALIVE });
+    return res.embeddings;
+  }
+  if (!config.nvidia.apiKey) throw new Error('NVIDIA embeddings need NVIDIA_API_KEY in .env');
+  const res = await fetch(`${config.nvidia.baseUrl}/embeddings`, {
+    method: 'POST',
+    headers: nvidiaHeaders(),
+    body: JSON.stringify({
+      model: config.nvidia.embedModel,
+      input: list,
+      input_type: inputType === 'query' ? 'query' : 'passage',
+      encoding_format: 'float',
+      truncate: 'END',
+    }),
+    signal: AbortSignal.timeout(30_000),
+  });
+  if (!res.ok) throw new Error(`NVIDIA embeddings failed (${res.status}): ${(await res.text()).slice(0, 200)}`);
+  const data = await res.json();
+  const rows = [...(data.data ?? [])].sort((a, b) => (a.index ?? 0) - (b.index ?? 0));
+  if (rows.length !== list.length) throw new Error(`NVIDIA embeddings returned ${rows.length} vectors for ${list.length} inputs`);
+  return rows.map((r) => r.embedding);
 }
 
 export async function listModels() {
-  const { models } = await ollama.list();
-  return models.map((m) => ({ name: m.name, size: m.size, family: m.details?.family, capabilities: m.capabilities ?? [] }));
+  try {
+    const { models } = await ollama.list();
+    return models.map((m) => ({ name: m.name, size: m.size, family: m.details?.family, capabilities: m.capabilities ?? [] }));
+  } catch {
+    return [];
+  }
 }
 
 export async function checkOllama() {
+  // Only required when Ollama is the teacher or the embedder.
+  if (config.brain !== 'ollama' && config.embedder !== 'ollama') return;
   const { models } = await ollama.list();
   const names = new Set(models.map((m) => m.name));
   const has = (n) => names.has(n) || names.has(`${n}:latest`);
-  for (const m of [config.ollama.model, config.ollama.embedModel]) {
+  const need = [];
+  if (config.brain === 'ollama') need.push(config.ollama.model);
+  if (config.embedder === 'ollama') need.push(config.ollama.embedModel);
+  for (const m of need) {
     if (!has(m)) throw new Error(`Ollama model "${m}" not found. Run: ollama pull ${m}`);
   }
 }
