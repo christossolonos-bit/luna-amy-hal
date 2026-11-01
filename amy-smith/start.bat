@@ -14,7 +14,7 @@ if "%DISCORD_TOKEN%"=="" (
   start notepad .env
 )
 
-rem Ollama is optional. Main brain = HalMini; teacher = NVIDIA. Skip auto-start.
+rem Ollama is optional when BRAIN/EMBEDDER are nvidia. Skip auto-start.
 
 rem ---- Dependencies ----
 if not exist node_modules (

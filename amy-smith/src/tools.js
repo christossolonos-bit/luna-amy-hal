@@ -508,11 +508,11 @@ const TOOLS = {
       function: {
         name: 'switch_brain',
         description:
-          'Owner only. Change the *teacher* used when HalMini cannot answer (HalMini stays the main brain): "nvidia" (default), "ollama" (local), or "openrouter" (cloud). Can also change the model and, for OpenRouter, reasoning. Use when your owner asks to switch the teacher/provider/model.',
+          'Owner only. Change which brain writes your replies: "nvidia" (default), "ollama" (local), or "openrouter" (cloud). Can also change the model and, for OpenRouter, reasoning. Use when your owner asks to switch providers, models or reasoning.',
         parameters: {
           type: 'object',
           properties: {
-            brain: { type: 'string', enum: ['nvidia', 'ollama', 'openrouter'], description: 'Teacher provider after a HalMini miss' },
+            brain: { type: 'string', enum: ['nvidia', 'ollama', 'openrouter'], description: 'Which provider to use' },
             model: { type: 'string', description: 'The model to switch to, as said, e.g. "nemotron", "grok 4.20", "kimi", or an exact id; "" to keep the current one' },
             pick: { type: 'number', description: 'A number from the model list you just showed (list_models), e.g. 2; 0 if not picking from a list' },
             reasoning: { type: 'string', enum: ['none', 'low', 'medium', 'high'], description: 'Optional, OpenRouter only: how hard it thinks before answering' },
@@ -836,9 +836,9 @@ function normalizeBrain(v) {
 }
 
 function brainLabel(brain, { openrouterModel, ollamaModel, nvidiaModel, openrouterReasoning } = {}) {
-  if (brain === 'openrouter') return `teacher OpenRouter, model ${openrouterModel ?? config.openrouter.model}, reasoning ${openrouterReasoning ?? config.openrouter.reasoning}`;
-  if (brain === 'nvidia') return `teacher NVIDIA NIM, model ${nvidiaModel ?? config.nvidia.model}`;
-  return `teacher local Ollama, model ${ollamaModel ?? config.ollama.model}`;
+  if (brain === 'openrouter') return `OpenRouter, model ${openrouterModel ?? config.openrouter.model}, reasoning ${openrouterReasoning ?? config.openrouter.reasoning}`;
+  if (brain === 'nvidia') return `NVIDIA NIM, model ${nvidiaModel ?? config.nvidia.model}`;
+  return `local Ollama, model ${ollamaModel ?? config.ollama.model}`;
 }
 
 function brainShort(brain, models = {}) {
@@ -894,7 +894,7 @@ async function switchBrain({ brain, model, reasoning, pick }, ctx = {}) {
   activity('persona', { reason: `Brain switched to ${now}`, changedBy: 'owner' });
   const currentId = s.brain === 'openrouter' ? s.openrouterModel : s.brain === 'nvidia' ? s.nvidiaModel : s.ollamaModel;
   const others = want ? alsoMatched.filter((id) => id !== currentId).slice(0, 4) : [];
-  return `Switched teacher. HalMini is still the main brain; on a miss you now use ${now}. Tell them briefly.` +
+  return `Switched. From your next reply on you run on ${now}. Tell them briefly.` +
     (others.length ? ` "${model}" also matched ${others.join(', ')}; mention you picked this one and they can name another.` : '');
 }
 
@@ -1127,7 +1127,7 @@ async function selfInspect({ action, type, search, last }) {
     `- Files: music ${path.join(DATA_DIR, 'music')}, playlists ${path.join(DATA_DIR, 'playlists.json')}, images ${path.join(DATA_DIR, 'images')}, written files ${path.join(DATA_DIR, 'files')}, background task reports ${path.join(DATA_DIR, 'tasks')}, file edit history ${path.join(DATA_DIR, 'file-history')}.`,
     `- Journal: ${JOURNAL_DIR} (one file per day; read today's with self "journal").`,
     `- Logs: there is no log file. Your activity log lives in memory (the dashboard's live feed shows it); search it with self (action "logs"). It holds the newest 300 events since the bot started.`,
-    `- Right now: main brain HalMini (${config.halmini.enabled ? 'on' : 'off'}); ${brainLabel(config.brain)}; speech-to-text ${config.stt}; avatar mode ${config.avatarVideo ? 'on' : 'off'}; voice wake word "${config.voice.wakeWord || '(none)'}".`,
+    `- Right now: brain ${brainLabel(config.brain)}; speech-to-text ${config.stt}; avatar mode ${config.avatarVideo ? 'on' : 'off'}; voice wake word "${config.voice.wakeWord || '(none)'}".`,
   ].join('\n');
 }
 

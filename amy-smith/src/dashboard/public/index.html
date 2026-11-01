@@ -227,20 +227,19 @@
           <div id="personaHistory" style="max-height:240px;overflow-y:auto"></div>
         </div>
         <h2 style="margin-top:20px">Brain</h2>
-        <div class="hint" id="halminiHint" style="margin-bottom:10px">Main brain is always <b>HalMini</b>. It answers first. The teacher below only runs when HalMini cannot answer, then teaches that reply back into HalMini.</div>
         <div class="field">
-          <label for="brain">Teacher on HalMini miss</label>
+          <label for="brain">Replies come from</label>
           <select id="brain" name="brain">
-            <option value="nvidia">NVIDIA NIM (default teacher)</option>
+            <option value="nvidia">NVIDIA NIM</option>
             <option value="ollama">Ollama (local, free)</option>
             <option value="openrouter">OpenRouter (cloud models)</option>
           </select>
-          <div class="hint" id="openrouterHint">Embeddings stay on local Ollama.</div>
+          <div class="hint" id="openrouterHint">Default chat brain is NVIDIA. Embeddings also use NVIDIA unless you switch embedder in .env.</div>
         </div>
         <div class="field">
           <label for="nvidiaModel">NVIDIA model</label>
           <input id="nvidiaModel" name="nvidiaModel" placeholder="e.g. nvidia/nemotron-3.5-super-vl-120b-a12b">
-          <div class="hint">Teacher model when HalMini misses (NVIDIA selected above).</div>
+          <div class="hint">Used when brain is NVIDIA NIM.</div>
         </div>
         <div class="field">
           <label for="openrouterModel">OpenRouter model</label>
@@ -613,14 +612,11 @@ async function loadSettings() {
   const imageModels = cloud.filter((m) => m.image && !m.id.startsWith('openrouter/'));
   $('#openrouterImageModel').innerHTML = imageModels.map((m) => `<option value="${esc(m.id)}">${esc(m.name)} · ${price(m)}</option>`).join('')
     + (imageModels.some((m) => m.id === s.openrouterImageModel) ? '' : `<option>${esc(s.openrouterImageModel)}</option>`);
-  $('#halminiHint').textContent = s.halminiEnabled === false
-    ? 'HalMini is disabled (HALMINI_ENABLED=0). Every reply goes straight to the teacher below.'
-    : 'Main brain is always HalMini. It answers first. The teacher below only runs when HalMini cannot answer, then teaches that reply back into HalMini.';
   $('#openrouterHint').textContent = s.nvidiaKey
     ? (s.openrouterKey
-      ? 'Teacher fallback only. Embeddings stay on local Ollama.'
+      ? 'NVIDIA chat/embeddings ready. OpenRouter key also set (images/music/switchable brain).'
       : 'NVIDIA key set. Add OPENROUTER_API_KEY to .env if you also want OpenRouter or image gen.')
-    : 'Add NVIDIA_API_KEY to .env and restart to use the NVIDIA teacher.';
+    : 'Add NVIDIA_API_KEY to .env and restart to use NVIDIA.';
   const chatModels = models.filter((m) => !m.capabilities.length || m.capabilities.includes('completion'));
   $('#ollamaModel').innerHTML = chatModels.map((m) => `<option value="${esc(m.name)}">${esc(m.name)} (${(m.size / 1e9).toFixed(1)} GB)</option>`).join('')
     + (chatModels.some((m) => m.name === s.ollamaModel) ? '' : `<option>${esc(s.ollamaModel)}</option>`);

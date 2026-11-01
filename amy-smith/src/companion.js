@@ -13,7 +13,6 @@ import { logFailure } from './failures.js';
 import { stripTags } from './emotion.js';
 import { update as updateCharacter } from './characters.js';
 import { MEMORY_TASK, fileFacts } from './extract.js';
-import { tryHalMini, teachHalMini } from './halmini.js';
 import * as scratch from './scratchpad.js';
 import * as pressure from './pressure.js';
 import * as continuity from './continuity.js';
@@ -179,45 +178,6 @@ export async function respond({ conversation, speaker, text, voice = false, onSe
   if (!cue) activity('heard', { conversation, voice, speaker: speaker.name, userId: speaker.id, text });
   const started = Date.now();
 
-  // Main brain = HalMini. Teacher LLM (NVIDIA by default) only on a miss, then teach-back.
-  if (!cue && character.main && config.halmini.enabled) {
-    try {
-      const hm = await tryHalMini(text, speaker);
-      if (hm?.ok && hm.text?.trim()) {
-        const reply = stripTags(hm.text.trim());
-        if (onSentence) await onSentence(reply);
-        activity('replied', {
-          conversation,
-          voice,
-          text: reply,
-          ms: Date.now() - started,
-          brain: 'halmini',
-          teacher: null,
-          reason: hm.reason,
-          recalled: memories.length,
-        });
-        addMessage(conversation, { role: 'user', userId: speaker.id, name: speaker.name, content: text });
-        addMessage(conversation, { role: 'assistant', content: reply });
-        if (character.main) {
-          try {
-            pressure.onTurn({ speaker, text, voice, conversation, actions: [], made: false });
-          } catch (err) {
-            activity('error', { where: 'pressure', message: err.message });
-          }
-        }
-        queueConsolidation(conversation);
-        if (perms.remember || people.some((p) => permissions(p.id).remember)) {
-          const context = rows.slice(-10).map((m) => `${m.role === 'assistant' ? m.name ?? config.botName : m.name}: ${m.content}`).join('\n');
-          queueMemoryExtraction({ speaker, text, reply, known: memories, character, context, people: [{ id: speaker.id, name: speaker.name }, ...people] });
-        }
-        return reply;
-      }
-      activity('halmini', { ok: false, reason: hm?.reason || 'miss', teacher: config.brain });
-    } catch (err) {
-      activity('error', { where: 'halmini', message: err.message, teacher: config.brain });
-    }
-  }
-
   let userContent = cue ? `(${cue})` : `[${speaker.name}]: ${text}`;
   // Don't loop: she's shown what she just said and told to answer what was said now instead.
   const recentMine = rows.filter((m) => m.role === 'assistant' && (m.name ? m.name === character.name : character.main)).slice(-3).map((m) => m.content);
@@ -344,14 +304,13 @@ export async function respond({ conversation, speaker, text, voice = false, onSe
       ], { ...chatOpts, onSentence: undefined }));
     }
   }
-  logTurn({ conversation, speaker: speaker.name, voice, messages, tools: tools.map((t) => t.function.name), calls, reply, brain: 'teacher', teacher: config.brain });
+  logTurn({ conversation, speaker: speaker.name, voice, messages, tools: tools.map((t) => t.function.name), calls, reply, brain: config.brain });
   activity('replied', {
     conversation,
     voice,
     text: reply,
     ms: Date.now() - started,
-    brain: 'teacher',
-    teacher: config.brain,
+    brain: config.brain,
     recalled: memories.length + others.reduce((n, o) => n + o.memories.length, 0),
   });
 
@@ -378,11 +337,6 @@ export async function respond({ conversation, speaker, text, voice = false, onSe
   if (!cue && (perms.remember || people.some((p) => permissions(p.id).remember))) {
     const context = rows.slice(-10).map((m) => `${m.role === 'assistant' ? m.name ?? config.botName : m.name}: ${m.content}`).join('\n');
     queueMemoryExtraction({ speaker, text, reply, known: memories, character, context, people: [{ id: speaker.id, name: speaker.name }, ...people] });
-  }
-  // Teacher filled a HalMini gap — teach the spoken answer back into HalMini.
-  if (!cue && character.main && config.halmini.enabled && reply) {
-    activity('halmini', { ok: false, reason: 'teach-back', teacher: config.brain, preview: reply.slice(0, 80) });
-    teachHalMini(reply, { name: 'TutorBot', id: 'tutor' });
   }
   return reply;
 }

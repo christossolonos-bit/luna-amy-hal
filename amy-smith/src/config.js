@@ -41,15 +41,9 @@ export const config = {
     numCtx: num(env.OLLAMA_NUM_CTX, 32768),
   },
 
-  // Main answerer is always HalMini (see companion.js). This setting is only the *teacher*
-  // used when HalMini cannot answer, then the reply is taught back into HalMini.
-  // 'nvidia' (default) | 'ollama' | 'openrouter'. Embeddings default to NVIDIA too.
+  // Which LLM writes replies: 'nvidia' (default) | 'ollama' | 'openrouter'.
   brain: (env.BRAIN || 'nvidia').toLowerCase(),
-  // HalMini fact brain — tried first on every normal turn (disable with HALMINI_ENABLED=0).
-  halmini: {
-    enabled: !/^(0|false|off|no)$/i.test(env.HALMINI_ENABLED || '1'),
-  },
-  // NVIDIA NIM (OpenAI-compatible). Default teacher when HalMini misses + default embeddings.
+  // NVIDIA NIM (OpenAI-compatible) — default chat + embeddings.
   nvidia: {
     apiKey: env.NVIDIA_API_KEY,
     baseUrl: (env.NVIDIA_BASE_URL || 'https://integrate.api.nvidia.com/v1').replace(/\/$/, ''),
@@ -182,8 +176,6 @@ export function getSettings() {
     persona: config.persona,
     openrouterKey: Boolean(config.openrouter.apiKey), // whether one is set, never the key itself
     nvidiaKey: Boolean(config.nvidia.apiKey),
-    halminiEnabled: config.halmini.enabled,
-    teacher: config.brain, // alias: LLM only runs after a HalMini miss
   };
 }
 

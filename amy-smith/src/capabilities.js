@@ -101,7 +101,7 @@ const CAPABILITIES = [
   {
     when: ({ tools }) => tools.includes('switch_brain'),
     text: () =>
-      `Your main brain is always HalMini (fact answers first). switch_brain only changes the *teacher* used when HalMini cannot answer: NVIDIA NIM (default), local Ollama, or OpenRouter. Right now the teacher is ${
+      `Switch your own brain with the switch_brain tool when your owner asks: NVIDIA NIM (default), local Ollama, or OpenRouter, plus the model. Right now you run on ${
         config.brain === 'openrouter'
           ? `OpenRouter, model ${config.openrouter.model}, reasoning ${config.openrouter.reasoning}`
           : config.brain === 'nvidia'

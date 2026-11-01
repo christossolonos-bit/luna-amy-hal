@@ -168,8 +168,7 @@ async function* streamOpenAIChat(res, label) {
   if (calls.length) yield { message: { content: '', tool_calls: calls.filter(Boolean) } };
 }
 
-// NVIDIA NIM teacher — used when HalMini misses.
-// Nemotron burns the token budget on reasoning unless enable_thinking is false.
+// NVIDIA NIM chat — Nemotron burns the token budget on reasoning unless enable_thinking is false.
 async function* nvidiaChat(messages, tools) {
   if (!config.nvidia.apiKey) throw new Error('NVIDIA is the teacher, but NVIDIA_API_KEY is empty in .env');
   const body = {

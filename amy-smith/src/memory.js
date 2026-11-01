@@ -265,7 +265,7 @@ export async function recall(userId, query) {
   try {
     [qv] = await embed([query], { inputType: 'query' });
   } catch {
-    return []; // embedder down — HalMini still holds facts
+    return []; // embedder down
   }
   return rows
     .map((r) => ({ id: r.id, content: r.content, score: cosine(qv, JSON.parse(r.embedding)) }))
@@ -281,7 +281,7 @@ export async function remember(userId, facts) {
   try {
     vectors = await embed(facts, { inputType: 'passage' });
   } catch {
-    return []; // embedder down; HalMini teach-back still runs
+    return []; // embedder down
   }
   const existing = q.userMemories.all(userId).map((r) => JSON.parse(r.embedding));
   const saved = [];
