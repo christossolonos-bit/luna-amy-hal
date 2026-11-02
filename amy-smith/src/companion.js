@@ -86,7 +86,7 @@ export async function planTurn(history, speaker, text, tools) {
         `- git when asked about a project's git status or changes, to stage, commit or push, or when the owner confirms a push she just previewed ("yes, push it").\n` +
         `- list_models when asked which models are best for something, or to show or list models. switch_brain when asked to switch, use or pick a model or provider, including picking a number from a list just shown ("go with 2").\n` +
         `- background_task when asked to do something in the background, hand it off, have a helper or sub-agent work on it, or to check on or cancel such a task.\n` +
-        `- music for anything about playing existing songs: play, queue, pause, resume, skip, stop, playlists, or asking what's playing ("what song is this?").\n` +
+        `- music for playing songs: local library, playlists, or YouTube (URL or search via the youtube field), plus queue, pause, resume, skip, stop, or what's playing.\n` +
         `- generate_music only when the conversation already says what the song should be about (topic, mood or style) AND how long (a 30-second clip or a full song). If either is missing, pick nothing so ${config.botName} can ask.\n` +
         `- When unsure, pick nothing.\n` +
         `Reply as JSON only: {"actions": [{"tool": "<name>", "query": "<web_search only>"}], "reason": "<a few words>"}. Use {"actions": []} when nothing is needed.`,
@@ -104,6 +104,20 @@ export async function planTurn(history, speaker, text, tools) {
     if (name === 'web_search') plan.search = typeof a.query === 'string' && a.query.trim() ? a.query.trim() : text;
     else if (!plan.tools.includes(name)) plan.tools.push(name);
   }
+  // If the planner skipped an obvious ask (common on weak local models), add it from the text.
+  const low = String(text || '').toLowerCase();
+  const ensure = (name) => {
+    if (offered.has(name) && !plan.tools.includes(name) && (name !== 'web_search' || !plan.search)) {
+      if (name === 'web_search') plan.search = text;
+      else plan.tools.push(name);
+      if (!plan.reason) plan.reason = 'heuristic';
+    }
+  };
+  if (/\b(search|look up|google|internet|web)\b/.test(low)) ensure('web_search');
+  if (/\b(desktop|create|make|write|save)\b/.test(low) && /\b(file|document|txt|folder|note)\b/.test(low)) ensure('files');
+  if (/\b(read|open|edit|copy|move)\b/.test(low) && /\b(file|folder|script|\.env|code)\b/.test(low)) ensure('files');
+  if (/\b(send|dm)\b/.test(low) && /\b(file|document)\b/.test(low)) ensure('send_file');
+  if (/\b(youtube|youtu\.be|play (me )?(a |some )?(song|music|track)|put on (some )?music)\b/.test(low)) ensure('music');
   // One deliverable per turn, whatever the planner said.
   const first = plan.tools.find((n) => DELIVERABLES.includes(n));
   plan.tools = plan.tools.filter((n) => !DELIVERABLES.includes(n) || n === first);

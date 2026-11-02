@@ -14,6 +14,7 @@ import { todaysJournal, JOURNAL_DIR } from './journal.js';
 import { logFailure } from './failures.js';
 import { startTask, listTasks, cancelTask } from './agents.js';
 import { MUSIC_DIR, tracks, findTrack, playlists, findPlaylist, savePlaylist, deletePlaylist, addSong } from './music.js';
+import { fetchYoutube } from './youtube.js';
 import { activity, recentActivity } from './events.js';
 import { findContact, listContacts, setContactTier, addObligation, openObligations, completeObligation, cancelObligation, personByRealName, reachCard, setReach } from './memory.js';
 import { TIERS, isOwner, tierOf } from './contacts.js';
@@ -164,15 +165,16 @@ const TOOLS = {
     enabled: (ctx) => Boolean(ctx.perms?.files && (ctx.voice || ctx.studioMusic || ctx.sendHere)),
     // A getter so the track and playlist lists are current each time the tool is offered.
     get definition() {
-      const list = tracks();
+      const list = tracks().filter((t) => !t.file.startsWith('yt/'));
       const lists = Object.keys(playlists());
       return {
         type: 'function',
         function: {
           name: 'music',
           description:
-            'Play and manage the music library: songs you made plus any your owner added. Play tracks by title, play or save playlists, queue, pause, resume, skip, stop, or say what is playing. ' +
-            'To build a playlist from a description ("something chill", "all the rock ones"), pick matching titles from the library below yourself. ' +
+            'Play and manage music in the voice channel: local library tracks, playlists, and YouTube (via yt-dlp/ytp). ' +
+            'For YouTube: set youtube to a URL or search phrase (e.g. "lofi hip hop radio" or a youtu.be link) with action play or queue. ' +
+            'Also play local titles, playlists, pause, resume, skip, stop, or say what is playing. ' +
             `Library (${list.length}): ${list.map((t) => `"${t.title}"${t.about ? ` (${t.about.slice(0, 80)})` : ''}`).join('; ') || 'empty'}. ` +
             `Playlists: ${lists.map((n) => `"${n}"`).join(', ') || 'none yet'}.`,
           parameters: {
@@ -185,6 +187,10 @@ const TOOLS = {
               },
               tracks: { type: 'array', items: { type: 'string' }, description: 'Track titles from the library, in order' },
               playlist: { type: 'string', description: 'A playlist name: to play, delete, or save the given tracks under' },
+              youtube: {
+                type: 'string',
+                description: 'YouTube URL or search query to download/play with yt-dlp (e.g. "never gonna give you up" or https://youtu.be/...)',
+              },
               shuffle: { type: 'boolean', description: 'Shuffle the order' },
             },
             required: ['action'],
@@ -900,11 +906,12 @@ async function switchBrain({ brain, model, reasoning, pick }, ctx = {}) {
 
 // Plays music where the conversation is: the Discord voice channel she's in, the avatar studio's
 // page, or (on Discord with no voice session) as attachments in the chat.
-async function musicControl({ action, tracks: titles, playlist, shuffle }, ctx) {
+async function musicControl({ action, tracks: titles, playlist, shuffle, youtube }, ctx) {
   const library = tracks();
   const player = ctx.voice ?? null;
   const studio = ctx.studioMusic ?? null;
-  const title = (file) => library.find((t) => t.file === file)?.title ?? file;
+  const ytTitles = new Map(); // file -> display title for YouTube downloads
+  const title = (file) => ytTitles.get(file) || library.find((t) => t.file === file)?.title || path.basename(String(file), path.extname(String(file)));
 
   // Resolve titles and/or a playlist into files.
   let files = [];
@@ -920,6 +927,28 @@ async function musicControl({ action, tracks: titles, playlist, shuffle }, ctx) 
     if (!named) return `Error: no playlist called "${playlist}". Playlists: ${Object.keys(playlists()).join(', ') || 'none yet'}.`;
     files.push(...named.files);
   }
+
+  // YouTube via yt-dlp / ytp — download (or reuse cache) then play like a library file.
+  let ytQuery = typeof youtube === 'string' ? youtube.trim() : '';
+  if (!ytQuery && (action === 'play' || action === 'queue') && !files.length) {
+    // Fall back: a lone "track" that is a URL, or the spoken/typed ask.
+    const guess = missing[0] || (typeof ctx.userText === 'string' ? ctx.userText : '');
+    if (/youtu(\.be|be\.com)/i.test(guess) || /\b(youtube|play\b.+\b(song|music|track|artist))\b/i.test(guess)) {
+      ytQuery = guess.replace(/^(luna[, ]+)?/i, '').replace(/\b(can you|please|put on|play( me)?|on youtube)\b/gi, ' ').replace(/\s+/g, ' ').trim();
+    }
+  }
+  if (ytQuery && (action === 'play' || action === 'queue')) {
+    try {
+      activity('music', { action: 'youtube-fetch', query: ytQuery });
+      const yt = await fetchYoutube(ytQuery);
+      files.push(yt.file);
+      ytTitles.set(yt.file, yt.title);
+      missing.length = 0;
+    } catch (err) {
+      return `Error: YouTube failed (${err.message}). Need yt-dlp (or ytp) and ffmpeg on PATH.`;
+    }
+  }
+
   files = [...new Set(files)];
   if (shuffle) files.sort(() => Math.random() - 0.5);
   const missed = missing.length ? ` Couldn't find: ${missing.join(', ')}.` : '';
@@ -939,16 +968,18 @@ async function musicControl({ action, tracks: titles, playlist, shuffle }, ctx) 
     }
     case 'play':
     case 'queue': {
-      if (!files.length) return `Error: nothing to play.${missed} Library: ${library.map((t) => t.title).join('; ') || 'empty'}.`;
+      if (!files.length) return `Error: nothing to play.${missed} Pass youtube="search or url", or a library track.`;
       const append = action === 'queue';
       if (player) player.playMusic(files, { append });
       else if (studio) studio({ action: append ? 'queue' : 'play', tracks: files.map((f) => ({ title: title(f), url: `/api/music/${encodeURIComponent(f)}` })) });
       else if (ctx.sendHere) {
         // Not in voice: hand over the files instead (Discord allows 10 per message).
-        for (const f of files.slice(0, 10)) await ctx.sendHere(new AttachmentBuilder(readFileSync(path.join(MUSIC_DIR, f)), { name: f }));
+        for (const f of files.slice(0, 10)) await ctx.sendHere(new AttachmentBuilder(readFileSync(path.join(MUSIC_DIR, f)), { name: path.basename(f) }));
         return `You're not in a voice channel, so the songs are attached here instead: ${files.slice(0, 10).map(title).join(', ')}.${missed} Mention /join to play them out loud.`;
+      } else {
+        return 'Error: join a voice channel first (/join) so YouTube can play out loud.';
       }
-      activity('music', { action, tracks: files });
+      activity('music', { action, tracks: files, youtube: Boolean(youtube?.trim()) });
       return `${append ? 'Queued' : 'Now playing'}${named ? ` playlist "${named.name}"` : ''}: ${files.map(title).join(', ')}.${missed} Keep your reply short; the music is playing.`;
     }
     case 'pause':

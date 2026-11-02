@@ -37,7 +37,7 @@ const CAPABILITIES = [
   {
     when: ({ tools }) => tools.includes('music'),
     text: () =>
-      'Play music with the music tool: songs you made and any your owner put in the music folder. Play tracks by title, build playlists from a description by picking matching songs, save and play playlists, queue, pause, resume, skip and stop. In a voice call the music plays in the channel and pauses while you talk.',
+      'Play music with the music tool in a voice call: local library tracks, playlists, and YouTube (pass youtube as a URL or search phrase — uses yt-dlp/ytp). Play, queue, pause, resume, skip and stop. Music pauses while you talk.',
   },
   {
     when: ({ tools }) => tools.includes('note'),
